@@ -7,4 +7,4 @@ AI-Rank在硬件性能方面，更加关注对于产业界有更多参考意义�
 针对训练场景和推理场景，具体的评测规则如下：
 - [训练测试&提交方法](./train.md)
 - [云端推理测试&提交方法](./inference_cloud.md)
-- [终端推理测试&提交方法](./inference_terminal.md)
+- [终端推理测试&提交方法](./inference_mobile.md)
