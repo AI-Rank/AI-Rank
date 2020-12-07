@@ -9,60 +9,48 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
 ## 硬件环境
 基于目前对产业界，科研领域等的调研，AI-Rank指定了如下终端硬件，并不限定操作系统、驱动版本，后续也会随着业界发展动态更新或添加新的环境：
 - 必选硬件：
-    - 高通855小米9
-    - 高通6660 OPPO R11S
-    - 高通625 红米6pro
-    - iPhone Xr
+    - 高通865（小米10、vivo iQOO Neo3 5G、OnePlus 8T 5G等）
+    - 高通835（小米MIX2等）
+    - 高通625（红米6pro等）
+    - 麒麟9905G（P40pro等）
+    - RK3399（Firefly RK3399等）
+    - 树莓派4B
 - 可选硬件：
+    - iPhone 11
+    - iPhone XR
     - iPhone6s
     - iPhone5s
     - Jetson AGX Xavier
-    - 树莓派4B
-    - RK3399
 
-## 模型任务及参数和数据集
-AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有影响力的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现：
+## 模型、数据集和约束条件
+- 对于移动端推理场景，选取了不同应用领域下使用最为频繁的8个模型，并给出了测试集、精度约束、延迟约束和参考模型下载链接：
 
-|模型名称 | 应用领域 | 入选理由|
-|---|---|---|
-|mobilenetv3 | 图像分类 | - |
-|shufflenet_v2 | 图像分类 | - |
-|squeezenet_v1.1 | 图像分类 | - |
+|应用领域|模型名称|数据集|精度约束|延迟约束|参考模型下载链接|
+|-|-|-|-|-|-|
+|图像分类|MobileNetV1|ImageNet (224x224）|99% of FP32（[70.99%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV1_pretrained.tar) TensorFlow|
+|图像分类|MobileNetV2|ImageNet (224x224）|99% of FP32（[72.15%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV2_pretrained.tar) TensorFlow|
+|图像分类|MobileNetV3_large_x1_0|ImageNet (224x224）|99% of FP32（[75.32%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_large_x1_0_pretrained.tar) TensorFlow|
+|图像分类|MobileNetV3_small_x1_0|ImageNet (224x224）|99% of FP32（[68.24%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_small_x1_0_pretrained.tar) TensorFlow|
+|图像分类|Resnet50|ImageNet (224x224）|99% of FP32（[76.5%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_pretrained.tar) TensorFlow|
+|目标检测|SSD-MobileNetV1（300x300）|Pascal VOC|99% of FP32（[73.2 Box AP](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|50ms|[Paddle](https://paddlemodels.bj.bcebos.com/object_detection/ssd_mobilenet_v1_voc.tar) TensorFlow|
+|目标检测|YoloV3-MobileNetV3（320x320）|COCO|99% of FP32（[27.1 Box AP](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|50ms|[Paddle](https://paddlemodels.bj.bcebos.com/object_detection/yolov3_mobilenet_v3.pdparams) TensorFlow|
+|图像分割|DeepLabv3+/MobileNetv2/bn|CityScapes|99% of FP32 （[0.698 mIoU on val, Output_stride=16，multi-scale_test=false](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md)）|1000ms?|[Paddle](https://paddleseg.bj.bcebos.com/models/mobilenet_cityscapes.tgz) TensorFlow|
 
-为进一步减少模型差异带来的性能影响，最大程度保证公平性，在本任务进行测试时，AI-Rank要求固定模型网络结构、参数集、测试数据集。因此AI-Rank提供了基于TensorFlow的模型、完成训练的参数集和测试数据集。
-|模型名称 | 模型链接 | 参数集 | 测试数据集 | 
-|----------|----------|---------|---------|
-|mobilenetv3 | - | - | - |
-|shufflenet_v2 | - | - | - |
-|squeezenet_v1.1 | - | - | - |
-
-## 测试环节
-
-测试主要包含两个环节：
-- 准确率验证，完成验证数据集所有samples的推理，计算推理准确率。准确率必须不低于如下约束：
-
-|模型名称 | 应用领域 | 准确率约束 | 
-|---|---|---|
-|mobilenetv3 | 图像分类 | - |
-|shufflenet_v2 | 图像分类 | - |
-|squeezenet_v1.1 | 图像分类 | - |
-
-- 指标计算，计算方法下文给出。
+- 为减少软件差异带来的性能影响，最大程度保证公平性，我们对约束条件做如下进一步的解释：
+  -  模型：要求必须使用与参考模型等价的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现，可基于提供的校准数据进行后量化，但不允许重训；
+  -  数据集：必须基于上述指定的数据集进行测试；
+  -  精度约束：在指定测试集上，按照指定的精度评估方法得到的精度，不得低于上述给定的值，例如">= 99% of FP32 (76.46%)"代表不得低于99%*76.46%=75.6954%，要求按照第五个有效位进行四舍五入，即精度不得低于75.700%;
+  -  延迟约束：要求在约束的时间内处理完所有请求。
 
 ## 评价指标
 - 硬件适配能力：该框架能够在给定硬件上（包括可选和必选）完成的任务数占总任务数的比例。本指标主要体现框架对业界常用硬件的适配全面性。指标根据参与者提交的任务个数确定。
 - 性能指标：
     - 时延：N次推理，每次1个sample，计算每次推理的用时。时延取N次用时的90分位值。单位：ms（毫秒）
         - 测试方法：取1000个样本，每次推理一个样本，计算该样本推理延迟时间。1000个延迟时间升序排序，取90分位值。
+    - 离线吞吐：单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。
+        - 测试方法：将验证数据集一次性，全部提供给推理程序，推理程序并发推理。计算其整体吞吐速率。
     - 最大并发推理量：在延迟时间不高于约束值前提下，最大支持的一个批次的BatchSize值。
         - 测试方法：部署推理程序到终端，编写测试程序，加载验证数据集，每次加载N个samples。N的数量逐步增大，直到响应延迟达到约束延迟时间为止。持续保持N的值，确保延迟始终不高于约束延迟时间，否则下调N值。找到一个稳定N值，使得延迟不高于约束延迟时间。N值及即最大并发推理量。
-        - 不同模型的约束延迟时间值如下表：
-
-|模型名称 | 应用领域 | 延迟约束 | 
-|---|---|---|
-|mobilenetV3 | 图像分类 | 50 ms |
-|shufflenet_v2 | 图像分类 | - |
-|squeezenet_v1.1 | 图像分类 | - |
 
 - 内存占用：推理期间，推理模型最大使用内存量。单位：MB。
     - 测试方法：在`最大并发推理量`测试过程中，最大的内存占用值。
@@ -116,6 +104,31 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 - `latency_caseN_finish`：第N次测试结束
 - `90th_percentile_latency`：取90分位的延迟时间
 
+
+### 离线吞吐
+```
+- AI-Rank-log 1558631910.424 test_begin
+- AI-Rank-log 1558631910.424 warmup_begin, warmup_samples:100
+- AI-Rank-log 1558631910.424 warmup_finish
+- AI-Rank-log 1558631912.424 total_accuracy:0.95943342, total_samples_cnt:2
+- AI-Rank-log 1558631913.424 total_accuracy:0.95943342, total_samples_cnt:4
+- AI-Rank-log 1558631914.424 total_accuracy:0.95943342, total_samples_cnt:6
+- AI-Rank-log 1558631915.424 total_accuracy:0.95943342, total_samples_cnt:8
+- AI-Rank-log 1558631916.424 total_accuracy:0.95943342, total_samples_cnt:10
+- AI-Rank-log 1558631910.424 avg_ips:1190images/sec
+- AI-Rank-log 1558631910.424 test_end
+```
+说明：
+- 每行以`AI-Rank-log`开始，后接时间戳
+- `test_begin`：测试开始
+- `test_finish`：测试结束
+- `warmup_begin`：预热开始
+- `warmup_finish`：预热结束
+- `warmup_samples`：预热samples数量
+- `total_accuracy`：以完成训练的sample，准确率
+- `total_samples_cnt`：已完成的sample数量
+- `avg_ips`：`total_samples_cnt` / 所有时间
+
 ### 最大并发推理量&内存占用
 注意：以下只是某一特定并发量的日志格式，提交者提交时，只需提交最大并发量的日志即可。
 ```
@@ -139,9 +152,9 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 - `max_memory_use`：自测试以来的最大内存占用值
 
 ## 数据汇总
-|  模型  | 硬件 | 时延（ms） | 最大并发推理量(samples/sec) | 内存占用(MB) |
-|--------------|--------------|--------------|--------------|--------------|
-|      -       |      -       |      -       |      -       |      -       |
+|  模型  | 硬件 | 时延（ms） | 离线吞吐(samples/sec) | 最大并发推理量(samples/sec) | 内存占用(MB) |
+|--------------|--------------|--------------|--------------|--------------|--------------|
+|      -       |      -       |      -       |      -       |      -       |      -       |
 
 ## 目录结构
 
@@ -149,12 +162,13 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 
 - system name
     - system information
-    - model1-iPhone6s
+    - model1-qualcomm865
         - code
         - data
         - log
             - accuracy_check.log
             - latency.log
+            - offline_ips.log
             - max_qps_max_memory_use.log
         - report
     - model2-RK3399
@@ -163,6 +177,7 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
         - log
             - accuracy_check.log
             - latency.log
+            - offline_ips.log
             - max_qps_max_memory_use.log
         - report
     - summary metrics

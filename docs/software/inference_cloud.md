@@ -8,7 +8,7 @@
 基于目前对产业界，科研领域等的调研，AI-Rank指定了2个操作系统+硬件的环境来对框架能力进行测试，后续也会随着业界发展动态更新或添加新的环境：
 
 - Linux操作系统：
-    - GPU：NVIDIA V100-SXM2-16GB
+    - GPU：NVIDIA T4
     - CPU：Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
     - Memory：64 GB
 - Windows10：
@@ -16,56 +16,23 @@
     - CPU：Intel Core i9-9900
     - Memory：32GB
 
-## 模型任务及参数和数据集
-AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有影响力的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现：
-|模型名称 | 应用领域 | 入选理由|
-|---|---|---|
-|mobilenetV3 | 图像分类 | - | 
-|resnet50 | 图像分类 | - |
-|SSD | 目标检测 | -|
-|YoloV3 | 目标检测 | - |
-|deeplabV3 | 图像分割 | - |
-|Unet | 图像分割 | - |
-|CRNN | OCR | - |
-|attention_OCR | OCR | - |
-|bert | 语义表示 | - |
-|transformer | 机器翻译 | - |
+## 模型、数据集和约束条件
+- 对于云端推理场景，选取了不同应用领域下使用最为频繁的6个模型，并给出了测试集、精度约束、延迟约束和参考模型下载链接：
 
+|应用领域|模型名称|数据集|精度约束|延迟约束|参考模型下载链接|
+|-|-|-|-|-|-|
+|图像分类|Resnet50|ImageNet（224x224）|>= 99% of FP32 （[76.5%](https://github.com/PaddlePaddle/PaddleClas)）|15ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_pretrained.tar) TensorFlow|
+|目标检测|Faster R-CNN + FPN（ResNet50）|COCO（1200x1200）|>= 99% of FP32（[37.1 Box AP](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddlemodels.bj.bcebos.com/object_detection/faster_rcnn_r50_2x.tar) TensorFlow|
+|目标检测|YoloV3-ResNet34（608x608）|COCO|>= 99% of FP32 （[36.2 Box AP](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddlemodels.bj.bcebos.com/object_detection/yolov3_r34.tar) TensorFlow|
+|图像分割|DeepLabv3+/ResNet50_vd/bn|CityScapes|>= 99% of FP32 （[0.8006 mIoU on val, Output_stride=16，multi-scale_test=false](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md)）| 500ms? |[Paddle](https://paddleseg.bj.bcebos.com/models/deeplabv3p_resnet50_vd_cityscapes.tgz) TensorFlow|
+|语义表示|BERT-Large, Uncased (Whole Word Masking) |SQUAD 1.1|>= 99% of FP32 （[SQUAD 1.1 F1/EM 92.8/86.7](https://github.com/google-research/bert)）|130ms|[Paddle](https://bert-models.bj.bcebos.com/wwm_uncased_L-24_H-1024_A-16.tar.gz) [TensorFlow](https://storage.googleapis.com/bert_models/2019_05_30/wwm_uncased_L-24_H-1024_A-16.zip)|
+|机器翻译|Transformer（big model）| newstest2014 |>= 99% of FP32 （[BLEU 27.07](https://github.com/PaddlePaddle/models/tree/release/1.8/PaddleNLP/machine_translation/transformer)） |130ms?|[Paddle](https://transformer-res.bj.bcebos.com/big_model_graph.tar.gz) TensorFlow|
 
-为进一步减少模型差异带来的性能影响，最大程度保证公平性，在本任务进行测试时，AI-Rank要求固定模型网络结构、参数集、测试数据集。因此AI-Rank提供了基于TensorFlow的模型、完成训练的参数集和测试数据集。参与评估单位，需先将TensorFlow模型及参数转义到自身框架下，并将预测模型部署到以上硬件环境中，完成预测测试。
-
-|模型名称 | 模型链接 | 参数集 | 测试数据集 | 
-|----------|----------|---------|---------|
-|mobilenetV3 | https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet | https://storage.googleapis.com/mobilenet_v3/checkpoints/v3-large_224_1.0_float.tgz| - |
-|resnet50 | https://github.com/tensorflow/models/tree/master/research/slim | http://download.tensorflow.org/models/resnet_v2_50_2017_04_14.tar.gz| - |
-|SSD | download.tensorflow.org | http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz| - |
-|YoloV3 | -|-| - |
-|deeplabV3 | https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zoo.md | http://download.tensorflow.org/models/deeplabv3_mnv2_dm05_pascal_trainaug_2018_10_01.tar.gz| - |
-|Unet | https://github.com/lyatdawn/Unet-Tensorflow | https://drive.google.com/drive/folders/14_8ZthgcpIXdEQEzIENueXv7dGVzHvjK| - |
-|CRNN | https://github.com/MaybeShewill-CV/CRNN_Tensorflow | https://www.dropbox.com/sh/y4eaunamardibnd/AAB4h8NkakASDoc6Ek4knEGIa?dl=0| - |
-|attention_OCR | -|- | - |
-|bert | - |- | - |
-|transformer | - |- | - |
-
-## 测试环节
-
-测试主要包含两个环节：
-- 准确率验证，完成验证数据集所有samples的推理，计算推理准确率。准确率必须不低于如下约束：
-
-|模型名称 | 应用领域 | 准确率约束 | 
-|---|---|---|
-|mobilenetV3 | - | - |
-|resnet50 | - | - |
-|SSD | - | - |
-|YoloV3 | - | - |
-|deeplabV3 | - | - |
-|Unet | 图像分割 | - |
-|CRNN | OCR | - |
-|attention_OCR | OCR | - |
-|bert | 语义表示 | - |
-|transformer | 机器翻译 | - |
-
-- 指标计算，计算方法下文给出。
+- 为减少软件差异带来的性能影响，最大程度保证公平性，我们对约束条件做如下进一步的解释：
+  -  模型：要求必须使用与参考模型等价的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现；
+  -  数据集：必须基于上述指定的数据集进行测试；
+  -  精度约束：在指定测试集上，按照指定的精度评估方法得到的精度，不得低于上述给定的值，例如">= 99% of FP32 (76.46%)"代表不得低于99%*76.46%=75.6954%，要求按照第五个有效位进行四舍五入，即精度不得低于75.700%;
+  -  延迟约束：要求在约束的时间内处理完所有请求。
 
 ## 评价指标
 
@@ -74,20 +41,8 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 
 - 在线吞吐：在延迟时间不高于约束值前提下，单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。
     - 测试方法：部署推理服务器，使用测试机模拟client并发请求推理结果，每个请求发送1个sample。逐步增大并发数量，直到响应延迟达到约束延迟时间为止。持续保持该并发量，确保延迟始终不高于约束延迟时间，否则下调并发量。找到一个稳定最大并发值，使得延迟不高于约束延迟时间。在该并发量下，每秒完成推理的样本数平均值，即在线吞吐。
-    - 不同模型的约束延迟时间值如下表：
 
-|模型名称 | 应用领域 | 延迟约束 |
-|---|---|---|
-|mobilenetV3 | 图像分类 | 15 ms |
-|resnet50 | 图像分类 | 15 ms |
-|SSD | 目标检测 | 100 ms |
-|YoloV3 | 目标检测 | 100 ms |
-|deeplabV3 | 图像分割 | - |
-|Unet | 图像分割 | - |
-|CRNN | OCR | - |
-|attention_OCR | OCR | - |
-|bert | 语义表示 | 130 ms |
-|transformer | 机器翻译 | - |
+- 能耗：AI-Rank暂不支持能耗评估。我们将在未来版本中提供。
 
 ## 提交数据
 
