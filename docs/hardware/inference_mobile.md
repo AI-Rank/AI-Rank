@@ -7,20 +7,20 @@
 
 |应用领域|模型名称|数据集|精度约束|延迟约束|参考模型下载链接|
 |-|-|-|-|-|-|
-|图像分类|MobileNetV1|ImageNet (224x224）|99% of FP32（[70.99%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV1_pretrained.tar) TensorFlow|
-|图像分类|MobileNetV2|ImageNet (224x224）|99% of FP32（[72.15%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV2_pretrained.tar) TensorFlow|
-|图像分类|MobileNetV3_large_x1_0|ImageNet (224x224）|99% of FP32（[75.32%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_large_x1_0_pretrained.tar) TensorFlow|
-|图像分类|MobileNetV3_small_x1_0|ImageNet (224x224）|99% of FP32（[68.24%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/MobileNetV3_small_x1_0_pretrained.tar) TensorFlow|
-|图像分类|Resnet50|ImageNet (224x224）|99% of FP32（[76.5%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-imagenet-models-name.bj.bcebos.com/ResNet50_pretrained.tar) TensorFlow|
-|目标检测|SSD-MobileNetV1（300x300）|Pascal VOC|99% of FP32（[73.2 Box AP](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|50ms|[Paddle](https://paddlemodels.bj.bcebos.com/object_detection/ssd_mobilenet_v1_voc.tar) TensorFlow|
-|目标检测|YoloV3-MobileNetV3（320x320）|COCO|99% of FP32（[27.1 Box AP](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|50ms|[Paddle](https://paddlemodels.bj.bcebos.com/object_detection/yolov3_mobilenet_v3.pdparams) TensorFlow|
-|图像分割|DeepLabv3+/MobileNetv2/bn|CityScapes|99% of FP32 （[0.698 mIoU on val, Output_stride=16，multi-scale_test=false](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md)）|1000ms?|[Paddle](https://paddleseg.bj.bcebos.com/models/mobilenet_cityscapes.tgz) TensorFlow|
+|图像分类|MobileNetV1|ImageNet (224x224）|>= 99% of FP32（[Top-1: 70.99%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV1.tar.gz) [TensorFlow](http://download.tensorflow.org/models/mobilenet_v1_2018_02_22/mobilenet_v1_1.0_224.tgz)|
+|图像分类|MobileNetV2|ImageNet (224x224）|>= 99% of FP32（[Top-1: 72.15%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV2.tar.gz) [TensorFlow](https://storage.googleapis.com/mobilenet_v2/checkpoints/mobilenet_v2_1.0_224.tgz)|
+|图像分类|MobileNetV3_large_x1_0|ImageNet (224x224）|>= 99% of FP32（[Top-1: 75.32%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV3_large_x1_0.tar.gz) [TensorFlow](https://storage.googleapis.com/mobilenet_v3/checkpoints/v3-large_224_1.0_float.tgz)|
+|图像分类|MobileNetV3_small_x1_0|ImageNet (224x224）|>= 99% of FP32（[Top-1: 68.24%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV3_small_x1_0.tar.gz) [TensorFlow](https://storage.googleapis.com/mobilenet_v3/checkpoints/v3-small_224_1.0_float.tgz)|
+|图像分类|Resnet50|ImageNet (224x224）|>= 99% of FP32（[Top-1: 76.5%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/ResNet50.tar.gz) [TensorFlow](http://download.tensorflow.org/models/resnet_v1_50_2016_08_28.tar.gz)|
+|目标检测|SSD-MobileNetV1（300x300）|Pascal VOC|>= 99% of FP32（[Box AP: 73.2](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/ssd_mobilenet_v1_voc.tar.gz) [Pytorch](https://github.com/chuanqi305/MobileNet-SSD#mobilenet-ssd)|
+|目标检测|Yolov3-MobileNetV1（608x608）|COCO|>= 99% of FP32（[Box AP: 29.3](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/yolov3_mobilenet_v1.tar.gz) [gluoncv(mxnet)](https://cv.gluon.ai/model_zoo/detection.html#yolo-v3)|
+|图像分割|DeepLabv3+/MobileNetv3_large/bn|CityScapes|>= 99% of FP32 （[0.7328 mIoU on val, Output_stride=32，multi-scale_test=false](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md)）|1000ms|[Paddle](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md) [Tensorflow](https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zoo.md)|
 
 - 为减少软件差异带来的性能影响，最大程度保证公平性，我们对约束条件做如下进一步的解释：
   -  模型：要求必须使用与参考模型等价的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现，可基于提供的校准数据进行后量化，但不允许重训；
   -  数据集：必须基于上述指定的数据集进行测试；
   -  精度约束：在指定测试集上，按照指定的精度评估方法得到的精度，不得低于上述给定的值，例如">= 99% of FP32 (76.46%)"代表不得低于99%*76.46%=75.6954%，要求按照第五个有效位进行四舍五入，即精度不得低于75.700%;
-  -  延迟约束：要求在约束的时间内处理完所有请求。
+  -  延迟约束：最大并发推理量测试过程中，要求在约束的时间内处理完所有请求。
 
 ## 评价指标
 
@@ -29,7 +29,7 @@
 - 离线吞吐：单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。
     - 测试方法：将验证数据集一次性，全部提供给推理程序，推理程序并发推理。计算其整体吞吐速率。
 - 最大并发推理量：在延迟时间不高于约束值前提下，最大支持的一个批次的BatchSize值。
-    - 测试方法：部署推理程序到终端，编写测试程序，加载验证数据集，每次加载N个samples。N的数量逐步增大，直到响应延迟达到约束延迟时间为止。持续保持N的值，确保延迟始终不高于约束延迟时间，否则下调N值。找到一个稳定N值，使得延迟不高于约束延迟时间。N值及即最大并发推理量。
+    - 测试方法：部署推理程序到终端，编写测试程序，加载验证数据集，每次加载N个samples。N的数量逐步增大，直到响应延迟达到约束的时间（延迟约束）为止。持续保持N的值，确保延迟始终不高于延迟约束，否则下调N值。找到一个稳定N值，使得延迟不高于延迟约束。N值即最大并发推理量。
 
 - 内存占用：推理期间，推理模型最大使用内存量。单位：MB。
     - 测试方法：在`最大并发推理量`测试过程中，最大的内存占用值。
