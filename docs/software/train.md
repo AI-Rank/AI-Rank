@@ -36,7 +36,6 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 |CycleGAN | 图像生成 | CityScapes |
 |pix2pix | 图像生成 | CityScapes |
 |TSM | 视频分类 | kinetics 400 |
-|DSSM | 智能推荐 | -BQ |
 |DeepFM | 智能推荐 | -Criteo |
 |Wide&Deep | 智能推荐 | criteo/censuc-income |
 |Word2Vec | 语义表示 | -one billion |
@@ -52,20 +51,19 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
     
 |模型名称 | 目标精度|
 |--------------|------------|
-|ResNet50 | 75.90% classification|
-|Mask R-CNN + FPN | -|
-|YOLOv3 | -|
-|DeepLabv3+ | -|
-|HRNet | -|
-|BERT | -|
-|Transformer | -|
-|CycleGAN | -|
-|pix2pix | -|
-|TSM | -|
-|DSSM | -|
-|DeepFM | -|
-|Wide&Deep | -|
-|Word2Vec | -|
+|ResNet50 | 76.50% classification|
+|Mask R-CNN + FPN | box:38.0 mask:34.4 |
+|YOLOv3 | 37.0 |
+|DeepLabv3+ | mIoU: 78.5% |
+|HRNet | mIoU: 80.5% |
+|BERT | 0.712 Mask-LM accuracy |
+|Transformer | 25.00 BLEU |
+|CycleGAN | 待定 |
+|pix2pix | 待定 |
+|TSM | top1: 0.70 |
+|DeepFM | AUC: 0.8016 |
+|Wide&Deep | AUC：0.80， Loss：0.44 |
+|Word2Vec | ACC：0.530 |
 
     - 子指标：
         - 吞吐：单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。本指标主要关注框架及模型训练的性能。指标根据参与者提交的运行日志确定。
