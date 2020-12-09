@@ -39,10 +39,10 @@ AI-Rank 选择最具代表性的4个模型，作为衡量硬件计算能力的�
 特定精度的定义如下：
 |模型名称 | 目标精度|
 |--------------|------------|
-|ResNet50 | 75.90% classification|
-|Mask R-CNN + FPN | -|
-|BERT | -|
-|Transformer | -|
+|ResNet50 | 75.90% classification |
+|Mask R-CNN + FPN | box:37.9 mask:34.2 |
+|BERT | 0.712 Mask-LM accuracy |
+|Transformer | big model, bleu: 25.00 |
 
 - 子指标：
     - 吞吐：单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。本指标主要关注被测硬件的性能。指标根据参与者提交的运行日志确定。
