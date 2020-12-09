@@ -2,51 +2,34 @@
 ## 测试方法
 针对终端推理的硬件性能测试，AI-Rank采用固定框架、固定模型、固定训练参数、固定测试样本集的方法，在此前提下综合评估被测云端设备的性能、能耗等指标。框架，模型和数据集都采用业界有影响力的，可公开获得的版本，以确保测试的权威性和公平性。
 
-## 模型、参数和数据集
-以下3个模型是终端应用场景下，最为频繁使用的推理模型，我们选取以下3个模型，作为验证硬件性能的“测试”程序：
+## 模型、数据集和约束条件
+- 对于移动端推理场景，选取了不同应用领域下使用最为频繁的8个模型，并给出了测试集、精度约束、延迟约束和参考模型下载链接：
 
-|模型名称 | 应用领域 | 入选理由 |
-|----------|---------|---------|
-|mobilenetv3 | 图像分类 | - |
-|shufflenet_v2 | 图像分类 | - |
-|squeezenet_v1.1 | 图像分类 | - |
+|应用领域|模型名称|数据集|精度约束|延迟约束|参考模型下载链接|
+|-|-|-|-|-|-|
+|图像分类|MobileNetV1|ImageNet (224x224）|>= 99% of FP32（[Top-1: 70.99%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV1.tar.gz) [TensorFlow](http://download.tensorflow.org/models/mobilenet_v1_2018_02_22/mobilenet_v1_1.0_224.tgz)|
+|图像分类|MobileNetV2|ImageNet (224x224）|>= 99% of FP32（[Top-1: 72.15%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV2.tar.gz) [TensorFlow](https://storage.googleapis.com/mobilenet_v2/checkpoints/mobilenet_v2_1.0_224.tgz)|
+|图像分类|MobileNetV3_large_x1_0|ImageNet (224x224）|>= 99% of FP32（[Top-1: 75.32%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV3_large_x1_0.tar.gz) [TensorFlow](https://storage.googleapis.com/mobilenet_v3/checkpoints/v3-large_224_1.0_float.tgz)|
+|图像分类|MobileNetV3_small_x1_0|ImageNet (224x224）|>= 99% of FP32（[Top-1: 68.24%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/MobileNetV3_small_x1_0.tar.gz) [TensorFlow](https://storage.googleapis.com/mobilenet_v3/checkpoints/v3-small_224_1.0_float.tgz)|
+|图像分类|Resnet50|ImageNet (224x224）|>= 99% of FP32（[Top-1: 76.5%](https://github.com/PaddlePaddle/PaddleClas)）|50ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/ResNet50.tar.gz) [TensorFlow](http://download.tensorflow.org/models/resnet_v1_50_2016_08_28.tar.gz)|
+|目标检测|SSD-MobileNetV1（300x300）|Pascal VOC|>= 99% of FP32（[Box AP: 73.2](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/ssd_mobilenet_v1_voc.tar.gz) [Pytorch](https://github.com/chuanqi305/MobileNet-SSD#mobilenet-ssd)|
+|目标检测|Yolov3-MobileNetV1（608x608）|COCO|>= 99% of FP32（[Box AP: 29.3](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/yolov3_mobilenet_v1.tar.gz) [gluoncv(mxnet)](https://cv.gluon.ai/model_zoo/detection.html#yolo-v3)|
+|图像分割|DeepLabv3+/MobileNetv3_large/bn|CityScapes|>= 99% of FP32 （[0.7328 mIoU on val, Output_stride=32，multi-scale_test=false](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md)）|1000ms|[Paddle](https://github.com/PaddlePaddle/PaddleSeg/blob/release/v0.8.0/docs/model_zoo.md) [Tensorflow](https://github.com/tensorflow/models/blob/master/research/deeplab/g3doc/model_zoo.md)|
 
-为进一步减少软件差异带来的性能影响，最大程度保证公平性，在本任务进行测试时，上述模型的实现需要保证与以下公开模型结构一致，并使用相应的参数集、测试数据集：
+- 为减少软件差异带来的性能影响，最大程度保证公平性，我们对约束条件做如下进一步的解释：
+  -  模型：要求必须使用与参考模型等价的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现，可基于提供的校准数据进行后量化，但不允许重训；
+  -  数据集：必须基于上述指定的数据集进行测试；
+  -  精度约束：在指定测试集上，按照指定的精度评估方法得到的精度，不得低于上述给定的值，例如">= 99% of FP32 (76.46%)"代表不得低于99%*76.46%=75.6954%，要求按照第五个有效位进行四舍五入，即精度不得低于75.700%;
+  -  延迟约束：最大并发推理量测试过程中，要求在约束的时间内处理完所有请求。
 
-|框架 |模型名称 | 模型链接 | 参数集 | 测试数据集 | 
-|----------|----------|---------|---------|---------|
-| Paddle |mobilenetv3 | - | - |- |
-| Paddle |shufflenet_v2 | - | - |- |
-| Paddle |squeezenet_v1.1 | - | - |- |
-| TensorFlow |mobilenetv3 | - | - |- |
-| TensorFlow |shufflenet_v2 | - | - |- |
-| TensorFlow |squeezenet_v1.1 | - | - |- |
-
-## 测试环节
-测试主要包含两个环节：
-- 准确率验证，完成验证数据集所有samples的推理，计算推理准确率。准确率必须不低于如下约束：
-
-|模型名称 | 应用领域 | 准确率约束 | 
-|---|---|---|
-|mobilenetv3 | 图像分类 | - |
-|shufflenet_v2 | 图像分类 | - |
-|squeezenet_v1.1 | 图像分类 | - |
-
-- 指标计算，计算方法下文给出。
-
-## 推理指标
+## 评价指标
 
 - 时延：N次推理，每次1个sample，计算每次推理的用时。时延取N次用时的90分位值。单位：ms（毫秒）
     - 测试方法：取1000个样本，每次推理一个样本，计算该样本推理延迟时间。1000个延迟时间升序排序，取90分位值。
+- 离线吞吐：单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。
+    - 测试方法：将验证数据集一次性，全部提供给推理程序，推理程序并发推理。计算其整体吞吐速率。
 - 最大并发推理量：在延迟时间不高于约束值前提下，最大支持的一个批次的BatchSize值。
-    - 测试方法：部署推理程序到终端，编写测试程序，加载验证数据集，每次加载N个samples。N的数量逐步增大，直到响应延迟达到约束延迟时间为止。持续保持N的值，确保延迟始终不高于约束延迟时间，否则下调N值。找到一个稳定N值，使得延迟不高于约束延迟时间。N值及即最大并发推理量。
-    - 不同模型的约束延迟时间值如下表：
-
-|模型名称 | 应用领域 | 延迟约束 | 
-|---|---|---|
-|mobilenetV3 | 图像分类 | 50 ms |
-|shufflenet_v2 | 图像分类 | - |
-|squeezenet_v1.1 | 图像分类 | - |
+    - 测试方法：部署推理程序到终端，编写测试程序，加载验证数据集，每次加载N个samples。N的数量逐步增大，直到响应延迟达到约束的时间（延迟约束）为止。持续保持N的值，确保延迟始终不高于延迟约束，否则下调N值。找到一个稳定N值，使得延迟不高于延迟约束。N值即最大并发推理量。
 
 - 内存占用：推理期间，推理模型最大使用内存量。单位：MB。
     - 测试方法：在`最大并发推理量`测试过程中，最大的内存占用值。
@@ -100,6 +83,30 @@
 - `latency_caseN_finish`：第N次测试结束
 - `90th_percentile_latency`：取90分位的延迟时间
 
+### 离线吞吐
+```
+- AI-Rank-log 1558631910.424 test_begin
+- AI-Rank-log 1558631910.424 warmup_begin, warmup_samples:100
+- AI-Rank-log 1558631910.424 warmup_finish
+- AI-Rank-log 1558631912.424 total_accuracy:0.95943342, total_samples_cnt:2
+- AI-Rank-log 1558631913.424 total_accuracy:0.95943342, total_samples_cnt:4
+- AI-Rank-log 1558631914.424 total_accuracy:0.95943342, total_samples_cnt:6
+- AI-Rank-log 1558631915.424 total_accuracy:0.95943342, total_samples_cnt:8
+- AI-Rank-log 1558631916.424 total_accuracy:0.95943342, total_samples_cnt:10
+- AI-Rank-log 1558631910.424 avg_ips:1190images/sec
+- AI-Rank-log 1558631910.424 test_end
+```
+说明：
+- 每行以`AI-Rank-log`开始，后接时间戳
+- `test_begin`：测试开始
+- `test_finish`：测试结束
+- `warmup_begin`：预热开始
+- `warmup_finish`：预热结束
+- `warmup_samples`：预热samples数量
+- `total_accuracy`：以完成训练的sample，准确率
+- `total_samples_cnt`：已完成的sample数量
+- `avg_ips`：`total_samples_cnt` / 所有时间
+
 #### 最大并发推理量&内存占用
 注意：以下只是某一特定并发量的日志格式，提交者提交时，只需提交最大并发量的日志即可。
 ```
@@ -123,9 +130,9 @@
 - `max_memory_use`：自测试以来的最大内存占用值
 
 ### 数据汇总
-|  模型  | 时延（ms） | 最大并发推理量 | 内存占用 |
-|--------------|--------------|--------------|--------------|
-|      -       |      -       |      -       |      -       |
+|  模型  | 时延（ms） | 离线吞吐(samples/sec) | 最大并发推理量(samples/sec) | 内存占用(MB) |
+|--------------|--------------|--------------|--------------|--------------|--------------|
+|      -       |      -       |      -       |      -       |      -       |
 
 ### 目录结构
 
@@ -139,6 +146,7 @@
         - log
             - accuracy_check.log
             - latency.log
+            - offline_ips.log
             - max_qps_max_memory_use.log
         - report
     - model2
@@ -147,6 +155,7 @@
         - log
             - accuracy_check.log
             - latency.log
+            - offline_ips.log
             - max_qps_max_memory_use.log
         - report
     - summary metrics
