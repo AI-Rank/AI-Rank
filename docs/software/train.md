@@ -24,22 +24,22 @@
 
 ## 模型任务
 AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有影响力的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现：
-|模型名称 | 应用领域 | 训练数据集 | 入选理由 |
-|----------|---------|---------|---------|
-|ResNet50 | 图像分类 | ImageNet | 最常用的图片分类模型 |
-|Mask R-CNN + FPN | 目标检测 | - | -|
-|YOLOv3 | 目标检测 | - | -|
-|DeepLabv3+ | 图像分割 | - | -|
-|HRNet | 图像分割 | - | -|
-|BERT | 语义表示 | - | -|
-|Transformer | 机器翻译 | - | -|
-|CycleGAN | 图像生成 | - | -|
-|pix2pix | 图像生成 | - | -|
-|TSM | 视频分类 | - | -|
-|DSSM | 智能推荐 | - | -|
-|DeepFM | 智能推荐 | - | -|
-|Wide&Deep | 智能推荐 | - | -|
-|Word2Vec | 语义表示 | - | -|
+|模型名称 | 应用领域 | 训练数据集 |
+|----------|---------|---------|
+|ResNet50 | 图像分类 | ImageNet |
+|Mask R-CNN + FPN | 目标检测 | COCO2017 |
+|YOLOv3 | 目标检测 | COCO2017 |
+|DeepLabv3+ | 图像分割 | CityScapes |
+|HRNet | 图像分割 | CityScapes |
+|BERT | 语义表示 | Wikipedia 2020/01/01 |
+|Transformer | 机器翻译 | WMT |
+|CycleGAN | 图像生成 | CityScapes |
+|pix2pix | 图像生成 | CityScapes |
+|TSM | 视频分类 | kinetics 400 |
+|DSSM | 智能推荐 | -BQ |
+|DeepFM | 智能推荐 | -Criteo |
+|Wide&Deep | 智能推荐 | criteo/censuc-income |
+|Word2Vec | 语义表示 | -one billion |
 
 ## 评价指标
 
