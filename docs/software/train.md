@@ -33,8 +33,6 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 |HRNet | 图像分割 | CityScapes |
 |BERT | 语义表示 | Wikipedia 2020/01/01 |
 |Transformer | 机器翻译 | WMT |
-|CycleGAN | 图像生成 | CityScapes |
-|pix2pix | 图像生成 | CityScapes |
 |TSM | 视频分类 | kinetics 400 |
 |DeepFM | 智能推荐 | -Criteo |
 |Wide&Deep | 智能推荐 | criteo/censuc-income |
