@@ -56,8 +56,6 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 |HRNet | mIoU: 80.5% |
 |BERT | 0.712 Mask-LM accuracy |
 |Transformer | 25.00 BLEU |
-|CycleGAN | 待定 |
-|pix2pix | 待定 |
 |TSM | top1: 0.70 |
 |DeepFM | AUC: 0.8016 |
 |Wide&Deep | AUC：0.80， Loss：0.44 |
