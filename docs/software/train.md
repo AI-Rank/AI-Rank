@@ -49,11 +49,11 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
     
 |模型名称 | 目标精度|
 |--------------|------------|
-|ResNet50 | 76.50% classification|
-|Mask R-CNN + FPN | box:38.0 mask:34.4 |
+|ResNet50 | 76.10% classification|
+|Mask R-CNN + FPN | box:37.7 mask:33.9 |
 |YOLOv3 | 37.0 |
 |DeepLabv3+ | mIoU: 78.5% |
-|HRNet | mIoU: 80.5% |
+|HRNet | mIoU: 78.0% |
 |BERT | 0.712 Mask-LM accuracy |
 |Transformer | 25.00 BLEU |
 |TSM | top1: 0.70 |
