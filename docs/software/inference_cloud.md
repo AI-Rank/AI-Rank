@@ -7,7 +7,7 @@
 ## 硬件环境
 基于目前对产业界，科研领域等的调研，AI-Rank指定了2个操作系统+硬件的环境来对框架能力进行测试，后续也会随着业界发展动态更新或添加新的环境：
 
-- Linux操作系统(Ubuntu 16+ 或 CentOS 6+)：
+- Linux操作系统(建议：Ubuntu 16+ 或 CentOS 6+)：
     - GPU：NVIDIA T4
     - CPU：Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz
     - Memory：64 GB
@@ -33,13 +33,14 @@
   -  延迟约束：在线吞吐测试过程中，要求在约束的时间内处理完所有请求。
 
 - 数据集使用规范
-    - 精度评测时，只能使用上述指定数据集中的验证集(validation)
-    - 性能评测时，只能使用上述指定数据集中的验证集(validation)
-    - 模型量化校准时，只能使用上述指定数据集中的训练集(train))中一部分
-    - 这些数据由评审专家组确定，要求固定并计算签名，在下面“提交数据”一节中要求能够下载并校验签名
-    - 如下数据预处理步骤可以不计时，但需要在下面“提交数据”一节的README.md中描述清楚。其它步骤需要计时
+    - 必须使用上述指定的数据集进行评测，同时针对不同的评测场景，考虑公平，评审专家组细化规定了数据集中的 训练集、验证集、测试集，并计算了签名，详细参考主页说明。在下面“提交数据”一节中要求提交的代码中能够下载所需数据集并校验签名
+        - 精度评测时，只能使用上述指定数据集中的验证集
+        - 性能评测时，只能使用上述指定数据集中的验证集
+        - 模型量化校准时，只能使用上述指定数据集中的训练集中一部分，由评审专家组提供
+    - 如下数据预处理和后处理步骤可以不计时，但需要在下面“提交数据”一节的README.md中描述清楚预处理和后处理逻辑。其它步骤需要计时
         - resize和reshape数据
         - 按照某个确定的长度截断文本或填充文本
+        - 推理结果中的数字转为文本打印
 
 - 模型使用规范
     - 必须使用与参考模型(fp32)等价的模型，初始的模型参数必须和参考模型一致
@@ -99,9 +100,8 @@
                 - accuracy_check.log
                 - offline_ips.log
                 - online_ips.log
-        - summary_metrics.json
 
-其中，submitter目录名为提交公司或组织的名称，system 目录名只能为 Linux 或者 Windows，modelx目录名只能为评测模型名称，code目录中存放评测代码，data目录用于存放评测使用的标准数据集，log目录用于存放评测日志结果。下面详细说明必要文件的内容和格式
+其中，submitter目录名为提交公司或组织的名称；system 目录名只能为 Linux 或者 Windows；modelx目录名只能为评测模型名称，每次提交可以只提交部分模型；code目录中存放评测代码；data目录用于存放评测使用的标准数据集；log目录用于存放评测日志结果，每次提交时，在线和离线吞吐评测日志至少提交一个，精度评测日志必须提交。下面详细说明必要文件的内容和格式
 
 ### system_information.json 内容要求
 描述评测硬件和操作系统信息，如下字段必须存在
@@ -145,6 +145,7 @@
 
 #### 精度评测日志：accuracy_check.log
 ```
+- AI-Rank-log 1558631910.424 load_data, checksum:xxxxxxxxxx
 - AI-Rank-log 1558631910.424 test_begin
 - AI-Rank-log 1558631910.424 sampleid:xxxx, result=true
 - AI-Rank-log 1558631910.424 sampleid:xxxx, result=false
@@ -156,6 +157,7 @@
 ```
 说明：
 - 每行以`AI-Rank-log`开始，后接时间戳
+- `load_data`：显示所使用数据集的签名
 - `test_begin`：测试开始
 - `test_finish`：测试结束
 - `sampleid`：某个样本的文件名或id，用于确定输入数据
@@ -164,6 +166,7 @@
 
 #### 离线吞吐评测日志：offline_ips.log
 ```
+- AI-Rank-log 1558631910.424 load_data, checksum:xxxxxxxxxx
 - AI-Rank-log 1558631910.424 test_begin
 - AI-Rank-log 1558631910.424 warmup_begin, warmup_samples:100
 - AI-Rank-log 1558631910.424 warmup_finish
@@ -177,6 +180,7 @@
 ```
 说明：
 - 每行以`AI-Rank-log`开始，后接时间戳
+- `load_data`：显示所使用数据集的签名
 - `test_begin`：测试开始
 - `test_finish`：测试结束
 - `warmup_begin`：预热开始
@@ -189,6 +193,7 @@
 #### 在线吞吐评测日志：online_ips.log
 注意：以下只是某一特定并发量的日志格式，提交者提交时，只需提交最大并发量的日志即可。
 ```
+- AI-Rank-log 1558631910.424 load_data, checksum:xxxxxxxxxx
 - AI-Rank-log 1558631910.424 test_begin
 - AI-Rank-log 1558631910.424 target_qps：2000
 - AI-Rank-log 1558631912.424 total_accuracy:0.95943342, max_latency:50ms, total_samples_cnt:2
@@ -200,6 +205,7 @@
 ```
 说明：
 - 每行以`AI-Rank-log`开始，后接时间戳
+- `load_data`：显示所使用数据集的签名
 - `test_begin`：测试开始
 - `test_finish`：测试结束
 - `target_qps`：最大并发量，也是ips
@@ -207,8 +213,8 @@
 - `max_latency`：已完成测试的所有样本的最大延迟
 - `total_samples_cnt`：已完成测试的所有样本数量
 
-### summary_metrics.json 内容要求
-提供工具，从日志中生成此文件数据，格式如下
+### summary_metrics.json 结果汇总文件
+此文件不在提交范围中。评测日志满足如上要求后，评审专家组会使用工具从日志中生成本次结果汇总文件，放在system目录下，格式为：
 |  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
 |--------------|--------------|--------------|
 |   Resnet50   |    314       |    192       |
