@@ -40,7 +40,7 @@ AI-Rank 选择最具代表性的4个模型，作为衡量硬件计算能力的�
 |模型名称 | 目标精度|
 |--------------|------------|
 |ResNet50 | 75.90% classification |
-|Mask R-CNN + FPN | box:37.9 mask:34.2 |
+|Mask R-CNN + FPN | box:37.7 mask:33.9 |
 |BERT | 0.712 Mask-LM accuracy |
 |Transformer | big model, bleu: 25.00 |
 
