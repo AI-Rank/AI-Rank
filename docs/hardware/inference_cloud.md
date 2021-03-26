@@ -12,7 +12,7 @@
 |目标检测|YOLOv3-DarkNet53（608x608）|COCO|>= 99% of FP32 （[Box AP: 37.0](https://github.com/PaddlePaddle/PaddleDetection/blob/release/0.5/docs/MODEL_ZOO_cn.md)）|100ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/yolov3_darknet.tar.gz) [gluoncv(mxnet)](https://cv.gluon.ai/model_zoo/detection.html#yolo-v3) |
 |图像分割|HRNet_w48|CityScapes|>= 99% of FP32 （[0.7950 mIoU on val, multi-scale_test=false](https://github.com/PaddlePaddle/PaddleSeg/tree/release/v2.0/configs/fcn)）| 500ms |[Paddle](https://bj.bcebos.com/paddleseg/airank/hrnetw48_paddle_export.tar) [Pytorch](https://bj.bcebos.com/paddleseg/airank/hrnet48_cityscape.pt)|
 |语义表示|BERT |SQUAD 1.1|>= 99% of FP32 （[F1_score: 90.874%](https://github.com/google-research/bert)）|130ms|[Paddle](https://github.com/PaddlePaddle/models/tree/release/1.8/PaddleNLP/pretrain_language_models/BERT) [TensorFlow](https://github.com/google-research/bert)|
-|机器翻译|Transformer（base model）| newstest2014 |>= 99% of FP32 （[BLEU: 25.0](https://github.com/PaddlePaddle/models/tree/release/1.8/PaddleNLP/machine_translation/transformer)） |130ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/transformer_base.tar.gz)|
+|机器翻译|Transformer（base model）| newstest2014 EN-DE|>= 99% of FP32 （[BLEU: 25.0](https://github.com/PaddlePaddle/models/tree/release/1.8/PaddleNLP/machine_translation/transformer)） |130ms|[Paddle](https://paddle-inference-dist.bj.bcebos.com/AI-Rank/models/Paddle/transformer_base.tar.gz)|
 
 - 为减少软件差异带来的性能影响，最大程度保证公平性，我们对约束条件做如下进一步的解释：
   -  精度约束：在指定测试集上，按照指定的精度评估方法得到的精度，不得低于上述给定的值，例如">= 99% of FP32 (76.46%)"代表不得低于99%*76.46%=75.6954%，要求按照第五个有效位进行四舍五入，即精度不得低于75.700%;
