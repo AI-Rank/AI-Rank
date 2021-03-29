@@ -5,32 +5,13 @@
 
 <!-- omit in toc -->
 ## 目录
-- [一、环境介绍](#一环境介绍)
-  - [1.物理机环境](#1物理机环境)
-  - [2.Docker 镜像](#2docker-镜像)
-- [二、环境搭建](#二环境搭建)
-  - [1. 单机（单卡、8卡）环境搭建](#1-单机单卡8卡环境搭建)
-- [三、测试步骤](#三测试步骤)
-  - [1. 单机（单卡、8卡）测试](#1-单机单卡8卡测试)
-- [四、测试结果](#四测试结果)
-- [五、日志数据](#五日志数据)
-  - [1.单机（单卡、8卡）日志](#1单机单卡8卡日志)
+- [一、环境搭建](#一环境搭建)
+- [二、测试步骤](#二测试步骤)
+  - [1. 单卡吞吐测试](#1-单卡吞吐测试)
+- [三、日志数据](#三日志数据)
 
 
-## 一、环境介绍
-
-### 1.物理机环境
-
-我们使用了同一个物理机环境，对 [NGC TensorFlow](https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow/LanguageModeling/BERT) 的 Bert 模型进行了测试，详细物理机配置：
-
-- 单机（单卡、8卡）
-  - 系统：CentOS Linux release 7.5.1804
-  - GPU：Tesla V100-SXM2-16GB * 8
-  - CPU：Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz * 38
-  - Driver Version: 450.80.02
-  - 内存：432 GB
-
-### 2.Docker 镜像
+## 一、环境搭建
 
 NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚本](https://github.com/NVIDIA/DeepLearningExamples/blob/master/TensorFlow/LanguageModeling/BERT/scripts/docker/build.sh)，支持一键构建和启动容器，测试环境如下：
 
@@ -38,10 +19,6 @@ NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell �
 - **TensorFlow 版本**: `1.15.2+nv`
 - **CUDA 版本**: `11.0`
 - **cuDnn 版本**: `8.0.1`
-
-## 二、环境搭建
-
-### 1. 单机（单卡、8卡）环境搭建
 
 我们遵循了 NGC TensorFlow 官网提供的 [Quick Start Guide](https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow/LanguageModeling/BERT#quick-start-guide) 教程成功搭建了测试环境，主要过程如下：
 
@@ -83,7 +60,7 @@ NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell �
 
   NGC TensorFlow 提供单独的数据下载和预处理脚本，详细的数据处理流程请参考[此处](../data/README.md)。
 
-## 三、测试步骤
+## 二、测试步骤
 
 为了更准确的测试 NGC TensorFlow 在 `NVIDIA DGX-1 (8x V100 16GB)` 的性能数据，我们严格按照官方提供的模型代码配置、启动脚本，进行了的性能测试。
 
@@ -102,7 +79,7 @@ NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell �
 - **num_gpus**: 用于指定 GPU 卡数
 - **bert_model**: 用于指定 Bert 模型，我们统一指定为 **base**
 
-### 1. 单机（单卡、8卡）测试
+### 1. 单卡吞吐测试
 
 为了更方便地测试不同 batch_size、num_gpus、precision组合下的 Pre-Training 性能，我们单独编写了 `run_benchmark.sh` 脚本，并放在`scripts`目录下。
 
@@ -129,35 +106,15 @@ NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell �
 
 - **单卡启动脚本：**
 
-  若测试单机单卡 batch_size=32、FP32 的训练性能，执行如下命令：
+  若测试单机单卡 batch_size=48、AMP 的训练性能，执行如下命令：
 
   ```bash
-  bash scripts/run_benchmark.sh 32 1 fp32
+  bash scripts/run_benchmark.sh 48 1 fp16
   ```
 
-- **8卡启动脚本：**
+## 三、日志数据
 
-  若测试单机8卡 batch_size=96、AMP 的训练性能，执行如下命令：
+- [单机吞吐日志](../logs/tf_bert_pretraining_lamb_base_fp16_bs96_gpu1.log)
 
-  ```bash
-  bash scripts/run_benchmark.sh 96 8 fp16
-  ```
-
-## 四、测试结果
-
-
-|卡数 | Time2Train(cec) | 吞吐(samples/sec) |准确率(%) | 加速比|
-|:-----:|:-----:|:-----:|:-----:|:-----:|
-|1 | - | 536.06 | - | - |
-|8 | - | 3530.84 | - | - |
-
-
-> 注：
-> 1. 由于 Bert 的训练数据集非常大，需要多机多卡进行训练。因资源有限，此处未给出单机训练的 Time2Train数据。
-> 2. 我们分别测试了 FP32 下 bs=32/48、以及 AMP 下 bs=64/96 性能数据，选取最优的组合 AMP(bs=96) 作为最终吞吐数据。
-
-## 五、日志数据
-### 1.单机（单卡、8卡）日志
-
-- [单卡 bs=96、AMP](../logs/tf_bert_pretraining_lamb_base_fp16_bs96_gpu1.log)
-- [8卡 bs=96、AMP](../logs/tf_bert_pretraining_lamb_base_fp16_bs96_gpu8.log)
+通过以上日志分析，TensorFlow 单机单卡的吞吐为 **536.06** `samples/sec` 。
+> 注： 由于 Bert 的训练数据集非常大，需要多机多卡进行训练。因资源有限，此处未给出单机训练的 Time2Train 数据。

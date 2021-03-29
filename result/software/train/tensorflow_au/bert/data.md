@@ -1,25 +1,7 @@
 <!-- omit in toc -->
-# NGC TensorFlow Bert 数据预处理
+# Bert wiki-only 数据集的准备
 
 此处给出了基于 [NGC TensorFlow](https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow/LanguageModeling/BERT) 实现的 Bert Base Pre-Training 任务的详细数据下载、预处理的流程。
-
-<!-- omit in toc -->
-## 目录
-- [一、环境搭建](#一环境搭建)
-- [二、数据处理](#二数据处理)
-
-## 一、环境搭建
-
-NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚本](https://github.com/NVIDIA/DeepLearningExamples/blob/master/TensorFlow/LanguageModeling/BERT/scripts/docker/build.sh)，可参考[此处](../script/README.md)创建并启动容器：
-
-- **镜像版本**: `nvcr.io/nvidia/tensorflow:20.06-tf1-py3`
-- **TensorFlow 版本**: `1.15.2+nv`
-- **CUDA 版本**: `11.0`
-- **cuDnn 版本**: `8.0.1`
-
-## 二、数据处理
-
-我们遵循了 NGC TensorFlow 官网提供的 [Quick Start Guide](https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow/LanguageModeling/BERT#quick-start-guide) 教程成功搭建了测试环境。
 
 - **数据下载**
 
