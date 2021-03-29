@@ -210,5 +210,5 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚�
 ## 五、日志数据
 ### 1.单机（单卡、8卡）日志
 
-- [单卡 bs=96、AMP](../logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
-- [8卡 bs=96、AMP](../logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu8.log)
+- [单卡 bs=96、AMP](./logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
+- [8卡 bs=96、AMP](./logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu8.log)
