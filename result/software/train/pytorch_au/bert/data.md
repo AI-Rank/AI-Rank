@@ -1,28 +1,8 @@
 <!-- omit in toc -->
-# NGC PyTorch Bert 性能复现
+# Bert wiki-only 数据集的准备
 
+首先根据 NGC PyTorch 的代码仓库提供的自动构建 Docker 镜像的的 [shell 脚本](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT/scripts/docker/build.sh)创建容器，可参考[此处](../script/README.md) 。
 
-此处给出了基于 [NGC PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) 实现的 Bert Base Pre-Training 任务的详细数据下载、预处理的流程。
-
-<!-- omit in toc -->
-## 目录
-- [一、环境搭建](#一环境搭建)
-- [二、数据处理](#二数据处理)
-
-
-## 一、环境搭建
-
-NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚本](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT/scripts/docker/build.sh)，可参考[此处](../script/README.md) 创建并启动容器：
-
-- **镜像版本**: `nvcr.io/nvidia/pytorch:20.06-py3`
-- **PyTorch 版本**: `1.6.0a0+9907a3e`
-- **CUDA 版本**: `11.0`
-- **cuDnn 版本**: `8.0.1`
-
-## 二、数据处理
-
-我们遵循了 NGC PyTorch 官网提供的 [Quick Start Guide](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT#quick-start-guide) 教程搭建了测试环境，主要过程如下：
-    
 
 - **数据下载**
 
