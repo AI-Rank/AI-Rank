@@ -24,15 +24,16 @@
 
 ## 模型、数据集和约束条件
 AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有影响力的模型，参与方可以根据自己使用的框架按照标准模型结构进行实现：
+
 | 应用领域 | 模型名称 | 数据集 | 精度约束 |
 |----------|---------|---------|---------|
-| 图像分类 | ResNet50 | ImageNet | 76.10% classification|
-| 目标检测 | Mask R-CNN + FPN | COCO2017 | box:37.7 mask:33.9 |
-| 目标检测 | YOLOv3 | COCO2017 | 37.0 |
-| 图像分割 | DeepLabv3+ | CityScapes | mIoU: 78.5% |
-| 图像分割 | HRNet | CityScapes | mIoU: 78.0% |
-| 语义表示 | BERT | Wikipedia 2020/01/01 | 0.712 Mask-LM accuracy |
-| 机器翻译 | Transformer | WMT | 25.00 BLEU |
+| 图像分类 | ResNet50 | [ImageNet](http://image-net.org/download) | 76.10% classification|
+| 目标检测 | Mask R-CNN + FPN | [COCO2017](http://images.cocodataset.org) | box:37.7 mask:33.9 |
+| 目标检测 | YOLOv3 | [COCO2017](http://images.cocodataset.org) | 37.0 |
+| 图像分割 | DeepLabv3+ | [CityScapes](https://www.cityscapes-dataset.com/) | mIoU: 78.5% |
+| 图像分割 | HRNet | [CityScapes](https://www.cityscapes-dataset.com/) | mIoU: 78.0% |
+| 语义表示 | BERT | [Wikipedia 2020/01/01](https://dumps.wikimedia.org/enwiki/) | 0.712 Mask-LM accuracy |
+| 机器翻译 | Transformer | [WMT](http://data.statmt.org/) | 25.00 BLEU |
 | 视频分类 | TSM | kinetics 400 | top1: 0.70 |
 | 智能推荐 | DeepFM | -Criteo | AUC: 0.8016 |
 | 智能推荐 | Wide&Deep | criteo/censuc-income | AUC：0.80， Loss：0.44 |
@@ -106,7 +107,7 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 
 ### system_information.json 内容要求
 描述评测硬件和操作系统信息，如下字段必须存在
-|  字段                       | 值（举例）       |
+|  字段                       | 值（举例）       |
 |-----------------------------|-----------------|
 | accelerator_memory_capacity |  32 GB          |
 | accelerator_name            |  NVIDIA V100-SXM2-32GB      |
@@ -179,7 +180,7 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 
 ### summary_metrics.json 结果汇总文件
 此文件不在提交范围中。评测日志满足如上要求后，评审专家组会使用工具从日志中生成本次结果汇总文件，放在system目录下，格式为：
-|  模型  |  训练卡数   | Time2train(sec)  | 吞吐(samples/sec) | 准确率(%) | 加速比 |
+|  模型  |  训练卡数   | Time2train(sec)  | 吞吐(samples/sec) | 准确率(%) | 加速比 |
 |------- |------------|------------|------------|------------|-----------|
 |    -   |    1卡     | -          |    -     |    -     |    -     |
 |    -   |    8卡     | -          |    -     |    -     |    -     |
