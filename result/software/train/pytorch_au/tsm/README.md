@@ -60,21 +60,13 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的 [Dockerfile](h
     git clone https://github.com/mit-han-lab/temporal-shift-module.git
     ```
 
-- **准备数据**
-
-    NGC PyTorch 提供单独的数据下载和预处理脚本 [scripts/run_preprocessing.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/Translation/Transformer/scripts/run_preprocessing.sh)。在容器中执行如下命令，可以下载和制作WMT14英德数据集。
-
-    ```bash
-    bash scripts/run_preprocessing.sh
-    ```
-
 ### 2. 多机（32卡）环境搭建
 
 - IB配置(可选）
-请参考[这里](../../../utils/ib.md)
+请参考[这里](https://github.com/PaddlePaddle/Perf/blob/master/utils/ib.md)
 
 - MPI配置
-请参考[这里](../../../utils/mpi.md)
+请参考[这里](https://github.com/PaddlePaddle/Perf/blob/master/utils/mpi.md)
 
 ## 三、测试步骤
 
