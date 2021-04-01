@@ -24,9 +24,7 @@
 
 ### 1.物理机环境
 
-我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 的 temporal-shift-module 模型进行了测试，详细物理机配置，见[Paddle Transformer 性能测试](../../README.md#1.物理机环境)。
-
-- 多机（32卡）
+我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 的 temporal-shift-module 模型进行了测试,具体参数如下：
   - 系统：CentOS release 6.3 (Final)
   - GPU：Tesla V100-SXM2-32GB * 8
   - CPU：Intel(R) Xeon(R) Gold 6271C CPU @ 2.60GHz * 48
