@@ -24,7 +24,7 @@
 
 ### 1.物理机环境
 
-我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Translation/Transformer) 的 Transformer 模型进行了测试，详细物理机配置，见[Paddle Transformer 性能测试](../../README.md#1.物理机环境)。
+我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 的 temporal-shift-module 模型进行了测试，详细物理机配置，见[Paddle Transformer 性能测试](../../README.md#1.物理机环境)。
 
 - 多机（32卡）
   - 系统：CentOS release 6.3 (Final)
