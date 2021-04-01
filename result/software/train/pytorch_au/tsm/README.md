@@ -70,7 +70,13 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的 [Dockerfile](h
 
 ## 三、测试步骤
 
-为了更准确的测试 NGC PyTorch 在 `NVIDIA DGX-1 (8x V100 16GB)` 上的性能数据，我们严格按照官方提供的模型代码配置、启动脚本，进行了的性能测试。
+由于[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)没有支持AMP训练和多机训练，为了对比FP32与AMP，以及单机与多机的情况下，TSM的性能和精度的具体表现情况，我们在[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)做了一些修改,主要修改如下。
+- 为代码添加AMP支持
+我们在[opts.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/opts.py)的第77行添加了如下一行代码，使运行时可以自由切换FP32方式或者AMP方式。
+   ```bash
+   parser.add_argument('--amp',default=False,action="store_true",help="use amp training")
+   ```
+ 当启用AMP模式，我们在我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training]（https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)提供的dangshi
 
 根据官方提供的 [train.py](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/Translation/Transformer/train.py) 脚本中执行计算吞吐。
 
