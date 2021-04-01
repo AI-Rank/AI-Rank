@@ -57,17 +57,7 @@ pip3 install tqdm
 - **拉取代码**
 
     ```bash
-    git clone https://github.com/NVIDIA/DeepLearningExamples
-    cd DeepLearningExamples/PyTorch/Translation/Transformer
-    # 本次测试是在如下版本下完成的：
-    git checkout 99b1c898cead5603c945721162270c2fe077b4a2
-    ```
-
-- **构建镜像**
-
-    ```bash
-    docker build . -t your.repository:transformer   # 构建镜像
-    nvidia-docker run -it --rm --ipc=host your.repository:transformer bash  # 启动容器
+    git clone https://github.com/mit-han-lab/temporal-shift-module.git
     ```
 
 - **准备数据**
