@@ -1,8 +1,8 @@
 <!-- omit in toc -->
-# NGC PyTorch temporal-shift-module 性能复现
+# NGC PyTorch TSM 性能复现
 
 
-此处给出了基于 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 实现的 temporal-shift-module 任务的详细复现流程，包括执行环境、PyTorch版本、环境搭建、复现脚本、测试结果和测试日志。
+此处给出了基于 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 实现的 TSM 任务的详细复现流程，包括执行环境、PyTorch版本、环境搭建、复现脚本、测试结果和测试日志。
 
 <!-- omit in toc -->
 ## 目录
@@ -24,7 +24,7 @@
 
 ### 1.物理机环境
 
-我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 的 temporal-shift-module 模型进行了测试,具体参数如下：
+我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 的 TSM 模型进行了测试,具体参数如下：
   - 系统：CentOS release 6.3 (Final)
   - GPU：Tesla V100-SXM2-32GB * 8
   - CPU：Intel(R) Xeon(R) Gold 6271C CPU @ 2.60GHz * 48
@@ -44,7 +44,15 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的 [Dockerfile](h
 
 ### 1. 单机（单卡、8卡）环境搭建
 
-我们遵循了 NGC PyTorch 官网提供的 [Quick Start Guide](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Translation/Transformer#quick-start-guide) 教程搭建了测试环境，主要过程如下：
+我们遵循[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)配置环境，主要过程如下:
+- 新建docker container:
+使用`nvcr.io/nvidia/pytorch:20.06-py3`docker镜像创建docker容器  
+
+- 参考[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module#prerequisites) 安装依赖
+```bash
+pip3 install TensorboardX
+pip3 install tqdm
+```
 
 - **拉取代码**
 
