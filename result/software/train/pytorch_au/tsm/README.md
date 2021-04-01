@@ -49,10 +49,10 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的 [Dockerfile](h
 使用`nvcr.io/nvidia/pytorch:20.06-py3`docker镜像创建docker容器  
 
 - 参考[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module#prerequisites) 安装依赖
-```bash
-pip3 install TensorboardX
-pip3 install tqdm
-```
+    ```bash
+    pip3 install TensorboardX
+    pip3 install tqdm
+    ```
 
 - **拉取代码**
 
