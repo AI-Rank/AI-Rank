@@ -81,8 +81,8 @@ NGC公布的数据为AMP下90个epoch精度可达76.99%，但实际测试90个ep
 ```
 
 ## 四、日志数据
-- [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.log)
-- [单卡准确率测试](../log/GPUx1_accuracy.log)
+- [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.tar.gz)
+- [单卡准确率测试](../log/GPUx1_accuracy.tar.gz)
 
 通过以上日志分析，TensorFlow经过158,914秒的训练完成了120个epoch的训练，精度（即`top1_accuracy`)达到76.94%，训练吞吐（即`train_throughput`）达到984.168img/s。
 经过250个epoch的训练，最终精度（即`top1_accuracy`)达到77.04%。
