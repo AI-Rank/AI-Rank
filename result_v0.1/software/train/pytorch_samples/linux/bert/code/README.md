@@ -187,7 +187,7 @@
 
 ## 四、日志数据
 
-- [单机吞吐日志](../logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
+- [单机吞吐日志](../log/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
 
 通过以上日志分析，PyTorch 在 Bert Pre-training 任务上的单机吞吐达到了 **543.76** `samples/sec` 。
 
