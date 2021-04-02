@@ -6,9 +6,11 @@
 <!-- omit in toc -->
 ## 目录
 - [一、环境搭建](#一环境搭建)
-- [二、测试步骤](#二测试步骤)
+- [二、Bert wiki-only 数据集的准备](#二bert-wiki-only-数据集的准备)
+- [三、测试步骤](#三测试步骤)
   - [1. 单卡吞吐测试](#1-单卡吞吐测试)
-- [三、日志数据](#三日志数据)
+- [四、日志数据](#四日志数据)
+- [五、性能指标](#五性能指标)
 
 
 ## 一、环境搭建
@@ -60,7 +62,33 @@ NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell �
 
   NGC TensorFlow 提供单独的数据下载和预处理脚本，详细的数据处理流程请参考[此处](../data/README.md)。
 
-## 二、测试步骤
+## 二、Bert wiki-only 数据集的准备
+
+此处给出了基于 [NGC TensorFlow](https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow/LanguageModeling/BERT) 实现的 Bert Base Pre-Training 任务的详细数据下载、预处理的流程。
+
+- **数据下载**
+
+  NGC TensorFlow 提供单独的数据下载和预处理脚本 [data/create_datasets_from_start.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/TensorFlow/LanguageModeling/BERT/data/create_datasets_from_start.sh)。在容器中执行如下命令，可以下载和制作 `wikicorpus_en` 的 tfrecord 数据集。
+
+  ```bash
+  bash data/create_datasets_from_start.sh wiki_only
+  ```
+
+  由于数据集比较大，且容易受网速的影响，上述命令执行时间较长。因此，为了更方便复现竞品的性能数据，我们提供了已经处理好的 tfrecord 格式[样本数据集](https://bert-data.bj.bcebos.com/benchmark_sample%2Ftfrecord.tar.gz)。
+
+  下载后的数据集需要放到容器中`/workspace/bert/data/`目录下，并修改[scripts/run_pretraining_lamb_phase1.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/TensorFlow/LanguageModeling/BERT/scripts/run_pretraining_lamb_phase1.sh#L81)的第81行的数据集路径,如：
+
+  ```bash
+  # 解压数据集
+  tar -xzvf benchmark_sample_tfrecord.tar.gz
+  # 放到 data/目录下
+  mv benchmark_sample_tfrecord bert/data/tfrecord
+  # 修改 run_pretraining_lamb_phase1 L81 行数据集路径
+  INPUT_FILES="$DATA_DIR/tfrecord/lower_case_1_seq_len_${seq_len}_max_pred_${max_pred_per_seq}_masked_lm_prob_0.15_random_seed_12345_dupe_factor_5_shard_1472_test_split_10/wikicorpus_en/training"
+  EVAL_FILES="$DATA_DIR/tfrecord/lower_case_1_seq_len_${seq_len}_max_pred_${max_pred_per_seq}_masked_lm_prob_0.15_random_seed_12345_dupe_factor_5_shard_1472_test_split_10/wikicorpus_en/test"
+  ```
+
+## 三、测试步骤
 
 为了更准确的测试 NGC TensorFlow 在 `NVIDIA DGX-1 (8x V100 16GB)` 的性能数据，我们严格按照官方提供的模型代码配置、启动脚本，进行了的性能测试。
 
@@ -112,9 +140,18 @@ NGC TensorFlow 的代码仓库提供了自动构建 Docker 镜像的的 [shell �
   bash scripts/run_benchmark.sh 48 1 fp16
   ```
 
-## 三、日志数据
+## 四、日志数据
 
-- [单机吞吐日志](../logs/tf_bert_pretraining_lamb_base_fp16_bs96_gpu1.log)
+- [单机吞吐日志](../log/tf_bert_pretraining_lamb_base_fp16_bs96_gpu1.log)
 
 通过以上日志分析，TensorFlow 单机单卡的吞吐为 **536.06** `samples/sec` 。
 > 注： 由于 Bert 的训练数据集非常大，需要多机多卡进行训练。因资源有限，此处未给出单机训练的 Time2Train 数据。
+
+
+## 五、性能指标
+
+
+|              | Time2train(sec)  | 吞吐(samples/sec) | 准确率(%) | 加速比 |
+|--------------|------------|------------|------------|-----------|
+| 1卡          |     -      |    536.06  |     -      |     -     |
+| 32卡         |     -      |      -     |     -      |     -     |

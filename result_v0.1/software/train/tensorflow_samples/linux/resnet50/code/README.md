@@ -6,10 +6,12 @@
 ## 目录
 - [NGC TensorFlow ResNet50V1.5 性能测试](#ngc-tensorflow-resnet50v15-性能测试)
   - [一、环境搭建](#一环境搭建)
-  - [二、测试步骤](#二测试步骤)
+  - [二、数据集的准备](#二数据集的准备)
+  - [三、测试步骤](#三测试步骤)
     - [1.单卡Time2Train及吞吐测试](#1单卡time2train及吞吐测试)
     - [2.单卡准确率测试](#2单卡准确率测试)
-  - [三、日志数据](#三日志数据)
+  - [四、日志数据](#四日志数据)
+  - [五、性能指标](#五性能指标)
 
 ## 一、环境搭建
 
@@ -37,7 +39,18 @@
    nvidia-docker run --rm -it -v <path to tfrecords data>:/data/tfrecords --ipc=host nvidia_rn50_tf
    ```
 
-## 二、测试步骤
+## 二、数据集的准备
+
+下载ImageNet数据集`ISLVRC2012`,通过NGC提供的如下脚本完成解压：
+```
+mkdir train && mv ILSVRC2012_img_train.tar train/ && cd train
+tar -xvf ILSVRC2012_img_train.tar && rm -f ILSVRC2012_img_train.tar
+find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "${NAME}" -C "${NAME%.tar}"; rm -f "${NAME}"; done
+cd ..
+mkdir val && mv ILSVRC2012_img_val.tar val/ && cd val && tar -xvf ILSVRC2012_img_val.tar
+```
+
+## 三、测试步骤
 
 ### 1.单卡Time2Train及吞吐测试
 
@@ -67,8 +80,20 @@ NGC公布的数据为AMP下90个epoch精度可达76.99%，但实际测试90个ep
       --results_dir=/workspace/rn50v15_tf/results --weight_init=fan_in
 ```
 
-## 三、日志数据
-- [单卡Time2Train及吞吐测试日志](./logs/1gpu_time2train_ips.log)
-- [单卡准确率测试](./logs/1gpu_accuracy.log)
+## 四、日志数据
+- [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.log)
+- [单卡准确率测试](../log/GPUx1_accuracy.log)
 
-通过以上日志分析，TensorFlow经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
+通过以上日志分析，TensorFlow经过158,914秒的训练完成了120个epoch的训练，精度（即`top1_accuracy`)达到76.94%，训练吞吐（即`train_throughput`）达到984.168img/s。
+经过250个epoch的训练，最终精度（即`top1_accuracy`)达到77.04%。
+
+
+## 五、性能指标
+
+- ResNet50性能指标：
+
+|              | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
+|--------------|------------|------------|------------|-----------|
+| 1卡          |  158,914   |   984.168  |   77.04    |     -     |
+| 8卡          |     -      |      -     |     -      |     -     |
+| 32卡         |     -      |      -     |     -      |     -     |
