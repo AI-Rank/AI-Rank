@@ -6,10 +6,12 @@
 ## 目录
 - [NGC PyTorch ResNet50V1.5 性能测试](#ngc-pytorch-resnet50v15-性能测试)
   - [一、环境搭建](#一环境搭建)
-  - [二、测试步骤](#二测试步骤)
+  - [二、数据准备](#二数据准备)
+  - [三、测试步骤](#三测试步骤)
     - [1.单卡Time2Train及吞吐测试](#1单卡time2train及吞吐测试)
     - [2.单卡准确率测试](#2单卡准确率测试)
-  - [三、日志数据](#三日志数据)
+  - [四、日志数据](#四日志数据)
+  - [五、性能指标](#五性能指标)
 
 ## 一、环境搭建
 
@@ -37,8 +39,19 @@
    # 假设imagenet数据放在<path to data>目录下
    nvidia-docker run --rm -it -v <path to data>:/imagenet --ipc=host nvidia_rn50_pytorch
    ```
+## 二、数据准备
 
-## 二、测试步骤
+下载ImageNet数据集`ISLVRC2012`,通过NGC提供的如下脚本完成解压：
+```
+mkdir train && mv ILSVRC2012_img_train.tar train/ && cd train
+tar -xvf ILSVRC2012_img_train.tar && rm -f ILSVRC2012_img_train.tar
+find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "${NAME}" -C "${NAME%.tar}"; rm -f "${NAME}"; done
+cd ..
+mkdir val && mv ILSVRC2012_img_val.tar val/ && cd val && tar -xvf ILSVRC2012_img_val.tar
+wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh | bash
+```
+
+## 三、测试步骤
 
 ### 1.单卡Time2Train及吞吐测试
 
@@ -56,8 +69,18 @@
     python ./multiproc.py --nproc_per_node 8 ./launch.py --model resnet50 --precision AMP --mode convergence --platform DGX1V /imagenet --workspace ${1:-./} --raport-file raport.json
 ```
 
-## 三、日志数据
+## 四、日志数据
 - [单卡Time2Train及吞吐测试日志](./logs/1gpu_time2train_ips.log)
 - [单卡准确率测试](./logs/1gpu_accuracy.log)
 
 通过以上日志分析，PyTorch经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
+
+
+## 五、性能指标
+
+
+|              | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
+|--------------|------------|------------|------------|-----------|
+| 1卡          |  137,335   |   859.24   |     -      |     -     |
+| 8卡          |     -      |      -     |     -      |     -     |
+| 32卡         |     -      |      -     |     -      |     -     |

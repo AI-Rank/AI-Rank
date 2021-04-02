@@ -6,43 +6,16 @@
 
 <!-- omit in toc -->
 ## 目录
-- [一、环境介绍](#一环境介绍)
-  - [1.物理机环境](#1物理机环境)
-  - [2.Docker 镜像](#2docker-镜像)
-- [二、环境搭建](#二环境搭建)
-  - [1. 单机（单卡、8卡）环境搭建](#1-单机单卡8卡环境搭建)
+- [一、环境搭建](#一环境搭建)
+- [二、Bert wiki-only 数据集的准备](#二bert-wiki-only-数据集的准备)
 - [三、测试步骤](#三测试步骤)
-  - [1. 单机（单卡、8卡）测试](#1-单机单卡8卡测试)
-- [四、测试结果](#四测试结果)
-- [五、日志数据](#五日志数据)
-  - [1.单机（单卡、8卡）日志](#1单机单卡8卡日志)
+  - [1. 单机吞吐测试](#1-单机吞吐测试)
+- [四、日志数据](#四日志数据)
+- [五、性能数据](#五性能数据)
 
 
-## 一、环境介绍
 
-### 1.物理机环境
-
-我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) 的 Bert 模型进行了测试，详细物理机配置如下：
-
-- 单机（单卡、8卡）
-  - 系统：CentOS Linux release 7.5.1804
-  - GPU：Tesla V100-SXM2-16GB * 8
-  - CPU：Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz * 38
-  - Driver Version: 450.80.02
-  - 内存：432 GB
-
-### 2.Docker 镜像
-
-NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚本](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT/scripts/docker/build.sh)，支持一键构建和启动容器，测试环境如下：
-
-- **镜像版本**: `nvcr.io/nvidia/pytorch:20.06-py3`
-- **PyTorch 版本**: `1.6.0a0+9907a3e`
-- **CUDA 版本**: `11.0`
-- **cuDnn 版本**: `8.0.1`
-
-## 二、环境搭建
-
-### 1. 单机（单卡、8卡）环境搭建
+## 一、环境搭建
 
 我们遵循了 NGC PyTorch 官网提供的 [Quick Start Guide](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT#quick-start-guide) 教程搭建了测试环境，主要过程如下：
 
@@ -86,6 +59,33 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚�
 
     NGC PyTorch 提供单独的数据下载和预处理脚本，详细的数据处理流程请参考[此处](../data/README.md)。
 
+## 二、Bert wiki-only 数据集的准备
+
+首先根据 NGC PyTorch 的代码仓库提供的自动构建 Docker 镜像的的 [shell 脚本](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT/scripts/docker/build.sh)创建容器，可参考[此处](../script/README.md) 。
+
+
+- **数据下载**
+
+    NGC PyTorch 提供单独的数据下载和预处理脚本 [data/create_datasets_from_start.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/data/create_datasets_from_start.sh)。在容器中执行如下命令，可以下载和制作 `wikicorpus_en` 的 hdf5 数据集。
+
+    ```bash
+    bash data/create_datasets_from_start.sh wiki_only
+    ```
+
+    由于数据集比较大，且容易受网速的影响，上述命令执行时间较长。因此，为了更方便复现竞品的性能数据，我们提供了已经处理好的 seq_len=128 的 hdf5 格式[样本数据集](https://bert-data.bj.bcebos.com/benchmark_sample%2Fhdf5_lower_case_1_seq_len_128_max_pred_20_masked_lm_prob_0.15_random_seed_12345_dupe_factor_5.tar.gz)，共100个 part hdf5 数据文件，约 3.1G。
+
+    数据下载后，会得到一个 `hdf5_lower_case_1_seq_len_128_max_pred_20_masked_lm_prob_0.15_random_seed_12345_dupe_factor_5.tar.gz`压缩文件：
+
+    ```bash
+    # 解压数据集
+    tar -xzvf benchmark_sample_hdf5_lower_case_1_seq_len_128_max_pred_20_masked_lm_prob_0.15_random_seed_12345_dupe_factor_5.tar.gz
+
+    # 放到 data/ 目录下
+    mv benchmark_sample_hdf5_lower_case_1_seq_len_128_max_pred_20_masked_lm_prob_0.15_random_seed_12345_dupe_factor_5 bert/data/
+    ```
+
+    修改 [scripts/run_pretraining.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/scripts/run_pretraining.sh#L37)脚本的 `DATASET`变量为上述数据集地址即可。
+
 
 ## 三、测试步骤
 
@@ -103,7 +103,7 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚�
 - **BERT_CONFIG:** 用于指定 base 或 large 模型的参数配置文件 (line:49)
 - **bert_model:** 用于指定模型类型，默认为`bert-large-uncased`
 
-### 1. 单机（单卡、8卡）测试
+### 1. 单机吞吐测试
 
 由于官方默认给出的是支持两阶段训练的 **Bert Large** 模型的训练配置，若要测**Bert Base**模型，需要对 `run_pretraining.sh` 进行如下改动：
 
@@ -178,37 +178,26 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的的 [shell 脚�
 
 - **单卡启动脚本：**
 
-    若测试单机单卡 batch_size=32、FP32 的训练性能，执行如下命令：
+    若测试单机单卡 batch_size=48、AMP 的训练性能，执行如下命令：
 
     ```bash
-    bash scripts/run_benchmark.sh 32 1 fp32
-    ```
-
-- **8卡启动脚本：**
-
-    若测试单机8卡 batch_size=96、AMP 的训练性能，执行如下命令：
-
-    ```bash
-    bash scripts/run_benchmark.sh 96 8 fp16
+    bash scripts/run_benchmark.sh 48 1 AMP
     ```
 
 
-## 四、测试结果
+## 四、日志数据
 
-> 单位： sequences/sec
+- [单机吞吐日志](../logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
 
-|卡数 | Time2Train(cec) | 吞吐(samples/sec) |准确率(%) | 加速比|
-|:-----:|:-----:|:-----:|:-----:|:-----:|
-|1 | - | 543.76 | - | - |
-|8 | - | 4208.12 | - | - |
-
+通过以上日志分析，PyTorch 在 Bert Pre-training 任务上的单机吞吐达到了 **543.76** `samples/sec` 。
 
 > 注：
 > 1. 由于 Bert 的训练数据集非常大，需要多机多卡进行训练。因资源有限，此处未给出单机训练的 Time2Train数据。
-> 2. 我们分别测试了 FP32 下 bs=32/48、以及 AMP 下 bs=64/96 性能数据，选取最优的组合 AMP(bs=96) 作为最终吞吐数据。
 
-## 五、日志数据
-### 1.单机（单卡、8卡）日志
+## 五、性能数据
 
-- [单卡 bs=96、AMP](./logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
-- [8卡 bs=96、AMP](./logs/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu8.log)
+|              | Time2train(sec)  | 吞吐(samples/sec) | 准确率(%) | 加速比 |
+|--------------|------------|------------|------------|-----------|
+| 1卡          |     -      |   543.76   |     -      |     -     |
+| 8卡          |     -      |      -     |     -      |     -     |
+| 32卡         |     -      |      -     |     -      |     -     |
