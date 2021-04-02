@@ -70,7 +70,7 @@ wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/
 ```
 
 ## 四、日志数据
-- [单卡Time2Train及吞吐测试日志](./log/GPUx1_time2train_ips.log)
+- [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.log)
 - [单卡准确率测试](../log/GPUx1_accuracy.log)
 
 通过以上日志分析，PyTorch经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
