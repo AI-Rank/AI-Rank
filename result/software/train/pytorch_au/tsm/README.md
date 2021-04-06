@@ -260,13 +260,16 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 |:-----:|:-----:|:-----:|
 |1 |  |  |
 |8 |  |  |
-|32 | 166352.6 | 385625.7 |
+|32 | xxx | xxx |
   
-- 精度结果(acc top1)  
+- 精度结果
+> top1 acc
+
 |卡数 | FP32 | AMP |
 |:-----:|:-----:|:-----:|
+|1 |  |  |
 |8 |  |  |
-|32 | 166352.6 | 385625.7 |
+|32 | xxx | xxx |
 
 ## 五、日志数据
 ### 1.日志
