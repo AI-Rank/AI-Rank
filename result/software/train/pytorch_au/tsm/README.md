@@ -127,11 +127,11 @@
    ```bash
       model = torch.nn.parallel.DistributedDataParallel(model,device_ids=[device_id], output_device=device_id)
    ```  
-在第140行添加
+   在第140行添加
    ```bash
       train_sampler = DistributedSampler(train_dataset, shuffle=True)
    ```  
-将第141-154之间的代码替换为
+   将第141-154之间的代码替换为
    ```bash
       train_loader = torch.utils.data.DataLoader(
            TSNDataSet(args.root_path, args.train_list, num_segments=args.num_segments,
@@ -149,7 +149,7 @@
            num_workers=args.workers, pin_memory=True,
            drop_last=True)  # prevent something not % n_GPU
    ```  
-在第192行添加
+   在第192行添加
    ```bash
       train_sampler.set_epoch(epoch)
    ```  
@@ -240,7 +240,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 
 - **多机启动脚本**
 
-	`$mpirun`命令请参考[这里](../../../utils/mpi.md#需要把集群节点环境传给通信框架)
+	`$mpirun`命令请参考[这里](https://github.com/PaddlePaddle/Perf/blob/master/utils/mpi.md#需要把集群节点环境传给通信框架)
 
 	```bash
 	
