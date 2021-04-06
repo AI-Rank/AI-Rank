@@ -80,59 +80,59 @@
    ```
 - 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。在第185行添加
    ```bash
-   scaler = torch.cuda.amp.GradScaler(args.amp)
+      scaler = torch.cuda.amp.GradScaler(args.amp)
    ```  
    将194行修改为
    ```bash
-   train(train_loader, model, criterion, optimizer, epoch, log_training, tf_writer,scaler,args.amp,rank)
+      train(train_loader, model, criterion, optimizer, epoch, log_training, tf_writer,scaler,args.amp,rank)
    ```
    相应的train函数定义处做相应的修改
    ```bash
-   def train(train_loader, model, criterion, optimizer, epoch, log, tf_writer,scaler,use_amp,rank=None):
+      def train(train_loader, model, criterion, optimizer, epoch, log, tf_writer,scaler,use_amp,rank=None):
    ```  
    将第243-246行之间的代码换成
    ```bash
-   if use_amp:
-            # compute output
-            with torch.cuda.amp.autocast(enabled=use_amp):
-                output = model(input_var)
-                loss = criterion(output, target_var)
-   else:
-            output = model(input_var)
-            loss = criterion(output, target_var)
+      if use_amp:
+          # compute output
+          with torch.cuda.amp.autocast(enabled=use_amp):
+              output = model(input_var)
+              loss = criterion(output, target_var)
+      else:
+          output = model(input_var)
+          loss = criterion(output, target_var)
    ```  
    将254行代码修改为
    ```bash
-   if use_amp:
-            scaler.scale(loss).backward()
-   else:
-            loss.backward()
+      if use_amp:
+          scaler.scale(loss).backward()
+      else:
+          loss.backward()
    ```  
    在第257行上面添加以下代码
    ```bash
-   if use_amp:
-       scaler.unscale_(optimizer)
+      if use_amp:
+          scaler.unscale_(optimizer)
    ```  
    将第259行代码替换成以下代码
    ```bash
-   if use_amp:
-            scaler.step(optimizer)
-            scaler.update()
-   else:
-            optimizer.step()
+      if use_amp:
+          scaler.step(optimizer)
+          scaler.update()
+      else:
+          optimizer.step()
    ```  
 #### (2)为代码添加多机支持   
 - 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中的第74行修改为
    ```bash
-   model = torch.nn.parallel.DistributedDataParallel(model,device_ids=[device_id], output_device=device_id)
+      model = torch.nn.parallel.DistributedDataParallel(model,device_ids=[device_id], output_device=device_id)
    ```  
 在第140行添加
    ```bash
-   train_sampler = DistributedSampler(train_dataset, shuffle=True)
+      train_sampler = DistributedSampler(train_dataset, shuffle=True)
    ```  
 将第141-154之间的代码替换为
    ```bash
-   train_loader = torch.utils.data.DataLoader(
+      train_loader = torch.utils.data.DataLoader(
            TSNDataSet(args.root_path, args.train_list, num_segments=args.num_segments,
                    new_length=data_length,
                    modality=args.modality,
@@ -147,112 +147,108 @@
 	   sampler=train_sampler,
            num_workers=args.workers, pin_memory=True,
            drop_last=True)  # prevent something not % n_GPU
-   ```   
+   ```  
+在第192行添加
+   ```bash
+      train_sampler.set_epoch(epoch)
+   ```  
+- 添加多机通信支持。我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中添加一个新函数
+   ```bash
+      def run():
+          current_env = os.environ.copy()
+          current_env["MASTER_ADDR"] = os.environ.get('MASTER_ADDR', "10.225.135.14")
+          current_env["MASTER_PORT"] = os.environ.get('MASTER_PORT', 29500)
+          current_env["WORLD_SIZE"] = os.environ.get('WORLD_SIZE', 32)
+          current_env["OMP_NUM_THREADS"] = str(1)
+          distributed_init_method = r'env://'
+          dist.init_process_group(backend="nccl", init_method=distributed_init_method)
+          distributed_world_size = int(os.environ['WORLD_SIZE'])
+          distributed_rank = dist.get_rank()
+          main(distributed_rank)
+   ```  
+   并将第378行代码修改成
+   ```bash
+      run()
+   ```  
+   
+   
 **重要的配置参数：**
 
-- **max-tokens**: 单卡 batch_size
-- **amp**: 用于指定是否开启amp训练。
-- **amp-devel**: O1代表amp，O2代表fp16。
+- **num_trainers**: 机器数目
+- **num_cards**: 每台机器使用的GPU卡数。
+- **use_amp**: 是否使用AMP。
 
 ### 2. 单机（单卡、8卡）测试
 
-为了更方便地测试不同 batch_size、num_gpus、precision组合下的性能，我们编写了 `run_benchmark.sh` 脚本:
+为了更方便地测试单机FP32和AMP下的性能和精度，我们编写了 `run_single.sh` 脚本:
 
 ``` bash
-num_trainers=${OMPI_COMM_WORLD_SIZE:-1}
-num_gpu=$1
-batch=$2
-total_cards=$((num_trainers*num_gpu))
-if [[ $3 == 'fp32' ]];then
-    appends=""
-elif [[ $3 == 'fp16' ]];then
-    appends='--amp --amp-level O2'
-elif [[ $3 == 'amp' ]];then
-    appends='--amp --amp-level O1'
+num_trainers=$1
+num_cards=$2
+use_amp=$3
+
+base=0.0025
+lr_tmp=`echo "${num_cards} * ${base}" |bc`
+lr="0${lr_tmp}"
+
+if [[ ${use_amp} == True ]];then
+    appends='--amp'
 else
-    echo "unexpect fp32 fp16 or amp"
-    exit
+    appends=""
 fi
 
-# RANK主要用于多机，单机可以不用这行
-export RANK=${OMPI_COMM_WORLD_RANK:-0}
+if [[ ${num_cards} == 1 ]];then
+    print_freq=32
+else
+    print_freq=4
+fi
 
-distribute="--nnodes ${num_trainers} --node_rank ${RANK}  \
-    --master_addr ${MASTER_ADDR:-127.0.0.1} --master_port ${MASTER_PORT:-8421}"
-envs='--distributed-init-method env://'
+cd /root/paddlejob/workspace/env_run/pytorch_TSM
 
-
-python  -m torch.distributed.launch --nproc_per_node=${num_gpu}  ${distribute} train.py \
-  /data/wmt14_en_de_joined_dict \
-  --arch transformer_wmt_en_de_big_t2t \
-  --share-all-embeddings \
-  --optimizer adam \
-  --adam-betas '(0.9, 0.997)' \
-  --adam-eps "1e-9" \
-  --clip-norm 0.0 \
-  --lr-scheduler inverse_sqrt \
-  --warmup-init-lr 0.0 \
-  --warmup-updates 4000  \
-  --lr 0.000846 \
-  --min-lr 0.0 \
-  --dropout 0.1 \
-  --weight-decay 0.0 \
-  --criterion label_smoothed_cross_entropy \
-  --label-smoothing 0.1 \
-  --max-tokens ${batch} \
-  --seed 1 \
-  --max-epoch 40 \
-  --no-epoch-checkpoints \
-  --fuse-layer-norm \
-  --online-eval \
-  --log-interval 10 \
-  --max-update $6 \
-  ${envs} \
-  --save-dir /workspace/checkpoint \
-  ${appends} 
-
+python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinetics RGB \
+     --arch resnet50 --num_segments 8 \
+     --gd 20 --lr ${lr} --wd 1e-4 --lr_steps 20 40 --epochs 50 \
+     --batch-size 16 -j 16 --dropout 0.5 --consensus_type=avg --eval-freq=1 \
+     --shift --shift_div=8 --shift_place=blockres --npb \
+     -p ${print_freq} ${appends}
 ```
 
 
 - **单卡启动脚本：**
 
-    若测试单机单卡 batch_size=2560、FP32 的训练性能，执行如下命令：
+    若测试单机1卡AMP和FP32的训练性能和精度，执行如下命令：
 
     ```bash
-    bash scripts/run_benchmark.sh 1 2560 fp32
+       bash run_single.sh 1 1 True
+       bash run_single.sh 1 1 False
     ```
 
 - **8卡启动脚本：**
 
-    若测试单机8卡 batch_size=5120、FP16 的训练性能，执行如下命令：
+    若测试单机8卡AMP和FP32的训练性能和精度，执行如下命令：
 
     ```bash
-    bash scripts/run_benchmark.sh 8 5120 fp16
+       bash run_single.sh 1 8 True
+       bash run_single.sh 1 8 False
     ```
 
 
 ### 3. 多机（32卡）测试
 基础配置和上文所述的单机配置相同，多机这部分主要侧重于多机和单机的差异部分。
-我们需要把环境变量`${MASTER_ADDR}`  `${MASTER_PORT}`传递给`run_pretraining.sh`脚本，即可在单机的基础上完成多机的启动。
+我们需要把环境变量`${MASTER_ADDR}`  `${MASTER_PORT}` `${OMPI_COMM_WORLD_RANK}`写入到`run_benchmark.sh`脚本，即可在单机的基础上完成多机的启动。
 
 - **多机启动脚本**
 
 	`$mpirun`命令请参考[这里](../../../utils/mpi.md#需要把集群节点环境传给通信框架)
 
-	```
-	# fp32
-	echo "begin run bs:2560 fp32 on 8 gpus"
-	$mpirun bash ./run_benchmark.sh 8 2560 fp32
-
-    # amp
-	echo "begin run bs:5120 amp on 8 gpus"
-	$mpirun bash ./run_benchmark.sh 8 5120 amp
+	```bash
+	
+    # AMP
+	$mpirun bash run_benchmark.sh 4 8 True
  
-    # fp16
-	echo "begin run bs:5120 fp16 on 8 gpus"
-	$mpirun bash ./run_benchmark.sh 8 5120 fp16
-
-	# add more test
+    # FP32
+        $mpirun bash run_benchmark.sh 4 8 False
+	
 	```
 
 ## 四、测试结果
