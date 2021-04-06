@@ -24,32 +24,33 @@
 
 ### 1.物理机环境
 
-我们使用了同一个物理机环境，对 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 的 TSM 模型进行了测试,具体参数如下：
+我们使用了同一个物理机环境，对 [TSM PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 模型进行了测试,具体参数如下：
   - 系统：CentOS release 6.3 (Final)
-  - GPU：Tesla V100-SXM2-32GB * 8
+  - GPU：Tesla V100-SXM2-16GB * 8
   - CPU：Intel(R) Xeon(R) Gold 6271C CPU @ 2.60GHz * 48
   - Driver Version: 450.80.02
   - 内存：502 GB
 
 ### 2.Docker 镜像
 
-NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的 [Dockerfile](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/Translation/Transformer/Dockerfile)，
+本次测试所以用的docker镜像相关信息如下所示：
 
-- **镜像版本**: `nvcr.io/nvidia/pytorch:20.06-py3`
-- **PyTorch 版本**: `1.6.0a0+9907a3e`
-- **CUDA 版本**: `11.0`
-- **cuDnn 版本**: `8.0.1`
+- **镜像版本**: `registry.baidu.com/paddlepaddle-public/paddle_ubuntu1604:mlperf_cuda10.1_cudnn7.6.5_nccl2.4.7_dali0.24.0_py37`
+- **PyTorch 版本**: `1.7.0`
+- **CUDA 版本**: `10.1`
+- **cuDnn 版本**: `7.6.5`
 
 ## 二、环境搭建
 
 ### 1. 单机（单卡、8卡）环境搭建
 
-我们遵循[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)配置环境，主要过程如下:
+单机环境搭建主要过程如下:
 - 新建docker container:
-使用`nvcr.io/nvidia/pytorch:20.06-py3`docker镜像创建docker容器  
+使用`registry.baidu.com/paddlepaddle-public/paddle_ubuntu1604:mlperf_cuda10.1_cudnn7.6.5_nccl2.4.7_dali0.24.0_py37`docker镜像创建docker容器  
 
 - 参考[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module#prerequisites) 安装依赖
     ```bash
+    pip3 install torch==1.7.0 torchvision==0.8.0
     pip3 install TensorboardX
     pip3 install tqdm
     ```
@@ -70,13 +71,13 @@ NGC PyTorch 的代码仓库提供了自动构建 Docker 镜像的 [Dockerfile](h
 
 ## 三、测试步骤
 
-由于[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)没有支持AMP训练和多机训练，为了对比FP32与AMP，以及单机与多机的情况下，TSM的性能和精度的具体表现情况，我们在[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)做了一些修改,主要修改如下。
+由于[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)没有支持AMP训练和多机训练，为了测试TSM在单机和多机上，FP32和AMP的性能和精度的具体表现情况，我们在[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)做了一些修改,主要修改如下。
 - 为代码添加AMP支持
 我们在[opts.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/opts.py)的第77行添加了如下一行代码，使运行时可以自由切换FP32方式或者AMP方式。
    ```bash
    parser.add_argument('--amp',default=False,action="store_true",help="use amp training")
    ```
- 当启用AMP模式，我们在我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training]（https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)提供的dangshi
+ 并且我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training]（https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)提供的示例参考，对代码进行了些许修改，具体如下：
 
 根据官方提供的 [train.py](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/Translation/Transformer/train.py) 脚本中执行计算吞吐。
 
