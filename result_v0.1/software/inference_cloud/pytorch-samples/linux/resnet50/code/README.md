@@ -65,4 +65,5 @@ optional arguments:
                         processes per node, which has N GPUs. This is the
                         fastest way to use PyTorch for either single node or
                         multi node data parallel training
+  --warmup              warm up times.
 ```
