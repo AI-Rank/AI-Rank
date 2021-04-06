@@ -245,10 +245,10 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 	```bash
 	
     # AMP
-	$mpirun bash run_benchmark.sh 4 8 True
+    	$mpirun bash run_benchmark.sh 4 8 True
  
     # FP32
-        $mpirun bash run_benchmark.sh 4 8 False
+    	$mpirun bash run_benchmark.sh 4 8 False
 	
 	```
 
