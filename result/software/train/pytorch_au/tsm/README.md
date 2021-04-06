@@ -144,7 +144,7 @@
                        ToTorchFormatTensor(div=(args.arch not in ['BNInception', 'InceptionV3'])),
                        normalize,
                    ]), dense_sample=args.dense_sample),
-           batch_size=args.batch_size, 
+               batch_size=args.batch_size, 
 	   sampler=train_sampler,
            num_workers=args.workers, pin_memory=True,
            drop_last=True)  # prevent something not % n_GPU
@@ -262,7 +262,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 |8 |  |  |
 |32 | 166352.6 | 385625.7 |
   
-- 精度结果(acc top1)
+- 精度结果(acc top1)  
 |卡数 | FP32 | AMP |
 |:-----:|:-----:|:-----:|
 |8 |  |  |  |
