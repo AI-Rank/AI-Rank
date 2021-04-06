@@ -11,7 +11,7 @@ https://github.com/pytorch/examples/tree/master/imagenet has been adapted for AI
 
 ## Benchmark
 
-python main.py -a resnet50 -j 2 -b 32 -e --pretrained --gpu 0 [imagenet-folder with train and val folder]
+python main.py -a resnet50 -j 8 -b 64 -e --pretrained --gpu 0 [imagenet-folder with train and val folder]
 
 ## Usage
 
@@ -67,3 +67,7 @@ optional arguments:
                         multi node data parallel training
   --warmup              warm up times.
 ```
+## summary_metrics
+|  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
+|--------------|--------------|--------------|
+|   Resnet50   |    355       |              |
