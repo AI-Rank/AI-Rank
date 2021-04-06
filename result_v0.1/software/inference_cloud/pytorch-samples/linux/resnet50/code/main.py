@@ -323,8 +323,12 @@ def validate(val_loader, model, criterion, args):
     #    [batch_time, losses, top1, top5],
     #    prefix='Test: ')
 
+    # switch to evaluate mode
+    model.eval()
+
     global rank_logger
-    rank_logger.info('load_data, checksum:xxx')
+    #rank_logger.info('load_data')
+    ai_rank_logger.log_md5(os.path.join(args.data, 'val'), rank_logger)
     rank_logger.info('test_begin')
     tmp = torch.rand(args.batch_size, 3, 224, 224)
     if args.gpu is not None:
@@ -334,9 +338,6 @@ def validate(val_loader, model, criterion, args):
         tmp_out = model(tmp)
     rank_logger.info('warmup_finish')
 
-    # switch to evaluate mode
-    model.eval()
-    
     cnt = 0
     with torch.no_grad():
         end = time.time()
@@ -352,7 +353,7 @@ def validate(val_loader, model, criterion, args):
 
             # measure accuracy and record loss
             acc1, acc5 = accuracy(output, target, topk=(1, 5))
-            # losses.update(loss.item(), images.size(0))
+            #losses.update(loss.item(), images.size(0))
             top1.update(acc1[0], images.size(0))
             top5.update(acc5[0], images.size(0))
 

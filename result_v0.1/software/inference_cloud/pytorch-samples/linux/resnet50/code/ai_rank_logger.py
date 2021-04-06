@@ -1,6 +1,7 @@
 import os
 import time
 import logging
+import hashlib
 
 LOG_PATH = '../log'
 LOG_OFFLINE = 'offline_ips.log'
@@ -21,3 +22,20 @@ class logger(object):
         self.prefix = "AI-Rank-log "
     def info(self, msg):
         self.offline_logger.info(self.prefix + str(time.time()) +' '+ str(msg))
+
+def log_md5(path, md5logger):
+    # validation set
+    for dirs in os.listdir(path):
+        category = os.path.join(path, dirs)
+        if os.path.isdir(category):
+            for imgs in os.listdir(category):
+                myhash = hashlib.md5()
+                imgpath = os.path.join(category, imgs)
+                f = open(imgpath,'rb')
+                while True:
+                    b = f.read(8096)
+                    if not b:
+                        f.close()
+                        break
+                    myhash.update(b)
+                md5logger.info('{} md5: {}'.format(imgs, myhash.hexdigest()))
