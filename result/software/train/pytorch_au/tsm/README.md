@@ -253,6 +253,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 	```
 
 ## 四、测试结果
+(由于单卡运行时间周期过长，此处只给出单卡的性能数据)
 - 性能结果
 > 单位： batch/sec
 
