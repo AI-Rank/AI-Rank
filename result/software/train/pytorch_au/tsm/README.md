@@ -2,7 +2,7 @@
 # NGC PyTorch TSM 性能复现
 
 
-此处给出了基于 [NGC PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 实现的 TSM 任务的详细复现流程，包括执行环境、PyTorch版本、环境搭建、复现脚本、测试结果和测试日志。
+此处给出了 [TSM](https://github.com/mit-han-lab/temporal-shift-module)性能和精度测试任务的详细流程，包括执行环境、PyTorch版本、环境搭建、复现脚本、测试结果和测试日志。
 
 <!-- omit in toc -->
 ## 目录
