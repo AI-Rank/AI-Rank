@@ -71,23 +71,90 @@
 
 ## 三、测试步骤
 
+### 1. 添加AMP和多机代码
 由于[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)没有支持AMP训练和多机训练，为了测试TSM在单机和多机上，FP32和AMP的性能和精度的具体表现情况，我们在[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)做了一些修改,主要修改如下。
-- 为代码添加AMP支持
-我们在[opts.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/opts.py)的第77行添加了如下一行代码，使运行时可以自由切换FP32方式或者AMP方式。
+#### (1)为代码添加AMP支持
+- 我们在[opts.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/opts.py)的第77行添加了如下一行代码，使运行时可以自由切换FP32方式或者AMP方式。
    ```bash
    parser.add_argument('--amp',default=False,action="store_true",help="use amp training")
    ```
- 并且我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training]（https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)提供的示例参考，对代码进行了些许修改，具体如下：
-
-根据官方提供的 [train.py](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/Translation/Transformer/train.py) 脚本中执行计算吞吐。
-
+- 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。在第185行添加
+   ```bash
+   scaler = torch.cuda.amp.GradScaler(args.amp)
+   ```  
+将194行修改为
+   ```bash
+   train(train_loader, model, criterion, optimizer, epoch, log_training, tf_writer,scaler,args.amp,rank)
+   ```
+   相应的train函数定义处做相应的修改
+   ```bash
+   def train(train_loader, model, criterion, optimizer, epoch, log, tf_writer,scaler,use_amp,rank=None):
+   ```  
+   将第243-246行之间的代码换成
+   ```bash
+   if use_amp:
+            # compute output
+            with torch.cuda.amp.autocast(enabled=use_amp):
+                output = model(input_var)
+                loss = criterion(output, target_var)
+   else:
+            output = model(input_var)
+            loss = criterion(output, target_var)
+   ```  
+   将254行代码修改为
+   ```bash
+   if use_amp:
+            scaler.scale(loss).backward()
+   else:
+            loss.backward()
+   ```  
+   在第257行上面添加以下代码
+   ```bash
+   if use_amp:
+       scaler.unscale_(optimizer)
+   ```  
+   将第259行代码替换成以下代码
+   ```bash
+   if use_amp:
+            scaler.step(optimizer)
+            scaler.update()
+   else:
+            optimizer.step()
+   ```  
+#### (2)为代码添加多机支持   
+- 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中的第74行修改为
+   ```bash
+   model = torch.nn.parallel.DistributedDataParallel(model,device_ids=[device_id], output_device=device_id)
+   ```  
+在第140行添加
+   ```bash
+   train_sampler = DistributedSampler(train_dataset, shuffle=True)
+   ```  
+将第141-154之间的代码替换为
+   ```bash
+   train_loader = torch.utils.data.DataLoader(
+           TSNDataSet(args.root_path, args.train_list, num_segments=args.num_segments,
+                   new_length=data_length,
+                   modality=args.modality,
+                   image_tmpl=prefix,
+                   transform=torchvision.transforms.Compose([
+                       train_augmentation,
+                       Stack(roll=(args.arch in ['BNInception', 'InceptionV3'])),
+                       ToTorchFormatTensor(div=(args.arch not in ['BNInception', 'InceptionV3'])),
+                       normalize,
+                   ]), dense_sample=args.dense_sample),
+           batch_size=args.batch_size, 
+	   sampler=train_sampler,
+           num_workers=args.workers, pin_memory=True,
+           drop_last=True)  # prevent something not % n_GPU
+   ```   
 **重要的配置参数：**
 
 - **max-tokens**: 单卡 batch_size
 - **amp**: 用于指定是否开启amp训练。
 - **amp-devel**: O1代表amp，O2代表fp16。
 
-### 1. 单机（单卡、8卡）测试
+### 2. 单机（单卡、8卡）测试
 
 为了更方便地测试不同 batch_size、num_gpus、precision组合下的性能，我们编写了 `run_benchmark.sh` 脚本:
 
@@ -164,7 +231,7 @@ python  -m torch.distributed.launch --nproc_per_node=${num_gpu}  ${distribute} t
     ```
 
 
-### 2. 多机（32卡）测试
+### 3. 多机（32卡）测试
 基础配置和上文所述的单机配置相同，多机这部分主要侧重于多机和单机的差异部分。
 我们需要把环境变量`${MASTER_ADDR}`  `${MASTER_PORT}`传递给`run_pretraining.sh`脚本，即可在单机的基础上完成多机的启动。
 
