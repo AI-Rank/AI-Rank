@@ -267,7 +267,6 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 
 |卡数 | FP32 | AMP |
 |:-----:|:-----:|:-----:|
-|1 |  |  |
 |8 |  |  |
 |32 | xxx | xxx |
 
