@@ -82,7 +82,7 @@
    ```bash
    scaler = torch.cuda.amp.GradScaler(args.amp)
    ```  
-将194行修改为
+   将194行修改为
    ```bash
    train(train_loader, model, criterion, optimizer, epoch, log_training, tf_writer,scaler,args.amp,rank)
    ```
