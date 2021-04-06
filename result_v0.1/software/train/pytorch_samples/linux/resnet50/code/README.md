@@ -74,13 +74,13 @@ wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/
 - [单卡准确率测试](../log/GPUx1_accuracy.log)
 
 通过以上日志分析，PyTorch经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
-
+经过250个epoch的训练，最终精度（即`val.top1`)达到77.90%。
 
 ## 五、性能指标
 
 
 |              | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
 |--------------|------------|------------|------------|-----------|
-| 1卡          |  137,335   |   859.24   |     -      |     -     |
+| 1卡          |  137,335   |   859.24   |     77.90      |     -     |
 | 8卡          |     -      |      -     |     -      |     -     |
 | 32卡         |     -      |      -     |     -      |     -     |
