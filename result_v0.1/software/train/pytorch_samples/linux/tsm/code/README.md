@@ -259,8 +259,8 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 
 |卡数 | FP32 | AMP |
 |:-----:|:-----:|:-----:|
-|1 |  |  |
-|8 |  |  |
+|1 | 28.828 | 56.537 |
+|8 | 226.148 |386.707  |
 |32 |  | 1380.045 |
   
 - 精度结果
@@ -268,7 +268,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 
 |卡数 | FP32 | AMP |
 |:-----:|:-----:|:-----:|
-|8 |  |  |
+|8 | 71.103 | 71.235 |
 |32 |  | 71.199 |
 
 ## 五、日志数据
