@@ -1,0 +1,17 @@
+|  字段                       |  值     |
+|-----------------------------|-----------------|
+| accelerator_memory_capacity |                 |
+| accelerator_name            | ARM Mali-G76 MP16 |
+| accelerators_per_node       |  1              |
+| host_memory_capacity        |  8 GB           |
+| host_processor_core_count   |  8              |
+| host_processor_name         |  Kirin990       |
+| host_processors_per_node    |  1              |
+| host_storage_capacity       |  8 GB           |
+| host_storage_type           |                 |
+| number_of_nodes             |  1              |
+| operating_system            |  Android 10     |
+| software_stack              |  Tensorflow 2.4.1  NDK 17.0 |
+| submitter                   |  Baidu          |
+| hardware_name               |  Huawei         |
+| hardware_type               |  mobile         |
