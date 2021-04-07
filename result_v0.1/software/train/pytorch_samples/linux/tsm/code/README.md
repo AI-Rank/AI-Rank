@@ -75,24 +75,16 @@
 ### 1. 添加AMP和多机代码
 由于[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)没有支持AMP训练和多机训练，为了测试TSM在单机和多机上，FP32和AMP的性能和精度的具体表现情况，我们在[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module)做了一些修改,主要修改如下。
 #### (1)为代码添加AMP支持
-- 我们在[opts.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/opts.py)的第77行添加了如下一行代码，使运行时可以自由切换FP32方式或者AMP方式。
+- 我们在[opts.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/opts.py)的末尾添加了如下一行代码，使运行时可以自由切换FP32方式或者AMP方式。
    ```bash
    parser.add_argument('--amp',default=False,action="store_true",help="use amp training")
    ```
-- 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。在第185行添加
+- 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。主要为添加GradScaler和autocast，大致修改如下，详细描述可参考此处的[main.py](https://github.com/wuhuachaocoding/temporal-shift-module/blob/master/main.py)。
    ```bash
       scaler = torch.cuda.amp.GradScaler(args.amp)
-   ```  
-   将194行修改为
-   ```bash
-      train(train_loader, model, criterion, optimizer, epoch, log_training, tf_writer,scaler,args.amp,rank)
-   ```
-   相应的train函数定义处做相应的修改
-   ```bash
-      def train(train_loader, model, criterion, optimizer, epoch, log, tf_writer,scaler,use_amp,rank=None):
-   ```  
-   将第243-246行之间的代码换成
-   ```bash
+      
+      ......
+      
       if use_amp:
           # compute output
           with torch.cuda.amp.autocast(enabled=use_amp):
@@ -101,21 +93,21 @@
       else:
           output = model(input_var)
           loss = criterion(output, target_var)
-   ```  
-   将254行代码修改为
-   ```bash
+      
+      ......
+      
       if use_amp:
           scaler.scale(loss).backward()
       else:
           loss.backward()
-   ```  
-   在第257行上面添加以下代码
-   ```bash
+   
+      ......
+   
       if use_amp:
           scaler.unscale_(optimizer)
-   ```  
-   将第259行代码替换成以下代码
-   ```bash
+      
+      ......
+      
       if use_amp:
           scaler.step(optimizer)
           scaler.update()
@@ -123,54 +115,7 @@
           optimizer.step()
    ```  
 #### (2)为代码添加多机支持   
-- 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中的第74行修改为
-   ```bash
-      model = torch.nn.parallel.DistributedDataParallel(model,device_ids=[device_id], output_device=device_id)
-   ```  
-   在第140行添加
-   ```bash
-      train_sampler = DistributedSampler(train_dataset, shuffle=True)
-   ```  
-   将第141-154之间的代码替换为
-   ```bash
-      train_loader = torch.utils.data.DataLoader(
-           TSNDataSet(args.root_path, args.train_list, num_segments=args.num_segments,
-                   new_length=data_length,
-                   modality=args.modality,
-                   image_tmpl=prefix,
-                   transform=torchvision.transforms.Compose([
-                       train_augmentation,
-                       Stack(roll=(args.arch in ['BNInception', 'InceptionV3'])),
-                       ToTorchFormatTensor(div=(args.arch not in ['BNInception', 'InceptionV3'])),
-                       normalize,
-                   ]), dense_sample=args.dense_sample),
-               batch_size=args.batch_size, 
-	   sampler=train_sampler,
-           num_workers=args.workers, pin_memory=True,
-           drop_last=True)  # prevent something not % n_GPU
-   ```  
-   在第192行添加
-   ```bash
-      train_sampler.set_epoch(epoch)
-   ```  
-- 添加多机通信支持。我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中添加一个新函数
-   ```bash
-      def run():
-          current_env = os.environ.copy()
-          current_env["MASTER_ADDR"] = os.environ.get('MASTER_ADDR', "xx.xx.xx.xx") #指定master_addr
-          current_env["MASTER_PORT"] = os.environ.get('MASTER_PORT', 29500)
-          current_env["WORLD_SIZE"] = os.environ.get('WORLD_SIZE', 32)
-          current_env["OMP_NUM_THREADS"] = str(1)
-          distributed_init_method = r'env://'
-          dist.init_process_group(backend="nccl", init_method=distributed_init_method)
-          distributed_world_size = int(os.environ['WORLD_SIZE'])
-          distributed_rank = dist.get_rank()
-          main(distributed_rank)
-   ```  
-   并将第378行代码修改成
-   ```bash
-      run()
-   ```  
+- 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码进行略微修改，主要包括使用DistributedDataParallel，Dataloader部分使用DistributedSampler，以及初始化进程通信相关环境。详细情况可参考此处的[main.py](https://github.com/wuhuachaocoding/temporal-shift-module/blob/master/main.py)。
    
    
 **重要的配置参数：**
