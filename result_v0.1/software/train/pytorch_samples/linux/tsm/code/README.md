@@ -157,7 +157,7 @@
    ```bash
       def run():
           current_env = os.environ.copy()
-          current_env["MASTER_ADDR"] = os.environ.get('MASTER_ADDR', "10.225.135.14")
+          current_env["MASTER_ADDR"] = os.environ.get('MASTER_ADDR', "xx.xx.xx.xx") #指定master_addr
           current_env["MASTER_PORT"] = os.environ.get('MASTER_PORT', 29500)
           current_env["WORLD_SIZE"] = os.environ.get('WORLD_SIZE', 32)
           current_env["OMP_NUM_THREADS"] = str(1)
@@ -204,7 +204,7 @@ else
     print_freq=4
 fi
 
-cd /root/paddlejob/workspace/env_run/pytorch_TSM
+cd temporal-shift-module
 
 python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinetics RGB \
      --arch resnet50 --num_segments 8 \
