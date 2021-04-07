@@ -274,3 +274,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 ## 五、日志数据
 ### 1.日志
 - [4机32卡、AMP ](../log/final_amp_32.txt)
+- [1机8卡、AMP ](../log/final_amp_8.txt)
+- [1机1卡、AMP ](../log/final_amp_1.txt)
+- [1机8卡、FP32 ](../log/final_FP32_8.txt)
+- [1机1卡、FP32 ](../log/final_FP32_1.txt)
