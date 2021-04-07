@@ -40,7 +40,7 @@ wget https://ai-rank.bj.bcebos.com/imagenet1k_label_list.txt?authorization=bce-a
 准备数据、模型、模型优化及相关校验等步骤
 分别执行精度、各性能评测的推理步骤，产生评测日志
 
-编译目标检测评测工具：
+编译分类评测工具：
 ```
 cd /WORK
 git clone https://github.com/zhaoyang-star/tensorflow.git
