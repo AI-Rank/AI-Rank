@@ -95,6 +95,7 @@ adb shell chmod +x /data/local/tmp/zy/AI-RANK/tf_object_detction/run_eval
 adb push tf_ssd_mobilenet_v3_large_coco_2020_01_14 /data/local/tmp/zy/AI-RANK/tf_object_detction
 adb push val2017.zip /data/local/tmp/zy/AI-RANK/tf_object_detction
 adb push 2017_COCO_Minival/ground_truth.pb /data/local/tmp/zy/AI-RANK/tf_object_detction
+adb push labelmap_2017.txt /data/local/tmp/zy/AI-RANK/tf_object_detction
 ```
 
 
