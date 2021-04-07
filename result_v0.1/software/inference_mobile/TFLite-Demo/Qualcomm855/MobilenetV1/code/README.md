@@ -73,6 +73,7 @@ adb shell chmod +x /data/local/tmp/AI-RANK/tf_lite_image_classify/run_eval
 adb push mobilenet_v1_1.0_224.tflite /data/local/tmp/AI-RANK/tf_lite_image_classify
 # puss 下载完成的1K验证集至手机
 adb push ILSVRC2012_1000_cls.zip /data/local/tmp/AI-RANK/tf_lite_image_classify
+adb push ILSVRC2012_1000_cls /data/local/tmp/AI-RANK/tf_lite_image_classify
 # puss 下载完成的imagenet1k_label_list.txt至手机
 adb push imagenet1k_label_list.txt /data/local/tmp/AI-RANK/tf_lite_image_classify
 ```
@@ -85,6 +86,7 @@ adb shell /data/local/tmp/AI-RANK/tf_lite_image_classify/run_eval \
   --ground_truth_labels=/data/local/tmp/AI-RANK/tf_lite_image_classify/ILSVRC2012_1000_cls/val_list_1k.txt 
   --model_output_labels=/data/local/tmp/AI-RANK/tf_lite_image_classify/imagenet1k_label_list.txt
   --delegate=xnnpack \
+  --num_threads=1 \
   --topk=5>accuracy_check_latency.log
 ```
 run_eval 可执行文件参数介绍。
