@@ -10,6 +10,8 @@
   - [三、测试步骤](#三测试步骤)
     - [1.单卡Time2Train及吞吐测试](#1单卡time2train及吞吐测试)
     - [2.单卡准确率测试](#2单卡准确率测试)
+    - [3.多机Time2Train及吞吐测试](#3多机time2train及吞吐测试)
+    - [4.多机准确率测试](#4多机准确率测试)
   - [四、日志数据](#四日志数据)
   - [五、性能指标](#五性能指标)
 
@@ -69,9 +71,67 @@ wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/
     python ./multiproc.py --nproc_per_node 8 ./launch.py --model resnet50 --precision AMP --mode convergence --platform DGX1V /imagenet --workspace ${1:-./} --raport-file raport.json
 ```
 
+### 3.多机time2train及吞吐测试
+基础配置和上文所述的单机配置相同，多机这部分主要侧重于多机和单机的差异部分。
+
+为了方便测试，我们封装了一下NGC的启动脚本
+
+```
+#!/bin/bash
+set -xe
+
+batch_size=$1  # batch size per gpu
+num_gpus=$2    # number of gpu
+precision=$3   # --amp or ""
+train_steps=${4:-100}    # max train steps
+
+export NODE_RANK=`python get_mpi_rank.py`
+
+export env_path=/workspace/DeepLearningExamples/PyTorch/Classification/ConvNets
+cd ${env_path}
+
+python ./multiproc.py \
+   --master_addr ${MASTER_NODE} \
+   --master_port ${MASTER_PORT} \
+   --nnodes ${NUM_NODES}  \
+   --nproc_per_node ${num_gpus} \
+   --node_rank ${NODE_RANK} \
+./main.py --arch resnet50 \
+	${precision} -b ${batch_size} \
+	--training-only \
+	-p 1 \
+	--raport-file benchmark.json \
+	--epochs 1 \
+	--prof ${train_steps} ./data/imagenet
+```
+
+然后使用一个脚本测试多组实验
+
+```
+# fp32
+echo "begin run 128 fp32 on 8 gpus"
+$mpirun bash ./run_benchmark.sh  128 8 ""
+
+echo "begin run 256 fp32 on 8 gpus"
+$mpirun bash ./run_benchmark.sh  256 8 ""
+
+# fp16
+echo "begin run 128 fp16 on 8 gpus"
+$mpirun bash ./run_benchmark.sh  128 8 "--amp"
+
+echo "begin run 256 fp16 on 8 gpus"
+$mpirun bash ./run_benchmark.sh  256 8 "--amp"
+```
+
+其中mpi的使用参考[这里](../../../../../../../utils/mpi.md#需要把集群节点环境传给通信框架) 
+
+### 4.多机准确率测试
+
 ## 四、日志数据
 - [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.log)
 - [单卡准确率测试](../log/GPUx1_accuracy.log)
+- [多机Time2Train及吞吐测试日志](./logs/32gpu_time2train_ips.log)
+- [多机准确率测试](./logs/32gpu_accuracy.log
 
 通过以上日志分析，PyTorch经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
 经过250个epoch的训练，最终精度（即`val.top1`)达到77.90%。
