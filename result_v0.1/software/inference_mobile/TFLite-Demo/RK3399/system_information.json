@@ -1,8 +1,8 @@
 {
     "Device": "RK3399 Pro",
     "processor_name": "Rockchip3399",
-    "integrated_cpu": "2xA73 + 4xA53",
-    "integrated_gpu": "Mali-T860",
+    "integrated_cpu": "2xA72@1.8GHz + 4xA53@1.416GHz",
+    "integrated_gpu": "Mali-T860@800MHz",
     "integrated_dsp": "",
     "integrated_npu": "",
     "memory_capacity": "6GB",

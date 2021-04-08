@@ -3,7 +3,7 @@
     "processor_name": "Qualcomm625",
     "integrated_cpu": "8xA53 @2.16GHz",
     "integrated_gpu": "Adreno 506",
-    "integrated_dsp": "",
+    "integrated_dsp": "Hexagon 546",
     "integrated_npu": "",
     "memory_capacity": "6GB",
     "operating_system": "Android 10",
