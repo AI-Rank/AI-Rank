@@ -70,4 +70,4 @@ optional arguments:
 ## summary_metrics
 |  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
 |--------------|--------------|--------------|
-|   Resnet50   |    355       |              |
+|   Resnet50   |    364       |              |
