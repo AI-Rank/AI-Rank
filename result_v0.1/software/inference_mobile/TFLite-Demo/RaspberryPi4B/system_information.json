@@ -1,0 +1,12 @@
+{
+    "Device": "Raspberry Pi 4B",
+    "processor_name": "",
+    "integrated_cpu": "4xA72@1.5GHz",
+    "integrated_gpu": "Mali-T860",
+    "integrated_dsp": "",
+    "integrated_npu": "",
+    "memory_capacity": "4GB",
+    "operating_system": "",
+    "software_stack": "Tensorflow 2.4.1, NDK 17.0",
+    "submitter": "Baidu"
+}

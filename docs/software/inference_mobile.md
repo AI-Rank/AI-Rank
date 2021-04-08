@@ -104,6 +104,7 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
         - model1
             - code
                 - README.md
+            - data
             - log
                 - architecture
                     - accuracy_check.log
@@ -113,6 +114,7 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
         - model2
             - code
                 - README.md
+            - data
             - log
                 - architecture
                     - accuracy_check.log

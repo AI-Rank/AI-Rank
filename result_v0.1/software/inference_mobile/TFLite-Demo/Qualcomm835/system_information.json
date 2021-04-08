@@ -1,8 +1,8 @@
 {
-    "Device": "XiaoMi9",
-    "processor_name": "Qualcomm855",
-    "integrated_cpu": "1xA76 @2.84GHz + 3xA76 @2.42 + 4xA55 @1.8GHz",
-    "integrated_gpu": "Adreno 640",
+    "Device": "XiaoMi Mix2",
+    "processor_name": "Qualcomm835",
+    "integrated_cpu": "4xA73 @2.45GHz + 4xA53 @1.9GHz",
+    "integrated_gpu": "Adreno 540@670MHz",
     "integrated_dsp": "",
     "integrated_npu": "",
     "memory_capacity": "8GB",
