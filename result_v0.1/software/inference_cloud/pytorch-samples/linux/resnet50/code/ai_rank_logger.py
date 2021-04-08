@@ -6,6 +6,7 @@ import hashlib
 LOG_PATH = '../log'
 LOG_OFFLINE = 'offline_ips.log'
 LOG_ONLINE = 'online_ips.log'
+LOG_ACCU = 'accuracy_check.log'
 logging.basicConfig(level = logging.INFO)
 
 class logger(object):
