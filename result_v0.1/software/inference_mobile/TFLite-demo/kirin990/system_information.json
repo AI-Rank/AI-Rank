@@ -1,17 +1,12 @@
-|  字段                       |  值             |
-|-----------------------------|-----------------|
-| accelerator_memory_capacity |                 |
-| accelerator_name            | Cortex-A76/-A55 |
-| accelerators_per_node       |  1              |
-| host_memory_capacity        |  8 GB           |
-| host_processor_core_count   |  8              |
-| host_processor_name         |  Kirin990       |
-| host_processors_per_node    |  1              |
-| host_storage_capacity       |  8 GB           |
-| host_storage_type           |                 |
-| number_of_nodes             |  1              |
-| operating_system            |  Android 10     |
-| software_stack              |  Tensorflow 2.4.1  NDK 17.0 |
-| submitter                   |  Baidu          |
-| hardware_name               |  Huawei         |
-| hardware_type               |  mobile         |
+{
+    "Device": "Huawei Mate30",
+    "processor_name": "kirin990",
+    "integrated_cpu": "2xA76 @2.86GHz + 2xA76 @2.09GHz + 4xA55 @1.86GHz",
+    "integrated_gpu": "Mali G76MP16 @600MHz",
+    "integrated_dsp": "",
+    "integrated_npu": "1 + 1 Da Vinci",
+    "memory_capacity": "8GB",
+    "operating_system": "Android 10",
+    "software_stack": "Tensorflow 2.4.1, NDK 17.0",
+    "submitter": "Baidu"
+}
