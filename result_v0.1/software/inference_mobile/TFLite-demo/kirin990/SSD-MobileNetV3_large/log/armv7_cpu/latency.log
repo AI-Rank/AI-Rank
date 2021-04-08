@@ -1,4 +1,4 @@
-[ AI-Rank-Log  4/ 7 14:29:16.191 ]load_data, checksum: 442b8da7639aecaf257c1dceb8ba8c8
+[ AI-Rank-Log  4/ 7 14:29:16.191 ]load_data, checksum: e753a469e46c13dcb99114b2202c2a0c 
 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
 [ AI-Rank-Log  4/ 7 14:29:18. 99 ]test_begin
 [ AI-Rank-Log  4/ 7 14:29:18.182 ]latency_case1_latency: 60.314ms
