@@ -83,33 +83,61 @@ bazel build -c opt --config=android_arm64  //tensorflow/lite/tools/evaluation/ta
 ```
 cp bazel-bin/tensorflow/lite/tools/evaluation/tasks/coco_object_detection/run_eval /WORK
 ```
-
+备注：armv7/v8 产物目录名称均为 `bazel-bin`，为了区分二者建议：在编译完 armv8 版本的评测工具后，将 `bazel-bin` 重命名为 `bazel-bin-v8`；在编译完 armv7 版本的评测工具后，将 `bazel-bin` 重命名为 `bazel-bin-v7`。这样，两者就不会重复命名。
 
 ## 5. 上传数据到移动端设备
 将评测二进制文件、模型文件、数据集一并上传到移动设备：
 ```
 cd /WORK
-adb shell mkdir /data/local/tmp/zy/AI-RANK/tf_object_detction
-adb push run_eval /data/local/tmp/zy/AI-RANK/tf_object_detction
-adb shell chmod +x /data/local/tmp/zy/AI-RANK/tf_object_detction/run_eval
-adb push tf_ssd_mobilenet_v3_large_coco_2020_01_14 /data/local/tmp/zy/AI-RANK/tf_object_detction
-adb push val2017.zip /data/local/tmp/zy/AI-RANK/tf_object_detction
-adb push 2017_COCO_Minival/ground_truth.pb /data/local/tmp/zy/AI-RANK/tf_object_detction
-adb push labelmap_2017.txt /data/local/tmp/zy/AI-RANK/tf_object_detction
+# 创建测试目录
+adb shell mkdir /data/local/tmp/AI-RANK/tf_object_detction
+# 上传可执行文件
+adb push run_eval /data/local/tmp/AI-RANK/tf_object_detction
+adb shell chmod +x /data/local/tmp/AI-RANK/tf_object_detction/run_eval
+# 上传模型文件
+adb push ssd_mobilenet_v3_large_coco_2020_01_14/model.tflite /data/local/tmp/AI-RANK/tf_object_detction
+# 上传验证集
+tar xf val2017.tar val2017
+adb push val2017.tar /data/local/tmp/AI-RANK/tf_object_detction
+# 上传真值
+adb push 2017_COCO_Minival/ground_truth.pb /data/local/tmp/AI-RANK/tf_object_detction
+# 上传 label 文件
+adb push labelmap_2017.txt /data/local/tmp/AI-RANK/tf_object_detction
 ```
 
 
 ## 6. 运行
 ```
-adb shell /data/local/tmp/zy/AI-RANK/tf_object_detction/run_eval \
-  --model_file=/data/local/tmp/zy/AI-RANK/tf_object_detction/tf_ssd_mobilenet_v3_large_coco_2020_01_14/model.tflite \
-  --ground_truth_images=/data/local/tmp/zy/AI-RANK/tf_object_detction/val2017.zip \
-  --ground_truth_proto=/data/local/tmp/zy/AI-RANK/tf_object_detction/ground_truth.pb \
-  --model_output_labels=/data/local/tmp/zy/AI-RANK/tf_object_detction/labelmap_2017.txt \
-  --output_file_path=/data/local/tmp/zy/AI-RANK/tf_object_detction/coco_output.txt \
+adb shell /data/local/tmp/AI-RANK/tf_object_detction/run_eval \
+  --model_file=/data/local/tmp/AI-RANK/tf_object_detction/model.tflite \
+  --ground_truth_images=/data/local/tmp/AI-RANK/tf_object_detction/val2017.tar \
+  --ground_truth_proto=/data/local/tmp/AI-RANK/tf_object_detction/ground_truth.pb \
+  --model_output_labels=/data/local/tmp/AI-RANK/tf_object_detction/labelmap_2017.txt \
   --delegate=xnnpack \
-  2>&1 | tee accuracy_check_latency.log
+  2>&1 | tee log
 ```
 
-*   `delegate`: `string`(默认为 xnnpack) \
-    指定运行时使用的代理设备，可以为 `xnnpack`，`gpu`，`hexagon`。
+`run_eval` 可执行文件参数介绍。
+- 必须提供参数如下：
+    *  `model_file` : `string` \
+    TFlite 模型文件路径
+    *  `ground_truth_images`: `string` \
+    测试图片集路径
+
+    *   `ground_truth_proto`: `string` \
+    测试图片集的真值路径
+
+    *   `model_output_labels`: `string` \
+    coco2017验证集的label文本文件路径
+
+- 可选参数如下:
+
+    *   `debug_mode`: `int`  (default=0) \
+    打开debug_mode，可以获得图片预处理耗时和每张图片具体的预测结果
+
+    *   `num_interpreter_threads`: `int` (default=1) \
+    预测的线程数
+
+    *   `delegate`: `string` (default='cpu')\
+    推理预测的硬件设备选择，默认是`CPU`，可选值有：`GPU`、`xnnpack`、`hexagon`、`nnapi`等
+    更多可用的参数介绍，请见code目录下的[README](https://github.com/zhaoyang-star/tensorflow/blob/master/tensorflow/lite/tools/evaluation/tasks/imagenet_image_classification/README.md)
