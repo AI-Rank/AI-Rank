@@ -1,0 +1,17 @@
+{
+	"accelerator_memory_capacity": "16 GB",
+	"accelerator_name": "Tesla V100-SXM2-16GB",
+	"accelerators_per_node": 8,
+	"host_memory_capacity": "432 GB",
+	"host_processor_core_count": 40,
+	"host_processor_name": "Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz",
+	"host_processors_per_node": 20,
+	"host_storage_capacity": "3.6 TB",
+	"host_storage_type": "SSD",
+	"number_of_nodes": 1,
+	"operating_system": "CentOS Linux release 7.5.1804",
+	"software_stack": "CUDA 11.0, cuDNN 8.0.1",
+	"submitter": "Aurelius84",
+	"hardware_name": "BJINVENTECV2G5MC23-40A",
+	"hardware_type": "datacenter"
+}
