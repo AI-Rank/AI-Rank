@@ -35,9 +35,9 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 | 语义表示 | BERT | [Wikipedia 2020/01/01](https://dumps.wikimedia.org/enwiki/) | 0.712 Mask-LM accuracy |
 | 机器翻译 | Transformer | [WMT](http://data.statmt.org/) | 25.00 BLEU |
 | 视频分类 | TSM | kinetics 400 | top1: 0.70 |
-| 智能推荐 | DeepFM | -Criteo | AUC: 0.8016 |
-| 智能推荐 | Wide&Deep | criteo/censuc-income | AUC：0.80， Loss：0.44 |
-| 语义表示 | Word2Vec |  -one billion | ACC：0.530 |
+| 智能推荐 | DeepFM | [Criteo](https://www.kaggle.com/c/criteo-display-ad-challenge/) | AUC: 0.788 |
+| 智能推荐 | Wide&Deep | [Criteo](https://www.kaggle.com/c/criteo-display-ad-challenge/) | AUC：0.795 |
+| 语义表示 | Word2Vec |  [One billion](http://www.statmt.org/lm-benchmark) | ACC：0.600 |
 
 - 为减少软件差异带来的性能影响，最大程度保证公平性，我们对约束条件做如下进一步的解释：
   - 精度约束：在指定验证集上，按照指定的精度评估方法得到的精度，不得低于上述给定的值，例如"76.10% classification"代表分类精度不得低于76.10%;
