@@ -114,4 +114,10 @@ run_eval 可执行文件参数介绍。
     推理预测的硬件设备选择，默认是`CPU`，可选值有：`GPU`、`xnnpack`、`hexagon`、`nnapi`等
     更多可用的参数介绍，请见code目录下的[README](https://github.com/zhaoyang-star/tensorflow/blob/master/tensorflow/lite/tools/evaluation/tasks/imagenet_image_classification/README.md)
 
-    
+## 7. 性能及精度评测结果
+| 模型  | 硬件 |架构(armv7/armv8) | 时延（ms） |  Top-1（%） |  
+|------------------|--------------|--------------|--------------|
+| MobilenetV1      |     cpu      |     armv7    |    45.841    |    72.8%   |
+| MobilenetV1      |     gpu      |     armv7    |    19.578    |    72.9%   |
+| MobilenetV1      |     cpu      |     armv8    |    46.029    |    72.8%   |
+| MobilenetV1      |     gpu      |     armv8    |    19.129    |    72.9%   |
