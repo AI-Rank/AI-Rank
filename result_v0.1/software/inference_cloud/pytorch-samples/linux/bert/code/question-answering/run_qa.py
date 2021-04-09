@@ -470,19 +470,6 @@ def main():
             raise ValueError("--do_eval requires a validation dataset")
         eval_examples = datasets["validation"]
 
-        #cal dataset md5
-        md = hashlib.md5()
-        for example in eval_examples:
-            for col in example['answers']['answer_start']:
-                md.update(str(col).encode("utf-8"))
-            for col in example['answers']['text']:
-                md.update(col.encode("utf-8"))
-            md.update(example['context'].encode("utf-8"))
-            md.update(example['id'].encode("utf-8"))
-            md.update(example['question'].encode("utf-8"))
-            md.update(example['title'].encode("utf-8"))
-        #print(md.hexdigest())
-
         if data_args.max_val_samples is not None:
             # We will select sample from whole data
             eval_examples = eval_examples.select(range(data_args.max_val_samples))
@@ -595,7 +582,19 @@ def main():
     if training_args.do_eval:
         if not training_args.ai_rank_logging:
             trainer.rank_logger.disable()
-        trainer.rank_logger.info('load_data, checksum:{}'.format(md.hexdigest()))
+                #cal dataset md5
+        else:
+            md = hashlib.md5()
+            for example in eval_examples:
+                for col in example['answers']['answer_start']:
+                    md.update(str(col).encode("utf-8"))
+                for col in example['answers']['text']:
+                    md.update(col.encode("utf-8"))
+                md.update(example['context'].encode("utf-8"))
+                md.update(example['id'].encode("utf-8"))
+                md.update(example['question'].encode("utf-8"))
+                md.update(example['title'].encode("utf-8"))
+            trainer.rank_logger.info('load_data, checksum:{}'.format(md.hexdigest()))
         logger.info("*** Evaluate ***")
         metrics = trainer.evaluate()
 
