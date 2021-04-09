@@ -1,0 +1,1006 @@
+[ AI-Rank-Log  4/ 7 20:11:47.837 ]load ground_truth_images, checksum: 91c001caf4bca3a9cf27e3ed45adf96
+[ AI-Rank-Log  4/ 7 20:11:47.841 ]GPU delegate is created.
+[ AI-Rank-Log  4/ 7 20:11:48.446 ]Test begin
+[ AI-Rank-Log  4/ 7 20:11:48.471 ]latency_case1_latency: 14.555 ms
+[ AI-Rank-Log  4/ 7 20:11:48.481 ]latency_case2_latency: 6.053 ms
+[ AI-Rank-Log  4/ 7 20:11:48.510 ]latency_case3_latency: 6.04 ms
+[ AI-Rank-Log  4/ 7 20:11:48.527 ]latency_case4_latency: 6.261 ms
+[ AI-Rank-Log  4/ 7 20:11:48.547 ]latency_case5_latency: 8.914 ms
+[ AI-Rank-Log  4/ 7 20:11:48.569 ]latency_case6_latency: 6.114 ms
+[ AI-Rank-Log  4/ 7 20:11:48.588 ]latency_case7_latency: 6.244 ms
+[ AI-Rank-Log  4/ 7 20:11:48.609 ]latency_case8_latency: 6.25 ms
+[ AI-Rank-Log  4/ 7 20:11:48.631 ]latency_case9_latency: 6.56 ms
+[ AI-Rank-Log  4/ 7 20:11:48.651 ]latency_case10_latency: 6.096 ms
+[ AI-Rank-Log  4/ 7 20:11:48.672 ]latency_case11_latency: 6.32 ms
+[ AI-Rank-Log  4/ 7 20:11:48.693 ]latency_case12_latency: 6.196 ms
+[ AI-Rank-Log  4/ 7 20:11:48.704 ]latency_case13_latency: 8.189 ms
+[ AI-Rank-Log  4/ 7 20:11:48.728 ]latency_case14_latency: 7.138 ms
+[ AI-Rank-Log  4/ 7 20:11:48.745 ]latency_case15_latency: 6.532 ms
+[ AI-Rank-Log  4/ 7 20:11:48.769 ]latency_case16_latency: 6.504 ms
+[ AI-Rank-Log  4/ 7 20:11:48.794 ]latency_case17_latency: 7.086 ms
+[ AI-Rank-Log  4/ 7 20:11:48.818 ]latency_case18_latency: 6.77 ms
+[ AI-Rank-Log  4/ 7 20:11:48.839 ]latency_case19_latency: 6.156 ms
+[ AI-Rank-Log  4/ 7 20:11:48.861 ]latency_case20_latency: 6.312 ms
+[ AI-Rank-Log  4/ 7 20:11:48.886 ]latency_case21_latency: 7.496 ms
+[ AI-Rank-Log  4/ 7 20:11:48.911 ]latency_case22_latency: 6.49 ms
+[ AI-Rank-Log  4/ 7 20:11:48.936 ]latency_case23_latency: 6.314 ms
+[ AI-Rank-Log  4/ 7 20:11:48.959 ]latency_case24_latency: 6.069 ms
+[ AI-Rank-Log  4/ 7 20:11:48.979 ]latency_case25_latency: 6.593 ms
+[ AI-Rank-Log  4/ 7 20:11:48.999 ]latency_case26_latency: 6.244 ms
+[ AI-Rank-Log  4/ 7 20:11:49. 18 ]latency_case27_latency: 6.184 ms
+[ AI-Rank-Log  4/ 7 20:11:49. 43 ]latency_case28_latency: 6.386 ms
+[ AI-Rank-Log  4/ 7 20:11:49. 66 ]latency_case29_latency: 7.294 ms
+[ AI-Rank-Log  4/ 7 20:11:49. 89 ]latency_case30_latency: 6.405 ms
+[ AI-Rank-Log  4/ 7 20:11:49.112 ]latency_case31_latency: 6.608 ms
+[ AI-Rank-Log  4/ 7 20:11:49.140 ]latency_case32_latency: 6.332 ms
+[ AI-Rank-Log  4/ 7 20:11:49.160 ]latency_case33_latency: 6.425 ms
+[ AI-Rank-Log  4/ 7 20:11:49.182 ]latency_case34_latency: 6.281 ms
+[ AI-Rank-Log  4/ 7 20:11:49.207 ]latency_case35_latency: 7.276 ms
+[ AI-Rank-Log  4/ 7 20:11:49.234 ]latency_case36_latency: 7.465 ms
+[ AI-Rank-Log  4/ 7 20:11:49.258 ]latency_case37_latency: 6.437 ms
+[ AI-Rank-Log  4/ 7 20:11:49.278 ]latency_case38_latency: 6.227 ms
+[ AI-Rank-Log  4/ 7 20:11:49.299 ]latency_case39_latency: 6.558 ms
+[ AI-Rank-Log  4/ 7 20:11:49.329 ]latency_case40_latency: 6.252 ms
+[ AI-Rank-Log  4/ 7 20:11:49.356 ]latency_case41_latency: 8.012 ms
+[ AI-Rank-Log  4/ 7 20:11:49.376 ]latency_case42_latency: 8.114 ms
+[ AI-Rank-Log  4/ 7 20:11:49.398 ]latency_case43_latency: 6.276 ms
+[ AI-Rank-Log  4/ 7 20:11:49.420 ]latency_case44_latency: 6.389 ms
+[ AI-Rank-Log  4/ 7 20:11:49.442 ]latency_case45_latency: 6.267 ms
+[ AI-Rank-Log  4/ 7 20:11:49.465 ]latency_case46_latency: 8.163 ms
+[ AI-Rank-Log  4/ 7 20:11:49.488 ]latency_case47_latency: 7.269 ms
+[ AI-Rank-Log  4/ 7 20:11:49.517 ]latency_case48_latency: 6.117 ms
+[ AI-Rank-Log  4/ 7 20:11:49.598 ]latency_case49_latency: 6.136 ms
+[ AI-Rank-Log  4/ 7 20:11:49.616 ]latency_case50_latency: 6.322 ms
+[ AI-Rank-Log  4/ 7 20:11:49.635 ]latency_case51_latency: 7.265 ms
+[ AI-Rank-Log  4/ 7 20:11:49.660 ]latency_case52_latency: 6.116 ms
+[ AI-Rank-Log  4/ 7 20:11:49.682 ]latency_case53_latency: 5.974 ms
+[ AI-Rank-Log  4/ 7 20:11:49.701 ]latency_case54_latency: 6.012 ms
+[ AI-Rank-Log  4/ 7 20:11:49.719 ]latency_case55_latency: 6.292 ms
+[ AI-Rank-Log  4/ 7 20:11:49.740 ]latency_case56_latency: 6.207 ms
+[ AI-Rank-Log  4/ 7 20:11:49.763 ]latency_case57_latency: 6.152 ms
+[ AI-Rank-Log  4/ 7 20:11:49.796 ]latency_case58_latency: 6.9 ms
+[ AI-Rank-Log  4/ 7 20:11:49.822 ]latency_case59_latency: 6.03 ms
+[ AI-Rank-Log  4/ 7 20:11:49.842 ]latency_case60_latency: 5.943 ms
+[ AI-Rank-Log  4/ 7 20:11:49.862 ]latency_case61_latency: 6.113 ms
+[ AI-Rank-Log  4/ 7 20:11:49.883 ]latency_case62_latency: 6.022 ms
+[ AI-Rank-Log  4/ 7 20:11:49.894 ]latency_case63_latency: 7.443 ms
+[ AI-Rank-Log  4/ 7 20:11:49.915 ]latency_case64_latency: 6.693 ms
+[ AI-Rank-Log  4/ 7 20:11:49.935 ]latency_case65_latency: 6.121 ms
+[ AI-Rank-Log  4/ 7 20:11:49.955 ]latency_case66_latency: 7.009 ms
+[ AI-Rank-Log  4/ 7 20:11:49.978 ]latency_case67_latency: 6.063 ms
+[ AI-Rank-Log  4/ 7 20:11:49.999 ]latency_case68_latency: 6.972 ms
+[ AI-Rank-Log  4/ 7 20:11:50. 36 ]latency_case69_latency: 8.533 ms
+[ AI-Rank-Log  4/ 7 20:11:50. 56 ]latency_case70_latency: 7.059 ms
+[ AI-Rank-Log  4/ 7 20:11:50. 81 ]latency_case71_latency: 6.042 ms
+[ AI-Rank-Log  4/ 7 20:11:50.101 ]latency_case72_latency: 6.279 ms
+[ AI-Rank-Log  4/ 7 20:11:50.128 ]latency_case73_latency: 6.665 ms
+[ AI-Rank-Log  4/ 7 20:11:50.152 ]latency_case74_latency: 7.081 ms
+[ AI-Rank-Log  4/ 7 20:11:50.174 ]latency_case75_latency: 7.055 ms
+[ AI-Rank-Log  4/ 7 20:11:50.199 ]latency_case76_latency: 6.562 ms
+[ AI-Rank-Log  4/ 7 20:11:50.219 ]latency_case77_latency: 6.237 ms
+[ AI-Rank-Log  4/ 7 20:11:50.241 ]latency_case78_latency: 6.1 ms
+[ AI-Rank-Log  4/ 7 20:11:50.269 ]latency_case79_latency: 7.42 ms
+[ AI-Rank-Log  4/ 7 20:11:50.288 ]latency_case80_latency: 7.121 ms
+[ AI-Rank-Log  4/ 7 20:11:50.312 ]latency_case81_latency: 6.293 ms
+[ AI-Rank-Log  4/ 7 20:11:50.339 ]latency_case82_latency: 5.974 ms
+[ AI-Rank-Log  4/ 7 20:11:50.363 ]latency_case83_latency: 6.295 ms
+[ AI-Rank-Log  4/ 7 20:11:50.388 ]latency_case84_latency: 7.06 ms
+[ AI-Rank-Log  4/ 7 20:11:50.417 ]latency_case85_latency: 8.841 ms
+[ AI-Rank-Log  4/ 7 20:11:50.440 ]latency_case86_latency: 6.335 ms
+[ AI-Rank-Log  4/ 7 20:11:50.460 ]latency_case87_latency: 6.04 ms
+[ AI-Rank-Log  4/ 7 20:11:50.484 ]latency_case88_latency: 6.755 ms
+[ AI-Rank-Log  4/ 7 20:11:50.497 ]latency_case89_latency: 6.314 ms
+[ AI-Rank-Log  4/ 7 20:11:50.518 ]latency_case90_latency: 6.344 ms
+[ AI-Rank-Log  4/ 7 20:11:50.539 ]latency_case91_latency: 6.372 ms
+[ AI-Rank-Log  4/ 7 20:11:50.563 ]latency_case92_latency: 6.579 ms
+[ AI-Rank-Log  4/ 7 20:11:50.595 ]latency_case93_latency: 7.244 ms
+[ AI-Rank-Log  4/ 7 20:11:50.620 ]latency_case94_latency: 6.565 ms
+[ AI-Rank-Log  4/ 7 20:11:50.642 ]latency_case95_latency: 6.131 ms
+[ AI-Rank-Log  4/ 7 20:11:50.666 ]latency_case96_latency: 8.695 ms
+[ AI-Rank-Log  4/ 7 20:11:50.686 ]latency_case97_latency: 6.266 ms
+[ AI-Rank-Log  4/ 7 20:11:50.718 ]latency_case98_latency: 6.442 ms
+[ AI-Rank-Log  4/ 7 20:11:50.735 ]latency_case99_latency: 6.156 ms
+[ AI-Rank-Log  4/ 7 20:11:50.759 ]latency_case100_latency: 6.358 ms
+[ AI-Rank-Log  4/ 7 20:11:50.797 ]latency_case101_latency: 7.373 ms
+[ AI-Rank-Log  4/ 7 20:11:50.817 ]latency_case102_latency: 6.208 ms
+[ AI-Rank-Log  4/ 7 20:11:50.837 ]latency_case103_latency: 7.008 ms
+[ AI-Rank-Log  4/ 7 20:11:50.861 ]latency_case104_latency: 6.458 ms
+[ AI-Rank-Log  4/ 7 20:11:50.888 ]latency_case105_latency: 9.262 ms
+[ AI-Rank-Log  4/ 7 20:11:50.903 ]latency_case106_latency: 7.766 ms
+[ AI-Rank-Log  4/ 7 20:11:50.935 ]latency_case107_latency: 7.112 ms
+[ AI-Rank-Log  4/ 7 20:11:50.958 ]latency_case108_latency: 6.185 ms
+[ AI-Rank-Log  4/ 7 20:11:50.976 ]latency_case109_latency: 6.141 ms
+[ AI-Rank-Log  4/ 7 20:11:51.  1 ]latency_case110_latency: 6.015 ms
+[ AI-Rank-Log  4/ 7 20:11:51. 20 ]latency_case111_latency: 6.174 ms
+[ AI-Rank-Log  4/ 7 20:11:51. 47 ]latency_case112_latency: 9.555 ms
+[ AI-Rank-Log  4/ 7 20:11:51. 65 ]latency_case113_latency: 6.192 ms
+[ AI-Rank-Log  4/ 7 20:11:51. 88 ]latency_case114_latency: 7.168 ms
+[ AI-Rank-Log  4/ 7 20:11:51.115 ]latency_case115_latency: 7.201 ms
+[ AI-Rank-Log  4/ 7 20:11:51.134 ]latency_case116_latency: 6.932 ms
+[ AI-Rank-Log  4/ 7 20:11:51.154 ]latency_case117_latency: 6.799 ms
+[ AI-Rank-Log  4/ 7 20:11:51.178 ]latency_case118_latency: 6.353 ms
+[ AI-Rank-Log  4/ 7 20:11:51.199 ]latency_case119_latency: 6.312 ms
+[ AI-Rank-Log  4/ 7 20:11:51.221 ]latency_case120_latency: 6.37 ms
+[ AI-Rank-Log  4/ 7 20:11:51.244 ]latency_case121_latency: 7.005 ms
+[ AI-Rank-Log  4/ 7 20:11:51.271 ]latency_case122_latency: 6.546 ms
+[ AI-Rank-Log  4/ 7 20:11:51.296 ]latency_case123_latency: 6.292 ms
+[ AI-Rank-Log  4/ 7 20:11:51.315 ]latency_case124_latency: 6.232 ms
+[ AI-Rank-Log  4/ 7 20:11:51.338 ]latency_case125_latency: 6.194 ms
+[ AI-Rank-Log  4/ 7 20:11:51.359 ]latency_case126_latency: 6.37 ms
+[ AI-Rank-Log  4/ 7 20:11:51.383 ]latency_case127_latency: 6.217 ms
+[ AI-Rank-Log  4/ 7 20:11:51.406 ]latency_case128_latency: 7.082 ms
+[ AI-Rank-Log  4/ 7 20:11:51.431 ]latency_case129_latency: 6.222 ms
+[ AI-Rank-Log  4/ 7 20:11:51.453 ]latency_case130_latency: 6.545 ms
+[ AI-Rank-Log  4/ 7 20:11:51.483 ]latency_case131_latency: 6.178 ms
+[ AI-Rank-Log  4/ 7 20:11:51.505 ]latency_case132_latency: 6.912 ms
+[ AI-Rank-Log  4/ 7 20:11:51.526 ]latency_case133_latency: 6.133 ms
+[ AI-Rank-Log  4/ 7 20:11:51.558 ]latency_case134_latency: 6.355 ms
+[ AI-Rank-Log  4/ 7 20:11:51.575 ]latency_case135_latency: 6.077 ms
+[ AI-Rank-Log  4/ 7 20:11:51.599 ]latency_case136_latency: 6.842 ms
+[ AI-Rank-Log  4/ 7 20:11:51.622 ]latency_case137_latency: 6.024 ms
+[ AI-Rank-Log  4/ 7 20:11:51.642 ]latency_case138_latency: 6.641 ms
+[ AI-Rank-Log  4/ 7 20:11:51.666 ]latency_case139_latency: 8.026 ms
+[ AI-Rank-Log  4/ 7 20:11:51.689 ]latency_case140_latency: 7.463 ms
+[ AI-Rank-Log  4/ 7 20:11:51.718 ]latency_case141_latency: 5.929 ms
+[ AI-Rank-Log  4/ 7 20:11:51.739 ]latency_case142_latency: 5.894 ms
+[ AI-Rank-Log  4/ 7 20:11:51.762 ]latency_case143_latency: 6.095 ms
+[ AI-Rank-Log  4/ 7 20:11:51.782 ]latency_case144_latency: 6.155 ms
+[ AI-Rank-Log  4/ 7 20:11:51.807 ]latency_case145_latency: 8.048 ms
+[ AI-Rank-Log  4/ 7 20:11:51.859 ]latency_case146_latency: 6.111 ms
+[ AI-Rank-Log  4/ 7 20:11:51.898 ]latency_case147_latency: 5.983 ms
+[ AI-Rank-Log  4/ 7 20:11:51.916 ]latency_case148_latency: 5.978 ms
+[ AI-Rank-Log  4/ 7 20:11:51.932 ]latency_case149_latency: 6.224 ms
+[ AI-Rank-Log  4/ 7 20:11:51.951 ]latency_case150_latency: 6.912 ms
+[ AI-Rank-Log  4/ 7 20:11:51.975 ]latency_case151_latency: 7.503 ms
+[ AI-Rank-Log  4/ 7 20:11:52.  0 ]latency_case152_latency: 6.056 ms
+[ AI-Rank-Log  4/ 7 20:11:52. 20 ]latency_case153_latency: 6.078 ms
+[ AI-Rank-Log  4/ 7 20:11:52. 42 ]latency_case154_latency: 6.024 ms
+[ AI-Rank-Log  4/ 7 20:11:52. 64 ]latency_case155_latency: 6.74 ms
+[ AI-Rank-Log  4/ 7 20:11:52. 86 ]latency_case156_latency: 7.192 ms
+[ AI-Rank-Log  4/ 7 20:11:52.112 ]latency_case157_latency: 7.595 ms
+[ AI-Rank-Log  4/ 7 20:11:52.134 ]latency_case158_latency: 6.658 ms
+[ AI-Rank-Log  4/ 7 20:11:52.165 ]latency_case159_latency: 7.111 ms
+[ AI-Rank-Log  4/ 7 20:11:52.188 ]latency_case160_latency: 8.553 ms
+[ AI-Rank-Log  4/ 7 20:11:52.215 ]latency_case161_latency: 6.644 ms
+[ AI-Rank-Log  4/ 7 20:11:52.236 ]latency_case162_latency: 7.012 ms
+[ AI-Rank-Log  4/ 7 20:11:52.257 ]latency_case163_latency: 6.203 ms
+[ AI-Rank-Log  4/ 7 20:11:52.279 ]latency_case164_latency: 6.323 ms
+[ AI-Rank-Log  4/ 7 20:11:52.301 ]latency_case165_latency: 6.183 ms
+[ AI-Rank-Log  4/ 7 20:11:52.481 ]latency_case166_latency: 15.457 ms
+[ AI-Rank-Log  4/ 7 20:11:52.497 ]latency_case167_latency: 6.085 ms
+[ AI-Rank-Log  4/ 7 20:11:52.518 ]latency_case168_latency: 6.497 ms
+[ AI-Rank-Log  4/ 7 20:11:52.539 ]latency_case169_latency: 6.018 ms
+[ AI-Rank-Log  4/ 7 20:11:52.559 ]latency_case170_latency: 7.101 ms
+[ AI-Rank-Log  4/ 7 20:11:52.580 ]latency_case171_latency: 6.172 ms
+[ AI-Rank-Log  4/ 7 20:11:52.599 ]latency_case172_latency: 6.275 ms
+[ AI-Rank-Log  4/ 7 20:11:52.623 ]latency_case173_latency: 6.016 ms
+[ AI-Rank-Log  4/ 7 20:11:52.645 ]latency_case174_latency: 6.881 ms
+[ AI-Rank-Log  4/ 7 20:11:52.674 ]latency_case175_latency: 6.59 ms
+[ AI-Rank-Log  4/ 7 20:11:52.695 ]latency_case176_latency: 6.863 ms
+[ AI-Rank-Log  4/ 7 20:11:52.718 ]latency_case177_latency: 5.991 ms
+[ AI-Rank-Log  4/ 7 20:11:52.739 ]latency_case178_latency: 7.182 ms
+[ AI-Rank-Log  4/ 7 20:11:52.761 ]latency_case179_latency: 6.859 ms
+[ AI-Rank-Log  4/ 7 20:11:52.783 ]latency_case180_latency: 6.385 ms
+[ AI-Rank-Log  4/ 7 20:11:52.807 ]latency_case181_latency: 7.071 ms
+[ AI-Rank-Log  4/ 7 20:11:52.829 ]latency_case182_latency: 6.841 ms
+[ AI-Rank-Log  4/ 7 20:11:52.857 ]latency_case183_latency: 6.353 ms
+[ AI-Rank-Log  4/ 7 20:11:52.876 ]latency_case184_latency: 6.636 ms
+[ AI-Rank-Log  4/ 7 20:11:52.900 ]latency_case185_latency: 6.212 ms
+[ AI-Rank-Log  4/ 7 20:11:52.922 ]latency_case186_latency: 6.045 ms
+[ AI-Rank-Log  4/ 7 20:11:52.948 ]latency_case187_latency: 7.3 ms
+[ AI-Rank-Log  4/ 7 20:11:52.971 ]latency_case188_latency: 6.075 ms
+[ AI-Rank-Log  4/ 7 20:11:53.  4 ]latency_case189_latency: 6.059 ms
+[ AI-Rank-Log  4/ 7 20:11:53. 23 ]latency_case190_latency: 6.247 ms
+[ AI-Rank-Log  4/ 7 20:11:53. 42 ]latency_case191_latency: 6.093 ms
+[ AI-Rank-Log  4/ 7 20:11:53. 66 ]latency_case192_latency: 6.642 ms
+[ AI-Rank-Log  4/ 7 20:11:53.108 ]latency_case193_latency: 6.207 ms
+[ AI-Rank-Log  4/ 7 20:11:53.124 ]latency_case194_latency: 8.6 ms
+[ AI-Rank-Log  4/ 7 20:11:53.148 ]latency_case195_latency: 8.347 ms
+[ AI-Rank-Log  4/ 7 20:11:53.173 ]latency_case196_latency: 6.209 ms
+[ AI-Rank-Log  4/ 7 20:11:53.198 ]latency_case197_latency: 6.119 ms
+[ AI-Rank-Log  4/ 7 20:11:53.220 ]latency_case198_latency: 6.786 ms
+[ AI-Rank-Log  4/ 7 20:11:53.240 ]latency_case199_latency: 6.065 ms
+[ AI-Rank-Log  4/ 7 20:11:53.262 ]latency_case200_latency: 6.027 ms
+[ AI-Rank-Log  4/ 7 20:11:53.286 ]latency_case201_latency: 7.936 ms
+[ AI-Rank-Log  4/ 7 20:11:53.309 ]latency_case202_latency: 6.724 ms
+[ AI-Rank-Log  4/ 7 20:11:53.328 ]latency_case203_latency: 6.775 ms
+[ AI-Rank-Log  4/ 7 20:11:53.353 ]latency_case204_latency: 6.557 ms
+[ AI-Rank-Log  4/ 7 20:11:53.383 ]latency_case205_latency: 6.187 ms
+[ AI-Rank-Log  4/ 7 20:11:53.406 ]latency_case206_latency: 6.22 ms
+[ AI-Rank-Log  4/ 7 20:11:53.433 ]latency_case207_latency: 6.417 ms
+[ AI-Rank-Log  4/ 7 20:11:53.457 ]latency_case208_latency: 6.649 ms
+[ AI-Rank-Log  4/ 7 20:11:53.476 ]latency_case209_latency: 6.131 ms
+[ AI-Rank-Log  4/ 7 20:11:53.494 ]latency_case210_latency: 6.634 ms
+[ AI-Rank-Log  4/ 7 20:11:53.514 ]latency_case211_latency: 6.722 ms
+[ AI-Rank-Log  4/ 7 20:11:53.537 ]latency_case212_latency: 6.346 ms
+[ AI-Rank-Log  4/ 7 20:11:53.559 ]latency_case213_latency: 7.171 ms
+[ AI-Rank-Log  4/ 7 20:11:53.574 ]latency_case214_latency: 8.836 ms
+[ AI-Rank-Log  4/ 7 20:11:53.614 ]latency_case215_latency: 6.831 ms
+[ AI-Rank-Log  4/ 7 20:11:53.656 ]latency_case216_latency: 7.527 ms
+[ AI-Rank-Log  4/ 7 20:11:53.675 ]latency_case217_latency: 6.99 ms
+[ AI-Rank-Log  4/ 7 20:11:53.696 ]latency_case218_latency: 6.183 ms
+[ AI-Rank-Log  4/ 7 20:11:53.715 ]latency_case219_latency: 6.759 ms
+[ AI-Rank-Log  4/ 7 20:11:53.737 ]latency_case220_latency: 6.871 ms
+[ AI-Rank-Log  4/ 7 20:11:53.761 ]latency_case221_latency: 6.036 ms
+[ AI-Rank-Log  4/ 7 20:11:53.783 ]latency_case222_latency: 6.69 ms
+[ AI-Rank-Log  4/ 7 20:11:53.807 ]latency_case223_latency: 8.731 ms
+[ AI-Rank-Log  4/ 7 20:11:53.830 ]latency_case224_latency: 6.335 ms
+[ AI-Rank-Log  4/ 7 20:11:53.855 ]latency_case225_latency: 7.588 ms
+[ AI-Rank-Log  4/ 7 20:11:53.876 ]latency_case226_latency: 6.52 ms
+[ AI-Rank-Log  4/ 7 20:11:53.898 ]latency_case227_latency: 6.291 ms
+[ AI-Rank-Log  4/ 7 20:11:53.916 ]latency_case228_latency: 6.142 ms
+[ AI-Rank-Log  4/ 7 20:11:53.939 ]latency_case229_latency: 6.368 ms
+[ AI-Rank-Log  4/ 7 20:11:53.965 ]latency_case230_latency: 7.766 ms
+[ AI-Rank-Log  4/ 7 20:11:53.991 ]latency_case231_latency: 6.466 ms
+[ AI-Rank-Log  4/ 7 20:11:54. 16 ]latency_case232_latency: 6.864 ms
+[ AI-Rank-Log  4/ 7 20:11:54. 36 ]latency_case233_latency: 6.167 ms
+[ AI-Rank-Log  4/ 7 20:11:54. 59 ]latency_case234_latency: 6.911 ms
+[ AI-Rank-Log  4/ 7 20:11:54. 83 ]latency_case235_latency: 6.919 ms
+[ AI-Rank-Log  4/ 7 20:11:54.109 ]latency_case236_latency: 7.112 ms
+[ AI-Rank-Log  4/ 7 20:11:54.135 ]latency_case237_latency: 7.713 ms
+[ AI-Rank-Log  4/ 7 20:11:54.157 ]latency_case238_latency: 6.917 ms
+[ AI-Rank-Log  4/ 7 20:11:54.178 ]latency_case239_latency: 6.509 ms
+[ AI-Rank-Log  4/ 7 20:11:54.200 ]latency_case240_latency: 6.307 ms
+[ AI-Rank-Log  4/ 7 20:11:54.219 ]latency_case241_latency: 6.848 ms
+[ AI-Rank-Log  4/ 7 20:11:54.248 ]latency_case242_latency: 6.376 ms
+[ AI-Rank-Log  4/ 7 20:11:54.278 ]latency_case243_latency: 6.15 ms
+[ AI-Rank-Log  4/ 7 20:11:54.295 ]latency_case244_latency: 6.357 ms
+[ AI-Rank-Log  4/ 7 20:11:54.319 ]latency_case245_latency: 6.998 ms
+[ AI-Rank-Log  4/ 7 20:11:54.341 ]latency_case246_latency: 6.256 ms
+[ AI-Rank-Log  4/ 7 20:11:54.520 ]latency_case247_latency: 14.449 ms
+[ AI-Rank-Log  4/ 7 20:11:54.538 ]latency_case248_latency: 6.089 ms
+[ AI-Rank-Log  4/ 7 20:11:54.561 ]latency_case249_latency: 6.219 ms
+[ AI-Rank-Log  4/ 7 20:11:54.579 ]latency_case250_latency: 6.076 ms
+[ AI-Rank-Log  4/ 7 20:11:54.594 ]latency_case251_latency: 8.004 ms
+[ AI-Rank-Log  4/ 7 20:11:54.622 ]latency_case252_latency: 6.124 ms
+[ AI-Rank-Log  4/ 7 20:11:54.640 ]latency_case253_latency: 6.308 ms
+[ AI-Rank-Log  4/ 7 20:11:54.663 ]latency_case254_latency: 6.635 ms
+[ AI-Rank-Log  4/ 7 20:11:54.686 ]latency_case255_latency: 6.884 ms
+[ AI-Rank-Log  4/ 7 20:11:54.709 ]latency_case256_latency: 6.657 ms
+[ AI-Rank-Log  4/ 7 20:11:54.736 ]latency_case257_latency: 6.427 ms
+[ AI-Rank-Log  4/ 7 20:11:54.757 ]latency_case258_latency: 6.303 ms
+[ AI-Rank-Log  4/ 7 20:11:54.777 ]latency_case259_latency: 6.13 ms
+[ AI-Rank-Log  4/ 7 20:11:54.797 ]latency_case260_latency: 6.978 ms
+[ AI-Rank-Log  4/ 7 20:11:54.818 ]latency_case261_latency: 6.334 ms
+[ AI-Rank-Log  4/ 7 20:11:54.843 ]latency_case262_latency: 6.422 ms
+[ AI-Rank-Log  4/ 7 20:11:54.866 ]latency_case263_latency: 7.095 ms
+[ AI-Rank-Log  4/ 7 20:11:54.893 ]latency_case264_latency: 7.09 ms
+[ AI-Rank-Log  4/ 7 20:11:54.919 ]latency_case265_latency: 6.105 ms
+[ AI-Rank-Log  4/ 7 20:11:55.246 ]latency_case266_latency: 13.892 ms
+[ AI-Rank-Log  4/ 7 20:11:55.267 ]latency_case267_latency: 7.343 ms
+[ AI-Rank-Log  4/ 7 20:11:55.294 ]latency_case268_latency: 6.908 ms
+[ AI-Rank-Log  4/ 7 20:11:55.315 ]latency_case269_latency: 6.516 ms
+[ AI-Rank-Log  4/ 7 20:11:55.334 ]latency_case270_latency: 7.325 ms
+[ AI-Rank-Log  4/ 7 20:11:55.364 ]latency_case271_latency: 6.381 ms
+[ AI-Rank-Log  4/ 7 20:11:55.389 ]latency_case272_latency: 6.621 ms
+[ AI-Rank-Log  4/ 7 20:11:55.412 ]latency_case273_latency: 5.89 ms
+[ AI-Rank-Log  4/ 7 20:11:55.441 ]latency_case274_latency: 6.074 ms
+[ AI-Rank-Log  4/ 7 20:11:55.463 ]latency_case275_latency: 6.39 ms
+[ AI-Rank-Log  4/ 7 20:11:55.483 ]latency_case276_latency: 6.281 ms
+[ AI-Rank-Log  4/ 7 20:11:55.507 ]latency_case277_latency: 6.452 ms
+[ AI-Rank-Log  4/ 7 20:11:55.534 ]latency_case278_latency: 6.663 ms
+[ AI-Rank-Log  4/ 7 20:11:55.558 ]latency_case279_latency: 6.571 ms
+[ AI-Rank-Log  4/ 7 20:11:55.581 ]latency_case280_latency: 6.612 ms
+[ AI-Rank-Log  4/ 7 20:11:55.603 ]latency_case281_latency: 6.895 ms
+[ AI-Rank-Log  4/ 7 20:11:55.615 ]latency_case282_latency: 7.57 ms
+[ AI-Rank-Log  4/ 7 20:11:55.644 ]latency_case283_latency: 6.448 ms
+[ AI-Rank-Log  4/ 7 20:11:55.669 ]latency_case284_latency: 6.647 ms
+[ AI-Rank-Log  4/ 7 20:11:55.694 ]latency_case285_latency: 6.065 ms
+[ AI-Rank-Log  4/ 7 20:11:55.723 ]latency_case286_latency: 6.205 ms
+[ AI-Rank-Log  4/ 7 20:11:55.745 ]latency_case287_latency: 6.512 ms
+[ AI-Rank-Log  4/ 7 20:11:55.770 ]latency_case288_latency: 6.427 ms
+[ AI-Rank-Log  4/ 7 20:11:55.791 ]latency_case289_latency: 6.254 ms
+[ AI-Rank-Log  4/ 7 20:11:55.820 ]latency_case290_latency: 6.162 ms
+[ AI-Rank-Log  4/ 7 20:11:55.839 ]latency_case291_latency: 6.556 ms
+[ AI-Rank-Log  4/ 7 20:11:55.861 ]latency_case292_latency: 6.757 ms
+[ AI-Rank-Log  4/ 7 20:11:55.883 ]latency_case293_latency: 6.381 ms
+[ AI-Rank-Log  4/ 7 20:11:55.907 ]latency_case294_latency: 8.346 ms
+[ AI-Rank-Log  4/ 7 20:11:55.939 ]latency_case295_latency: 6.148 ms
+[ AI-Rank-Log  4/ 7 20:11:55.958 ]latency_case296_latency: 6.745 ms
+[ AI-Rank-Log  4/ 7 20:11:55.980 ]latency_case297_latency: 6.646 ms
+[ AI-Rank-Log  4/ 7 20:11:56.  3 ]latency_case298_latency: 6.336 ms
+[ AI-Rank-Log  4/ 7 20:11:56. 28 ]latency_case299_latency: 6.833 ms
+[ AI-Rank-Log  4/ 7 20:11:56. 51 ]latency_case300_latency: 6.314 ms
+[ AI-Rank-Log  4/ 7 20:11:56. 76 ]latency_case301_latency: 6.355 ms
+[ AI-Rank-Log  4/ 7 20:11:56. 93 ]latency_case302_latency: 6.072 ms
+[ AI-Rank-Log  4/ 7 20:11:56.107 ]latency_case303_latency: 6.729 ms
+[ AI-Rank-Log  4/ 7 20:11:56.133 ]latency_case304_latency: 6.32 ms
+[ AI-Rank-Log  4/ 7 20:11:56.164 ]latency_case305_latency: 6.595 ms
+[ AI-Rank-Log  4/ 7 20:11:56.184 ]latency_case306_latency: 6.994 ms
+[ AI-Rank-Log  4/ 7 20:11:56.207 ]latency_case307_latency: 6.143 ms
+[ AI-Rank-Log  4/ 7 20:11:56.231 ]latency_case308_latency: 6.196 ms
+[ AI-Rank-Log  4/ 7 20:11:56.251 ]latency_case309_latency: 6.226 ms
+[ AI-Rank-Log  4/ 7 20:11:56.272 ]latency_case310_latency: 6.059 ms
+[ AI-Rank-Log  4/ 7 20:11:56.293 ]latency_case311_latency: 6.761 ms
+[ AI-Rank-Log  4/ 7 20:11:56.315 ]latency_case312_latency: 7.3 ms
+[ AI-Rank-Log  4/ 7 20:11:56.349 ]latency_case313_latency: 6.352 ms
+[ AI-Rank-Log  4/ 7 20:11:56.371 ]latency_case314_latency: 6.251 ms
+[ AI-Rank-Log  4/ 7 20:11:56.391 ]latency_case315_latency: 6.1 ms
+[ AI-Rank-Log  4/ 7 20:11:56.416 ]latency_case316_latency: 6.878 ms
+[ AI-Rank-Log  4/ 7 20:11:56.441 ]latency_case317_latency: 9.439 ms
+[ AI-Rank-Log  4/ 7 20:11:56.458 ]latency_case318_latency: 6.253 ms
+[ AI-Rank-Log  4/ 7 20:11:56.481 ]latency_case319_latency: 6.241 ms
+[ AI-Rank-Log  4/ 7 20:11:56.506 ]latency_case320_latency: 6.182 ms
+[ AI-Rank-Log  4/ 7 20:11:56.526 ]latency_case321_latency: 6.987 ms
+[ AI-Rank-Log  4/ 7 20:11:56.547 ]latency_case322_latency: 6.61 ms
+[ AI-Rank-Log  4/ 7 20:11:56.575 ]latency_case323_latency: 6.332 ms
+[ AI-Rank-Log  4/ 7 20:11:56.596 ]latency_case324_latency: 6.823 ms
+[ AI-Rank-Log  4/ 7 20:11:56.624 ]latency_case325_latency: 6.954 ms
+[ AI-Rank-Log  4/ 7 20:11:56.643 ]latency_case326_latency: 6.578 ms
+[ AI-Rank-Log  4/ 7 20:11:56.669 ]latency_case327_latency: 8.498 ms
+[ AI-Rank-Log  4/ 7 20:11:56.699 ]latency_case328_latency: 6.169 ms
+[ AI-Rank-Log  4/ 7 20:11:56.721 ]latency_case329_latency: 6.153 ms
+[ AI-Rank-Log  4/ 7 20:11:56.743 ]latency_case330_latency: 6.112 ms
+[ AI-Rank-Log  4/ 7 20:11:56.766 ]latency_case331_latency: 6.041 ms
+[ AI-Rank-Log  4/ 7 20:11:56.789 ]latency_case332_latency: 6.601 ms
+[ AI-Rank-Log  4/ 7 20:11:56.816 ]latency_case333_latency: 8.123 ms
+[ AI-Rank-Log  4/ 7 20:11:56.839 ]latency_case334_latency: 6.974 ms
+[ AI-Rank-Log  4/ 7 20:11:56.860 ]latency_case335_latency: 6.087 ms
+[ AI-Rank-Log  4/ 7 20:11:56.884 ]latency_case336_latency: 7.021 ms
+[ AI-Rank-Log  4/ 7 20:11:56.907 ]latency_case337_latency: 6.852 ms
+[ AI-Rank-Log  4/ 7 20:11:56.931 ]latency_case338_latency: 6.272 ms
+[ AI-Rank-Log  4/ 7 20:11:56.955 ]latency_case339_latency: 6.175 ms
+[ AI-Rank-Log  4/ 7 20:11:56.991 ]latency_case340_latency: 6.174 ms
+[ AI-Rank-Log  4/ 7 20:11:57. 11 ]latency_case341_latency: 6.151 ms
+[ AI-Rank-Log  4/ 7 20:11:57. 32 ]latency_case342_latency: 6.095 ms
+[ AI-Rank-Log  4/ 7 20:11:57. 56 ]latency_case343_latency: 7.958 ms
+[ AI-Rank-Log  4/ 7 20:11:57. 79 ]latency_case344_latency: 6.753 ms
+[ AI-Rank-Log  4/ 7 20:11:57.100 ]latency_case345_latency: 6.018 ms
+[ AI-Rank-Log  4/ 7 20:11:57.120 ]latency_case346_latency: 6.027 ms
+[ AI-Rank-Log  4/ 7 20:11:57.142 ]latency_case347_latency: 6.187 ms
+[ AI-Rank-Log  4/ 7 20:11:57.165 ]latency_case348_latency: 6.57 ms
+[ AI-Rank-Log  4/ 7 20:11:57.190 ]latency_case349_latency: 6.459 ms
+[ AI-Rank-Log  4/ 7 20:11:57.206 ]latency_case350_latency: 8.372 ms
+[ AI-Rank-Log  4/ 7 20:11:57.232 ]latency_case351_latency: 6.375 ms
+[ AI-Rank-Log  4/ 7 20:11:57.261 ]latency_case352_latency: 6.192 ms
+[ AI-Rank-Log  4/ 7 20:11:57.280 ]latency_case353_latency: 6.408 ms
+[ AI-Rank-Log  4/ 7 20:11:57.305 ]latency_case354_latency: 7.081 ms
+[ AI-Rank-Log  4/ 7 20:11:57.329 ]latency_case355_latency: 7.156 ms
+[ AI-Rank-Log  4/ 7 20:11:57.355 ]latency_case356_latency: 6.704 ms
+[ AI-Rank-Log  4/ 7 20:11:57.379 ]latency_case357_latency: 6.881 ms
+[ AI-Rank-Log  4/ 7 20:11:57.402 ]latency_case358_latency: 6.105 ms
+[ AI-Rank-Log  4/ 7 20:11:57.429 ]latency_case359_latency: 8.409 ms
+[ AI-Rank-Log  4/ 7 20:11:57.455 ]latency_case360_latency: 7.016 ms
+[ AI-Rank-Log  4/ 7 20:11:57.484 ]latency_case361_latency: 6.96 ms
+[ AI-Rank-Log  4/ 7 20:11:57.495 ]latency_case362_latency: 6.844 ms
+[ AI-Rank-Log  4/ 7 20:11:57.526 ]latency_case363_latency: 6.137 ms
+[ AI-Rank-Log  4/ 7 20:11:57.544 ]latency_case364_latency: 6.601 ms
+[ AI-Rank-Log  4/ 7 20:11:57.566 ]latency_case365_latency: 7.12 ms
+[ AI-Rank-Log  4/ 7 20:11:57.590 ]latency_case366_latency: 8.219 ms
+[ AI-Rank-Log  4/ 7 20:11:57.644 ]latency_case367_latency: 6.145 ms
+[ AI-Rank-Log  4/ 7 20:11:57.660 ]latency_case368_latency: 5.958 ms
+[ AI-Rank-Log  4/ 7 20:11:57.675 ]latency_case369_latency: 6.291 ms
+[ AI-Rank-Log  4/ 7 20:11:57.694 ]latency_case370_latency: 6.936 ms
+[ AI-Rank-Log  4/ 7 20:11:57.714 ]latency_case371_latency: 7.126 ms
+[ AI-Rank-Log  4/ 7 20:11:57.736 ]latency_case372_latency: 7.148 ms
+[ AI-Rank-Log  4/ 7 20:11:57.753 ]latency_case373_latency: 5.964 ms
+[ AI-Rank-Log  4/ 7 20:11:57.855 ]latency_case374_latency: 14.257 ms
+[ AI-Rank-Log  4/ 7 20:11:57.884 ]latency_case375_latency: 6.316 ms
+[ AI-Rank-Log  4/ 7 20:11:57.907 ]latency_case376_latency: 8.091 ms
+[ AI-Rank-Log  4/ 7 20:11:57.961 ]latency_case377_latency: 6.126 ms
+[ AI-Rank-Log  4/ 7 20:11:57.978 ]latency_case378_latency: 6.269 ms
+[ AI-Rank-Log  4/ 7 20:11:57.997 ]latency_case379_latency: 6.382 ms
+[ AI-Rank-Log  4/ 7 20:11:58. 18 ]latency_case380_latency: 8.317 ms
+[ AI-Rank-Log  4/ 7 20:11:58. 36 ]latency_case381_latency: 6.243 ms
+[ AI-Rank-Log  4/ 7 20:11:58. 58 ]latency_case382_latency: 6.417 ms
+[ AI-Rank-Log  4/ 7 20:11:58. 80 ]latency_case383_latency: 8.013 ms
+[ AI-Rank-Log  4/ 7 20:11:58.101 ]latency_case384_latency: 6.114 ms
+[ AI-Rank-Log  4/ 7 20:11:58.127 ]latency_case385_latency: 6.24 ms
+[ AI-Rank-Log  4/ 7 20:11:58.147 ]latency_case386_latency: 6.201 ms
+[ AI-Rank-Log  4/ 7 20:11:58.171 ]latency_case387_latency: 6.169 ms
+[ AI-Rank-Log  4/ 7 20:11:58.197 ]latency_case388_latency: 6.521 ms
+[ AI-Rank-Log  4/ 7 20:11:58.217 ]latency_case389_latency: 6.992 ms
+[ AI-Rank-Log  4/ 7 20:11:58.239 ]latency_case390_latency: 6.389 ms
+[ AI-Rank-Log  4/ 7 20:11:58.258 ]latency_case391_latency: 6.353 ms
+[ AI-Rank-Log  4/ 7 20:11:58.278 ]latency_case392_latency: 6.251 ms
+[ AI-Rank-Log  4/ 7 20:11:58.300 ]latency_case393_latency: 6.339 ms
+[ AI-Rank-Log  4/ 7 20:11:58.369 ]latency_case394_latency: 6.11 ms
+[ AI-Rank-Log  4/ 7 20:11:58.388 ]latency_case395_latency: 6.49 ms
+[ AI-Rank-Log  4/ 7 20:11:58.409 ]latency_case396_latency: 6.493 ms
+[ AI-Rank-Log  4/ 7 20:11:58.428 ]latency_case397_latency: 6.579 ms
+[ AI-Rank-Log  4/ 7 20:11:58.467 ]latency_case398_latency: 5.944 ms
+[ AI-Rank-Log  4/ 7 20:11:58.486 ]latency_case399_latency: 6.11 ms
+[ AI-Rank-Log  4/ 7 20:11:58.506 ]latency_case400_latency: 8.626 ms
+[ AI-Rank-Log  4/ 7 20:11:58.525 ]latency_case401_latency: 7.291 ms
+[ AI-Rank-Log  4/ 7 20:11:58.546 ]latency_case402_latency: 6.8 ms
+[ AI-Rank-Log  4/ 7 20:11:58.570 ]latency_case403_latency: 6.447 ms
+[ AI-Rank-Log  4/ 7 20:11:58.594 ]latency_case404_latency: 6.33 ms
+[ AI-Rank-Log  4/ 7 20:11:58.616 ]latency_case405_latency: 6.661 ms
+[ AI-Rank-Log  4/ 7 20:11:58.636 ]latency_case406_latency: 6.638 ms
+[ AI-Rank-Log  4/ 7 20:11:58.659 ]latency_case407_latency: 6.34 ms
+[ AI-Rank-Log  4/ 7 20:11:58.682 ]latency_case408_latency: 6.422 ms
+[ AI-Rank-Log  4/ 7 20:11:58.707 ]latency_case409_latency: 8.142 ms
+[ AI-Rank-Log  4/ 7 20:11:58.729 ]latency_case410_latency: 6.937 ms
+[ AI-Rank-Log  4/ 7 20:11:58.755 ]latency_case411_latency: 6.32 ms
+[ AI-Rank-Log  4/ 7 20:11:58.777 ]latency_case412_latency: 6.33 ms
+[ AI-Rank-Log  4/ 7 20:11:58.797 ]latency_case413_latency: 6.105 ms
+[ AI-Rank-Log  4/ 7 20:11:58.820 ]latency_case414_latency: 6.323 ms
+[ AI-Rank-Log  4/ 7 20:11:58.840 ]latency_case415_latency: 5.953 ms
+[ AI-Rank-Log  4/ 7 20:11:58.864 ]latency_case416_latency: 6.909 ms
+[ AI-Rank-Log  4/ 7 20:11:58.888 ]latency_case417_latency: 6.488 ms
+[ AI-Rank-Log  4/ 7 20:11:58.912 ]latency_case418_latency: 6.247 ms
+[ AI-Rank-Log  4/ 7 20:11:58.936 ]latency_case419_latency: 6.128 ms
+[ AI-Rank-Log  4/ 7 20:11:58.957 ]latency_case420_latency: 6.195 ms
+[ AI-Rank-Log  4/ 7 20:11:58.976 ]latency_case421_latency: 6.264 ms
+[ AI-Rank-Log  4/ 7 20:11:58.990 ]latency_case422_latency: 6.34 ms
+[ AI-Rank-Log  4/ 7 20:11:59.220 ]latency_case423_latency: 13.548 ms
+[ AI-Rank-Log  4/ 7 20:11:59.236 ]latency_case424_latency: 6.099 ms
+[ AI-Rank-Log  4/ 7 20:11:59.257 ]latency_case425_latency: 7.608 ms
+[ AI-Rank-Log  4/ 7 20:11:59.276 ]latency_case426_latency: 6.196 ms
+[ AI-Rank-Log  4/ 7 20:11:59.300 ]latency_case427_latency: 6.115 ms
+[ AI-Rank-Log  4/ 7 20:11:59.318 ]latency_case428_latency: 6.183 ms
+[ AI-Rank-Log  4/ 7 20:11:59.341 ]latency_case429_latency: 6.126 ms
+[ AI-Rank-Log  4/ 7 20:11:59.363 ]latency_case430_latency: 6.488 ms
+[ AI-Rank-Log  4/ 7 20:11:59.388 ]latency_case431_latency: 6.905 ms
+[ AI-Rank-Log  4/ 7 20:11:59.410 ]latency_case432_latency: 6.551 ms
+[ AI-Rank-Log  4/ 7 20:11:59.436 ]latency_case433_latency: 6.351 ms
+[ AI-Rank-Log  4/ 7 20:11:59.457 ]latency_case434_latency: 6.395 ms
+[ AI-Rank-Log  4/ 7 20:11:59.468 ]latency_case435_latency: 6.427 ms
+[ AI-Rank-Log  4/ 7 20:11:59.493 ]latency_case436_latency: 7.339 ms
+[ AI-Rank-Log  4/ 7 20:11:59.520 ]latency_case437_latency: 7.01 ms
+[ AI-Rank-Log  4/ 7 20:11:59.542 ]latency_case438_latency: 6.259 ms
+[ AI-Rank-Log  4/ 7 20:11:59.563 ]latency_case439_latency: 6.42 ms
+[ AI-Rank-Log  4/ 7 20:11:59.589 ]latency_case440_latency: 6.301 ms
+[ AI-Rank-Log  4/ 7 20:11:59.614 ]latency_case441_latency: 8.019 ms
+[ AI-Rank-Log  4/ 7 20:11:59.640 ]latency_case442_latency: 6.176 ms
+[ AI-Rank-Log  4/ 7 20:11:59.660 ]latency_case443_latency: 6.386 ms
+[ AI-Rank-Log  4/ 7 20:11:59.683 ]latency_case444_latency: 6.092 ms
+[ AI-Rank-Log  4/ 7 20:11:59.706 ]latency_case445_latency: 7.358 ms
+[ AI-Rank-Log  4/ 7 20:11:59.730 ]latency_case446_latency: 6.162 ms
+[ AI-Rank-Log  4/ 7 20:11:59.756 ]latency_case447_latency: 7.318 ms
+[ AI-Rank-Log  4/ 7 20:11:59.784 ]latency_case448_latency: 7.024 ms
+[ AI-Rank-Log  4/ 7 20:11:59.808 ]latency_case449_latency: 7.13 ms
+[ AI-Rank-Log  4/ 7 20:11:59.829 ]latency_case450_latency: 6.235 ms
+[ AI-Rank-Log  4/ 7 20:11:59.851 ]latency_case451_latency: 6.081 ms
+[ AI-Rank-Log  4/ 7 20:11:59.874 ]latency_case452_latency: 7.575 ms
+[ AI-Rank-Log  4/ 7 20:11:59.936 ]latency_case453_latency: 6.02 ms
+[ AI-Rank-Log  4/ 7 20:11:59.955 ]latency_case454_latency: 7.167 ms
+[ AI-Rank-Log  4/ 7 20:11:59.976 ]latency_case455_latency: 7.333 ms
+[ AI-Rank-Log  4/ 7 20:11:59.998 ]latency_case456_latency: 9.35 ms
+[ AI-Rank-Log  4/ 7 20:12: 0. 16 ]latency_case457_latency: 6.305 ms
+[ AI-Rank-Log  4/ 7 20:12: 0. 34 ]latency_case458_latency: 7.213 ms
+[ AI-Rank-Log  4/ 7 20:12: 0. 57 ]latency_case459_latency: 6.579 ms
+[ AI-Rank-Log  4/ 7 20:12: 0. 80 ]latency_case460_latency: 6.121 ms
+[ AI-Rank-Log  4/ 7 20:12: 0. 97 ]latency_case461_latency: 6.234 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.120 ]latency_case462_latency: 6.094 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.143 ]latency_case463_latency: 6.282 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.168 ]latency_case464_latency: 6.796 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.194 ]latency_case465_latency: 6.69 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.216 ]latency_case466_latency: 6.96 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.238 ]latency_case467_latency: 6.205 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.258 ]latency_case468_latency: 6.273 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.288 ]latency_case469_latency: 8.004 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.308 ]latency_case470_latency: 6.298 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.331 ]latency_case471_latency: 6.315 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.355 ]latency_case472_latency: 6.424 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.377 ]latency_case473_latency: 6.626 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.397 ]latency_case474_latency: 6.109 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.420 ]latency_case475_latency: 6.194 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.439 ]latency_case476_latency: 6.186 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.467 ]latency_case477_latency: 6.192 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.489 ]latency_case478_latency: 6.19 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.501 ]latency_case479_latency: 7.606 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.521 ]latency_case480_latency: 6.205 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.545 ]latency_case481_latency: 6.522 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.571 ]latency_case482_latency: 6.377 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.594 ]latency_case483_latency: 6.466 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.619 ]latency_case484_latency: 7.041 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.640 ]latency_case485_latency: 6.059 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.660 ]latency_case486_latency: 7.191 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.683 ]latency_case487_latency: 6.453 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.706 ]latency_case488_latency: 7.182 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.733 ]latency_case489_latency: 6.438 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.758 ]latency_case490_latency: 6.238 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.778 ]latency_case491_latency: 6.396 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.798 ]latency_case492_latency: 6.179 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.819 ]latency_case493_latency: 6.335 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.844 ]latency_case494_latency: 6.463 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.868 ]latency_case495_latency: 6.807 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.896 ]latency_case496_latency: 6.445 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.917 ]latency_case497_latency: 6.483 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.935 ]latency_case498_latency: 6.225 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.955 ]latency_case499_latency: 6.524 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.976 ]latency_case500_latency: 6.188 ms
+[ AI-Rank-Log  4/ 7 20:12: 0.997 ]latency_case501_latency: 6.108 ms
+[ AI-Rank-Log  4/ 7 20:12: 1. 19 ]latency_case502_latency: 6.32 ms
+[ AI-Rank-Log  4/ 7 20:12: 1. 39 ]latency_case503_latency: 6.911 ms
+[ AI-Rank-Log  4/ 7 20:12: 1. 60 ]latency_case504_latency: 6.19 ms
+[ AI-Rank-Log  4/ 7 20:12: 1. 87 ]latency_case505_latency: 6.858 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.115 ]latency_case506_latency: 6.448 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.139 ]latency_case507_latency: 7.01 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.158 ]latency_case508_latency: 6.134 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.179 ]latency_case509_latency: 6.246 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.201 ]latency_case510_latency: 6.046 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.216 ]latency_case511_latency: 6.553 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.240 ]latency_case512_latency: 6.174 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.276 ]latency_case513_latency: 6.205 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.296 ]latency_case514_latency: 6.571 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.318 ]latency_case515_latency: 6.864 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.340 ]latency_case516_latency: 6.158 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.362 ]latency_case517_latency: 6.407 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.390 ]latency_case518_latency: 6.191 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.411 ]latency_case519_latency: 6.614 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.435 ]latency_case520_latency: 7.903 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.459 ]latency_case521_latency: 6.791 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.496 ]latency_case522_latency: 7.918 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.517 ]latency_case523_latency: 6.597 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.537 ]latency_case524_latency: 6.098 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.557 ]latency_case525_latency: 6.293 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.577 ]latency_case526_latency: 6.273 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.600 ]latency_case527_latency: 6.261 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.620 ]latency_case528_latency: 6.955 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.644 ]latency_case529_latency: 6.685 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.670 ]latency_case530_latency: 6.379 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.693 ]latency_case531_latency: 6.273 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.702 ]latency_case532_latency: 6.38 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.731 ]latency_case533_latency: 6.391 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.757 ]latency_case534_latency: 6.455 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.779 ]latency_case535_latency: 6.474 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.799 ]latency_case536_latency: 6.481 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.821 ]latency_case537_latency: 6.104 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.843 ]latency_case538_latency: 6.406 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.868 ]latency_case539_latency: 6.228 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.897 ]latency_case540_latency: 7.471 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.918 ]latency_case541_latency: 6.223 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.940 ]latency_case542_latency: 6.389 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.954 ]latency_case543_latency: 8.298 ms
+[ AI-Rank-Log  4/ 7 20:12: 1.978 ]latency_case544_latency: 7.973 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.  5 ]latency_case545_latency: 7.071 ms
+[ AI-Rank-Log  4/ 7 20:12: 2. 25 ]latency_case546_latency: 6.87 ms
+[ AI-Rank-Log  4/ 7 20:12: 2. 47 ]latency_case547_latency: 8.13 ms
+[ AI-Rank-Log  4/ 7 20:12: 2. 77 ]latency_case548_latency: 7.095 ms
+[ AI-Rank-Log  4/ 7 20:12: 2. 95 ]latency_case549_latency: 7.27 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.119 ]latency_case550_latency: 6.408 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.143 ]latency_case551_latency: 6.225 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.173 ]latency_case552_latency: 6.232 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.197 ]latency_case553_latency: 6.745 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.218 ]latency_case554_latency: 6.509 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.238 ]latency_case555_latency: 6.589 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.260 ]latency_case556_latency: 6.303 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.286 ]latency_case557_latency: 6.774 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.307 ]latency_case558_latency: 6.633 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.329 ]latency_case559_latency: 6.585 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.347 ]latency_case560_latency: 6.49 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.370 ]latency_case561_latency: 6.488 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.392 ]latency_case562_latency: 5.831 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.430 ]latency_case563_latency: 7.616 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.456 ]latency_case564_latency: 8.022 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.478 ]latency_case565_latency: 6.103 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.497 ]latency_case566_latency: 6.128 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.519 ]latency_case567_latency: 6.164 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.539 ]latency_case568_latency: 6.911 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.564 ]latency_case569_latency: 6.873 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.748 ]latency_case570_latency: 12.946 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.768 ]latency_case571_latency: 6.279 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.793 ]latency_case572_latency: 6.537 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.818 ]latency_case573_latency: 6.339 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.837 ]latency_case574_latency: 6.178 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.858 ]latency_case575_latency: 7.605 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.874 ]latency_case576_latency: 6.655 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.895 ]latency_case577_latency: 6.77 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.908 ]latency_case578_latency: 6.166 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.936 ]latency_case579_latency: 7.645 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.957 ]latency_case580_latency: 6.52 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.977 ]latency_case581_latency: 6.991 ms
+[ AI-Rank-Log  4/ 7 20:12: 2.995 ]latency_case582_latency: 6.681 ms
+[ AI-Rank-Log  4/ 7 20:12: 3. 21 ]latency_case583_latency: 6.043 ms
+[ AI-Rank-Log  4/ 7 20:12: 3. 44 ]latency_case584_latency: 6.875 ms
+[ AI-Rank-Log  4/ 7 20:12: 3. 68 ]latency_case585_latency: 6.194 ms
+[ AI-Rank-Log  4/ 7 20:12: 3. 86 ]latency_case586_latency: 6.243 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.110 ]latency_case587_latency: 6.439 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.134 ]latency_case588_latency: 7.085 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.159 ]latency_case589_latency: 6.42 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.181 ]latency_case590_latency: 6.046 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.203 ]latency_case591_latency: 6.268 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.225 ]latency_case592_latency: 7.551 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.243 ]latency_case593_latency: 6.415 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.298 ]latency_case594_latency: 8.384 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.315 ]latency_case595_latency: 6.077 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.334 ]latency_case596_latency: 7.039 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.356 ]latency_case597_latency: 7.084 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.379 ]latency_case598_latency: 6.08 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.397 ]latency_case599_latency: 6.098 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.421 ]latency_case600_latency: 7.436 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.442 ]latency_case601_latency: 6.115 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.468 ]latency_case602_latency: 6.154 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.491 ]latency_case603_latency: 6.403 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.516 ]latency_case604_latency: 7.955 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.539 ]latency_case605_latency: 6.644 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.563 ]latency_case606_latency: 6.664 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.586 ]latency_case607_latency: 7.924 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.614 ]latency_case608_latency: 9.185 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.641 ]latency_case609_latency: 6.577 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.660 ]latency_case610_latency: 6.155 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.680 ]latency_case611_latency: 6.04 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.701 ]latency_case612_latency: 6.183 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.723 ]latency_case613_latency: 6.315 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.750 ]latency_case614_latency: 6.099 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.774 ]latency_case615_latency: 6.909 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.799 ]latency_case616_latency: 6.134 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.818 ]latency_case617_latency: 6.246 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.842 ]latency_case618_latency: 6.694 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.864 ]latency_case619_latency: 6.82 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.893 ]latency_case620_latency: 7.698 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.920 ]latency_case621_latency: 6.742 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.941 ]latency_case622_latency: 6.266 ms
+[ AI-Rank-Log  4/ 7 20:12: 3.965 ]latency_case623_latency: 6.946 ms
+[ AI-Rank-Log  4/ 7 20:12: 4. 63 ]latency_case624_latency: 13.176 ms
+[ AI-Rank-Log  4/ 7 20:12: 4. 84 ]latency_case625_latency: 6.685 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.108 ]latency_case626_latency: 8.325 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.129 ]latency_case627_latency: 7.743 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.153 ]latency_case628_latency: 6.599 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.308 ]latency_case629_latency: 15.059 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.337 ]latency_case630_latency: 7.092 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.356 ]latency_case631_latency: 7.176 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.377 ]latency_case632_latency: 6.194 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.399 ]latency_case633_latency: 6.316 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.421 ]latency_case634_latency: 6.274 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.445 ]latency_case635_latency: 6.862 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.469 ]latency_case636_latency: 6.343 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.494 ]latency_case637_latency: 6.376 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.518 ]latency_case638_latency: 6.792 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.542 ]latency_case639_latency: 6.141 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.564 ]latency_case640_latency: 6.655 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.586 ]latency_case641_latency: 7.327 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.612 ]latency_case642_latency: 6.287 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.634 ]latency_case643_latency: 7.156 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.668 ]latency_case644_latency: 6.24 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.688 ]latency_case645_latency: 6.216 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.710 ]latency_case646_latency: 6.323 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.735 ]latency_case647_latency: 7.159 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.750 ]latency_case648_latency: 6.15 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.770 ]latency_case649_latency: 6.379 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.795 ]latency_case650_latency: 7.458 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.815 ]latency_case651_latency: 6.444 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.840 ]latency_case652_latency: 5.998 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.860 ]latency_case653_latency: 6.609 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.887 ]latency_case654_latency: 7.454 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.914 ]latency_case655_latency: 7.163 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.936 ]latency_case656_latency: 6.398 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.962 ]latency_case657_latency: 6.23 ms
+[ AI-Rank-Log  4/ 7 20:12: 4.981 ]latency_case658_latency: 6.311 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.  3 ]latency_case659_latency: 6.464 ms
+[ AI-Rank-Log  4/ 7 20:12: 5. 22 ]latency_case660_latency: 6.115 ms
+[ AI-Rank-Log  4/ 7 20:12: 5. 72 ]latency_case661_latency: 5.982 ms
+[ AI-Rank-Log  4/ 7 20:12: 5. 98 ]latency_case662_latency: 7.16 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.115 ]latency_case663_latency: 6.757 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.145 ]latency_case664_latency: 7.293 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.168 ]latency_case665_latency: 6.13 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.190 ]latency_case666_latency: 6.268 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.216 ]latency_case667_latency: 7.595 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.236 ]latency_case668_latency: 6.873 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.260 ]latency_case669_latency: 6.318 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.282 ]latency_case670_latency: 6.166 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.303 ]latency_case671_latency: 6.232 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.325 ]latency_case672_latency: 6.572 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.352 ]latency_case673_latency: 7.353 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.382 ]latency_case674_latency: 6.448 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.402 ]latency_case675_latency: 6.075 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.421 ]latency_case676_latency: 6.827 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.442 ]latency_case677_latency: 6.143 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.467 ]latency_case678_latency: 6.527 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.488 ]latency_case679_latency: 6.613 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.512 ]latency_case680_latency: 6.451 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.537 ]latency_case681_latency: 6.568 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.555 ]latency_case682_latency: 6.13 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.577 ]latency_case683_latency: 6.674 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.607 ]latency_case684_latency: 7.059 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.626 ]latency_case685_latency: 6.314 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.653 ]latency_case686_latency: 6.272 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.673 ]latency_case687_latency: 6.086 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.696 ]latency_case688_latency: 7.48 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.718 ]latency_case689_latency: 6.304 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.740 ]latency_case690_latency: 6.198 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.761 ]latency_case691_latency: 6.167 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.786 ]latency_case692_latency: 6.335 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.807 ]latency_case693_latency: 7.206 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.945 ]latency_case694_latency: 12.74 ms
+[ AI-Rank-Log  4/ 7 20:12: 5.972 ]latency_case695_latency: 7.093 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.  0 ]latency_case696_latency: 6.286 ms
+[ AI-Rank-Log  4/ 7 20:12: 6. 21 ]latency_case697_latency: 6.059 ms
+[ AI-Rank-Log  4/ 7 20:12: 6. 48 ]latency_case698_latency: 8.499 ms
+[ AI-Rank-Log  4/ 7 20:12: 6. 71 ]latency_case699_latency: 6.812 ms
+[ AI-Rank-Log  4/ 7 20:12: 6. 96 ]latency_case700_latency: 6.292 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.118 ]latency_case701_latency: 6.186 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.136 ]latency_case702_latency: 6.414 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.161 ]latency_case703_latency: 6.296 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.181 ]latency_case704_latency: 6.045 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.204 ]latency_case705_latency: 7.341 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.227 ]latency_case706_latency: 6.13 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.238 ]latency_case707_latency: 6.165 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.271 ]latency_case708_latency: 7.116 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.297 ]latency_case709_latency: 6.923 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.318 ]latency_case710_latency: 6.191 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.338 ]latency_case711_latency: 6.572 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.359 ]latency_case712_latency: 6.414 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.388 ]latency_case713_latency: 7.086 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.417 ]latency_case714_latency: 7.856 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.441 ]latency_case715_latency: 6.151 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.466 ]latency_case716_latency: 7.035 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.488 ]latency_case717_latency: 6.393 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.507 ]latency_case718_latency: 6.447 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.536 ]latency_case719_latency: 6.473 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.556 ]latency_case720_latency: 6.448 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.581 ]latency_case721_latency: 6.708 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.602 ]latency_case722_latency: 6.307 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.621 ]latency_case723_latency: 6.603 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.638 ]latency_case724_latency: 6.494 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.658 ]latency_case725_latency: 6.456 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.679 ]latency_case726_latency: 6.035 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.699 ]latency_case727_latency: 6.462 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.714 ]latency_case728_latency: 8.259 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.738 ]latency_case729_latency: 6.291 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.761 ]latency_case730_latency: 6.483 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.781 ]latency_case731_latency: 6.142 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.801 ]latency_case732_latency: 6.042 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.824 ]latency_case733_latency: 6.72 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.851 ]latency_case734_latency: 6.508 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.882 ]latency_case735_latency: 6.092 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.902 ]latency_case736_latency: 6.129 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.927 ]latency_case737_latency: 8.526 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.953 ]latency_case738_latency: 8.02 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.978 ]latency_case739_latency: 6.384 ms
+[ AI-Rank-Log  4/ 7 20:12: 6.996 ]latency_case740_latency: 6.28 ms
+[ AI-Rank-Log  4/ 7 20:12: 7. 19 ]latency_case741_latency: 6.223 ms
+[ AI-Rank-Log  4/ 7 20:12: 7. 44 ]latency_case742_latency: 6.476 ms
+[ AI-Rank-Log  4/ 7 20:12: 7. 66 ]latency_case743_latency: 7.273 ms
+[ AI-Rank-Log  4/ 7 20:12: 7. 91 ]latency_case744_latency: 7.476 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.115 ]latency_case745_latency: 6.336 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.138 ]latency_case746_latency: 6.582 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.157 ]latency_case747_latency: 6.199 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.178 ]latency_case748_latency: 6.36 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.198 ]latency_case749_latency: 6.33 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.218 ]latency_case750_latency: 6.293 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.241 ]latency_case751_latency: 6.556 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.327 ]latency_case752_latency: 13.19 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.355 ]latency_case753_latency: 6.536 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.376 ]latency_case754_latency: 6.341 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.398 ]latency_case755_latency: 7.012 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.420 ]latency_case756_latency: 6.707 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.456 ]latency_case757_latency: 9.256 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.481 ]latency_case758_latency: 6.114 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.507 ]latency_case759_latency: 6.856 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.535 ]latency_case760_latency: 7.81 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.555 ]latency_case761_latency: 6.634 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.579 ]latency_case762_latency: 6.297 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.601 ]latency_case763_latency: 6.097 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.620 ]latency_case764_latency: 6.301 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.643 ]latency_case765_latency: 6.399 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.671 ]latency_case766_latency: 7.124 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.694 ]latency_case767_latency: 6.577 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.742 ]latency_case768_latency: 6.751 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.764 ]latency_case769_latency: 6.469 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.785 ]latency_case770_latency: 7.302 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.803 ]latency_case771_latency: 6.261 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.823 ]latency_case772_latency: 6.314 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.848 ]latency_case773_latency: 6.353 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.872 ]latency_case774_latency: 6.544 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.896 ]latency_case775_latency: 6.363 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.920 ]latency_case776_latency: 5.975 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.940 ]latency_case777_latency: 6.14 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.960 ]latency_case778_latency: 6.398 ms
+[ AI-Rank-Log  4/ 7 20:12: 7.981 ]latency_case779_latency: 6.144 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.  2 ]latency_case780_latency: 6.156 ms
+[ AI-Rank-Log  4/ 7 20:12: 8. 22 ]latency_case781_latency: 6.11 ms
+[ AI-Rank-Log  4/ 7 20:12: 8. 45 ]latency_case782_latency: 6.329 ms
+[ AI-Rank-Log  4/ 7 20:12: 8. 69 ]latency_case783_latency: 6.226 ms
+[ AI-Rank-Log  4/ 7 20:12: 8. 92 ]latency_case784_latency: 6.436 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.116 ]latency_case785_latency: 8.177 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.191 ]latency_case786_latency: 5.888 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.211 ]latency_case787_latency: 6.552 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.225 ]latency_case788_latency: 6.442 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.242 ]latency_case789_latency: 6.168 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.262 ]latency_case790_latency: 6.002 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.281 ]latency_case791_latency: 6.013 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.301 ]latency_case792_latency: 6.375 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.320 ]latency_case793_latency: 6.266 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.341 ]latency_case794_latency: 6.197 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.364 ]latency_case795_latency: 6.775 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.389 ]latency_case796_latency: 6.229 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.418 ]latency_case797_latency: 6.578 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.444 ]latency_case798_latency: 6.403 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.467 ]latency_case799_latency: 7.823 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.491 ]latency_case800_latency: 6.43 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.519 ]latency_case801_latency: 6.98 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.535 ]latency_case802_latency: 6.314 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.559 ]latency_case803_latency: 6.515 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.580 ]latency_case804_latency: 6.238 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.607 ]latency_case805_latency: 6.176 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.632 ]latency_case806_latency: 6.741 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.659 ]latency_case807_latency: 6.172 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.706 ]latency_case808_latency: 6.029 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.726 ]latency_case809_latency: 6.972 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.748 ]latency_case810_latency: 6.435 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.767 ]latency_case811_latency: 6.248 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.791 ]latency_case812_latency: 6.277 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.818 ]latency_case813_latency: 6.337 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.841 ]latency_case814_latency: 6.347 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.866 ]latency_case815_latency: 7.145 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.896 ]latency_case816_latency: 6.234 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.916 ]latency_case817_latency: 6.085 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.936 ]latency_case818_latency: 6.124 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.958 ]latency_case819_latency: 7.241 ms
+[ AI-Rank-Log  4/ 7 20:12: 8.975 ]latency_case820_latency: 6.236 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.  1 ]latency_case821_latency: 6.127 ms
+[ AI-Rank-Log  4/ 7 20:12: 9. 22 ]latency_case822_latency: 6.262 ms
+[ AI-Rank-Log  4/ 7 20:12: 9. 43 ]latency_case823_latency: 6.098 ms
+[ AI-Rank-Log  4/ 7 20:12: 9. 69 ]latency_case824_latency: 6.378 ms
+[ AI-Rank-Log  4/ 7 20:12: 9. 92 ]latency_case825_latency: 6.3 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.115 ]latency_case826_latency: 7.981 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.140 ]latency_case827_latency: 6.364 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.163 ]latency_case828_latency: 6.045 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.209 ]latency_case829_latency: 5.997 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.228 ]latency_case830_latency: 6.316 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.259 ]latency_case831_latency: 6.102 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.281 ]latency_case832_latency: 6.86 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.300 ]latency_case833_latency: 6.02 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.323 ]latency_case834_latency: 6.142 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.343 ]latency_case835_latency: 6.32 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.362 ]latency_case836_latency: 6.099 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.378 ]latency_case837_latency: 6.345 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.407 ]latency_case838_latency: 6.197 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.429 ]latency_case839_latency: 6.278 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.451 ]latency_case840_latency: 6.191 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.477 ]latency_case841_latency: 8.43 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.500 ]latency_case842_latency: 6.053 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.526 ]latency_case843_latency: 8.45 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.554 ]latency_case844_latency: 6.443 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.575 ]latency_case845_latency: 6.417 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.598 ]latency_case846_latency: 6.172 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.620 ]latency_case847_latency: 7.102 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.649 ]latency_case848_latency: 8.65 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.675 ]latency_case849_latency: 6.94 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.699 ]latency_case850_latency: 6.423 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.720 ]latency_case851_latency: 6.2 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.737 ]latency_case852_latency: 6.63 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.761 ]latency_case853_latency: 6.126 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.789 ]latency_case854_latency: 8.558 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.816 ]latency_case855_latency: 6.665 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.838 ]latency_case856_latency: 6.667 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.861 ]latency_case857_latency: 6.121 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.876 ]latency_case858_latency: 6.154 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.900 ]latency_case859_latency: 6.152 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.922 ]latency_case860_latency: 6.104 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.949 ]latency_case861_latency: 7.494 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.975 ]latency_case862_latency: 7.227 ms
+[ AI-Rank-Log  4/ 7 20:12: 9.999 ]latency_case863_latency: 6.219 ms
+[ AI-Rank-Log  4/ 7 20:12:10. 21 ]latency_case864_latency: 6.419 ms
+[ AI-Rank-Log  4/ 7 20:12:10. 44 ]latency_case865_latency: 6.814 ms
+[ AI-Rank-Log  4/ 7 20:12:10. 71 ]latency_case866_latency: 6.168 ms
+[ AI-Rank-Log  4/ 7 20:12:10. 96 ]latency_case867_latency: 6.793 ms
+[ AI-Rank-Log  4/ 7 20:12:10.116 ]latency_case868_latency: 6.198 ms
+[ AI-Rank-Log  4/ 7 20:12:10.136 ]latency_case869_latency: 6.182 ms
+[ AI-Rank-Log  4/ 7 20:12:10.156 ]latency_case870_latency: 6.987 ms
+[ AI-Rank-Log  4/ 7 20:12:10.177 ]latency_case871_latency: 7.073 ms
+[ AI-Rank-Log  4/ 7 20:12:10.198 ]latency_case872_latency: 6.451 ms
+[ AI-Rank-Log  4/ 7 20:12:10.222 ]latency_case873_latency: 6.866 ms
+[ AI-Rank-Log  4/ 7 20:12:10.245 ]latency_case874_latency: 6.884 ms
+[ AI-Rank-Log  4/ 7 20:12:10.271 ]latency_case875_latency: 6.661 ms
+[ AI-Rank-Log  4/ 7 20:12:10.296 ]latency_case876_latency: 6.581 ms
+[ AI-Rank-Log  4/ 7 20:12:10.320 ]latency_case877_latency: 5.998 ms
+[ AI-Rank-Log  4/ 7 20:12:10.337 ]latency_case878_latency: 7.644 ms
+[ AI-Rank-Log  4/ 7 20:12:10.362 ]latency_case879_latency: 6.305 ms
+[ AI-Rank-Log  4/ 7 20:12:10.387 ]latency_case880_latency: 6.911 ms
+[ AI-Rank-Log  4/ 7 20:12:10.404 ]latency_case881_latency: 7.529 ms
+[ AI-Rank-Log  4/ 7 20:12:10.428 ]latency_case882_latency: 6.308 ms
+[ AI-Rank-Log  4/ 7 20:12:10.455 ]latency_case883_latency: 8.102 ms
+[ AI-Rank-Log  4/ 7 20:12:10.490 ]latency_case884_latency: 6.149 ms
+[ AI-Rank-Log  4/ 7 20:12:10.514 ]latency_case885_latency: 7.096 ms
+[ AI-Rank-Log  4/ 7 20:12:10.535 ]latency_case886_latency: 7.122 ms
+[ AI-Rank-Log  4/ 7 20:12:10.557 ]latency_case887_latency: 6.162 ms
+[ AI-Rank-Log  4/ 7 20:12:10.578 ]latency_case888_latency: 6.154 ms
+[ AI-Rank-Log  4/ 7 20:12:10.598 ]latency_case889_latency: 6.423 ms
+[ AI-Rank-Log  4/ 7 20:12:10.624 ]latency_case890_latency: 6.931 ms
+[ AI-Rank-Log  4/ 7 20:12:10.645 ]latency_case891_latency: 7.07 ms
+[ AI-Rank-Log  4/ 7 20:12:10.664 ]latency_case892_latency: 6.885 ms
+[ AI-Rank-Log  4/ 7 20:12:10.686 ]latency_case893_latency: 7.157 ms
+[ AI-Rank-Log  4/ 7 20:12:10.712 ]latency_case894_latency: 7.474 ms
+[ AI-Rank-Log  4/ 7 20:12:10.737 ]latency_case895_latency: 6.194 ms
+[ AI-Rank-Log  4/ 7 20:12:10.755 ]latency_case896_latency: 6.594 ms
+[ AI-Rank-Log  4/ 7 20:12:10.777 ]latency_case897_latency: 6.254 ms
+[ AI-Rank-Log  4/ 7 20:12:10.800 ]latency_case898_latency: 6.123 ms
+[ AI-Rank-Log  4/ 7 20:12:10.823 ]latency_case899_latency: 6.103 ms
+[ AI-Rank-Log  4/ 7 20:12:10.861 ]latency_case900_latency: 5.995 ms
+[ AI-Rank-Log  4/ 7 20:12:10.881 ]latency_case901_latency: 5.991 ms
+[ AI-Rank-Log  4/ 7 20:12:10.902 ]latency_case902_latency: 6.063 ms
+[ AI-Rank-Log  4/ 7 20:12:10.929 ]latency_case903_latency: 8.225 ms
+[ AI-Rank-Log  4/ 7 20:12:10.962 ]latency_case904_latency: 6.316 ms
+[ AI-Rank-Log  4/ 7 20:12:10.981 ]latency_case905_latency: 6.064 ms
+[ AI-Rank-Log  4/ 7 20:12:11.  1 ]latency_case906_latency: 6.33 ms
+[ AI-Rank-Log  4/ 7 20:12:11. 92 ]latency_case907_latency: 14.196 ms
+[ AI-Rank-Log  4/ 7 20:12:11.118 ]latency_case908_latency: 6.227 ms
+[ AI-Rank-Log  4/ 7 20:12:11.139 ]latency_case909_latency: 6.165 ms
+[ AI-Rank-Log  4/ 7 20:12:11.162 ]latency_case910_latency: 6.337 ms
+[ AI-Rank-Log  4/ 7 20:12:11.184 ]latency_case911_latency: 6.348 ms
+[ AI-Rank-Log  4/ 7 20:12:11.208 ]latency_case912_latency: 6.289 ms
+[ AI-Rank-Log  4/ 7 20:12:11.232 ]latency_case913_latency: 6.311 ms
+[ AI-Rank-Log  4/ 7 20:12:11.255 ]latency_case914_latency: 6.211 ms
+[ AI-Rank-Log  4/ 7 20:12:11.279 ]latency_case915_latency: 6.081 ms
+[ AI-Rank-Log  4/ 7 20:12:11.297 ]latency_case916_latency: 6.356 ms
+[ AI-Rank-Log  4/ 7 20:12:11.319 ]latency_case917_latency: 6.106 ms
+[ AI-Rank-Log  4/ 7 20:12:11.340 ]latency_case918_latency: 6.218 ms
+[ AI-Rank-Log  4/ 7 20:12:11.366 ]latency_case919_latency: 7.259 ms
+[ AI-Rank-Log  4/ 7 20:12:11.391 ]latency_case920_latency: 6.196 ms
+[ AI-Rank-Log  4/ 7 20:12:11.445 ]latency_case921_latency: 7.236 ms
+[ AI-Rank-Log  4/ 7 20:12:11.465 ]latency_case922_latency: 7.122 ms
+[ AI-Rank-Log  4/ 7 20:12:11.489 ]latency_case923_latency: 6.186 ms
+[ AI-Rank-Log  4/ 7 20:12:11.507 ]latency_case924_latency: 6.404 ms
+[ AI-Rank-Log  4/ 7 20:12:11.530 ]latency_case925_latency: 6.619 ms
+[ AI-Rank-Log  4/ 7 20:12:11.551 ]latency_case926_latency: 7.328 ms
+[ AI-Rank-Log  4/ 7 20:12:11.567 ]latency_case927_latency: 6.33 ms
+[ AI-Rank-Log  4/ 7 20:12:11.590 ]latency_case928_latency: 6.234 ms
+[ AI-Rank-Log  4/ 7 20:12:11.613 ]latency_case929_latency: 6.77 ms
+[ AI-Rank-Log  4/ 7 20:12:11.626 ]latency_case930_latency: 6.352 ms
+[ AI-Rank-Log  4/ 7 20:12:11.648 ]latency_case931_latency: 6.264 ms
+[ AI-Rank-Log  4/ 7 20:12:11.673 ]latency_case932_latency: 6.426 ms
+[ AI-Rank-Log  4/ 7 20:12:11.696 ]latency_case933_latency: 6.233 ms
+[ AI-Rank-Log  4/ 7 20:12:11.717 ]latency_case934_latency: 6.146 ms
+[ AI-Rank-Log  4/ 7 20:12:11.738 ]latency_case935_latency: 6.126 ms
+[ AI-Rank-Log  4/ 7 20:12:11.757 ]latency_case936_latency: 6.2 ms
+[ AI-Rank-Log  4/ 7 20:12:11.781 ]latency_case937_latency: 6.351 ms
+[ AI-Rank-Log  4/ 7 20:12:11.803 ]latency_case938_latency: 6.652 ms
+[ AI-Rank-Log  4/ 7 20:12:11.831 ]latency_case939_latency: 8.49 ms
+[ AI-Rank-Log  4/ 7 20:12:11.858 ]latency_case940_latency: 6.279 ms
+[ AI-Rank-Log  4/ 7 20:12:11.873 ]latency_case941_latency: 6.787 ms
+[ AI-Rank-Log  4/ 7 20:12:11.899 ]latency_case942_latency: 6.133 ms
+[ AI-Rank-Log  4/ 7 20:12:11.925 ]latency_case943_latency: 6.977 ms
+[ AI-Rank-Log  4/ 7 20:12:11.948 ]latency_case944_latency: 7.159 ms
+[ AI-Rank-Log  4/ 7 20:12:11.974 ]latency_case945_latency: 6.2 ms
+[ AI-Rank-Log  4/ 7 20:12:11.994 ]latency_case946_latency: 5.997 ms
+[ AI-Rank-Log  4/ 7 20:12:12. 15 ]latency_case947_latency: 5.951 ms
+[ AI-Rank-Log  4/ 7 20:12:12. 29 ]latency_case948_latency: 6.057 ms
+[ AI-Rank-Log  4/ 7 20:12:12. 51 ]latency_case949_latency: 6.357 ms
+[ AI-Rank-Log  4/ 7 20:12:12. 76 ]latency_case950_latency: 6.672 ms
+[ AI-Rank-Log  4/ 7 20:12:12. 97 ]latency_case951_latency: 6.054 ms
+[ AI-Rank-Log  4/ 7 20:12:12.119 ]latency_case952_latency: 6.279 ms
+[ AI-Rank-Log  4/ 7 20:12:12.140 ]latency_case953_latency: 6.214 ms
+[ AI-Rank-Log  4/ 7 20:12:12.165 ]latency_case954_latency: 6.933 ms
+[ AI-Rank-Log  4/ 7 20:12:12.185 ]latency_case955_latency: 6.234 ms
+[ AI-Rank-Log  4/ 7 20:12:12.210 ]latency_case956_latency: 6.139 ms
+[ AI-Rank-Log  4/ 7 20:12:12.234 ]latency_case957_latency: 7.021 ms
+[ AI-Rank-Log  4/ 7 20:12:12.251 ]latency_case958_latency: 6.077 ms
+[ AI-Rank-Log  4/ 7 20:12:12.277 ]latency_case959_latency: 6.376 ms
+[ AI-Rank-Log  4/ 7 20:12:12.298 ]latency_case960_latency: 6.482 ms
+[ AI-Rank-Log  4/ 7 20:12:12.323 ]latency_case961_latency: 6.109 ms
+[ AI-Rank-Log  4/ 7 20:12:12.343 ]latency_case962_latency: 6.161 ms
+[ AI-Rank-Log  4/ 7 20:12:12.366 ]latency_case963_latency: 7.568 ms
+[ AI-Rank-Log  4/ 7 20:12:12.390 ]latency_case964_latency: 6.545 ms
+[ AI-Rank-Log  4/ 7 20:12:12.416 ]latency_case965_latency: 6.213 ms
+[ AI-Rank-Log  4/ 7 20:12:12.435 ]latency_case966_latency: 6.223 ms
+[ AI-Rank-Log  4/ 7 20:12:12.459 ]latency_case967_latency: 6.484 ms
+[ AI-Rank-Log  4/ 7 20:12:12.485 ]latency_case968_latency: 6.818 ms
+[ AI-Rank-Log  4/ 7 20:12:12.521 ]latency_case969_latency: 5.916 ms
+[ AI-Rank-Log  4/ 7 20:12:12.540 ]latency_case970_latency: 6.065 ms
+[ AI-Rank-Log  4/ 7 20:12:12.564 ]latency_case971_latency: 6.767 ms
+[ AI-Rank-Log  4/ 7 20:12:12.586 ]latency_case972_latency: 8.139 ms
+[ AI-Rank-Log  4/ 7 20:12:12.608 ]latency_case973_latency: 6.073 ms
+[ AI-Rank-Log  4/ 7 20:12:12.633 ]latency_case974_latency: 6.513 ms
+[ AI-Rank-Log  4/ 7 20:12:12.655 ]latency_case975_latency: 6.332 ms
+[ AI-Rank-Log  4/ 7 20:12:12.674 ]latency_case976_latency: 6.741 ms
+[ AI-Rank-Log  4/ 7 20:12:12.697 ]latency_case977_latency: 7.084 ms
+[ AI-Rank-Log  4/ 7 20:12:12.720 ]latency_case978_latency: 6.309 ms
+[ AI-Rank-Log  4/ 7 20:12:12.742 ]latency_case979_latency: 6.077 ms
+[ AI-Rank-Log  4/ 7 20:12:12.762 ]latency_case980_latency: 6.075 ms
+[ AI-Rank-Log  4/ 7 20:12:12.784 ]latency_case981_latency: 7.19 ms
+[ AI-Rank-Log  4/ 7 20:12:12.828 ]latency_case982_latency: 6.04 ms
+[ AI-Rank-Log  4/ 7 20:12:12.850 ]latency_case983_latency: 6.207 ms
+[ AI-Rank-Log  4/ 7 20:12:12.871 ]latency_case984_latency: 6.075 ms
+[ AI-Rank-Log  4/ 7 20:12:12.894 ]latency_case985_latency: 7.007 ms
+[ AI-Rank-Log  4/ 7 20:12:12.917 ]latency_case986_latency: 7.199 ms
+[ AI-Rank-Log  4/ 7 20:12:12.937 ]latency_case987_latency: 6.154 ms
+[ AI-Rank-Log  4/ 7 20:12:12.960 ]latency_case988_latency: 6.145 ms
+[ AI-Rank-Log  4/ 7 20:12:12.981 ]latency_case989_latency: 6.054 ms
+[ AI-Rank-Log  4/ 7 20:12:13.  3 ]latency_case990_latency: 6.203 ms
+[ AI-Rank-Log  4/ 7 20:12:13. 24 ]latency_case991_latency: 6.444 ms
+[ AI-Rank-Log  4/ 7 20:12:13. 46 ]latency_case992_latency: 7.457 ms
+[ AI-Rank-Log  4/ 7 20:12:13. 75 ]latency_case993_latency: 6.378 ms
+[ AI-Rank-Log  4/ 7 20:12:13.112 ]latency_case994_latency: 6.099 ms
+[ AI-Rank-Log  4/ 7 20:12:13.131 ]latency_case995_latency: 6.065 ms
+[ AI-Rank-Log  4/ 7 20:12:13.153 ]latency_case996_latency: 6.348 ms
+[ AI-Rank-Log  4/ 7 20:12:13.177 ]latency_case997_latency: 8.394 ms
+[ AI-Rank-Log  4/ 7 20:12:13.196 ]latency_case998_latency: 6.264 ms
+[ AI-Rank-Log  4/ 7 20:12:13.222 ]latency_case999_latency: 6.214 ms
+[ AI-Rank-Log  4/ 7 20:12:13.248 ]latency_case1000_latency: 8.251 ms
+[ AI-Rank-Log  4/ 7 20:12:13.248 ]Num evaluation runs: 1000
+[ AI-Rank-Log  4/ 7 20:12:13.248 ]90th_percentile_latency: 7.4942ms, min_latency: 5.831ms, max_latency: 15.457ms
+[ AI-Rank-Log  4/ 7 20:12:13.248 ]Test end

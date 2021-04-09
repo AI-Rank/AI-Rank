@@ -32,6 +32,7 @@ python main.py -a resnet50 -j 8 -b 64 -e --pretrained --gpu 0 [imagenet-folder w
   --gpu GPU             使用的GPU ID.
   --warmup              预热次数(默认：16).
 ```
+
 ## 评测结果
 
 |  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
