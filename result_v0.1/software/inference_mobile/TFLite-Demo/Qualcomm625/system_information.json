@@ -1,5 +1,5 @@
 {
-    "Device": "HongMi6 Pro",
+    "device": "RedMi6 Pro",
     "processor_name": "Qualcomm625",
     "integrated_cpu": "8xA53 @2.16GHz",
     "integrated_gpu": "Adreno 506",
