@@ -141,3 +141,11 @@ adb shell /data/local/tmp/AI-RANK/tf_object_detction/run_eval \
     *   `delegate`: `string` (default='cpu')\
     推理预测的硬件设备选择，默认是`CPU`，可选值有：`GPU`、`xnnpack`、`hexagon`、`nnapi`等
     更多可用的参数介绍，请见code目录下的[README](https://github.com/zhaoyang-star/tensorflow/blob/master/tensorflow/lite/tools/evaluation/tasks/imagenet_image_classification/README.md)
+
+## 7. 性能及精度评测结果
+| 模型  | 硬件 |架构(armv7/armv8) | 时延（ms） |  mAP    |  
+|------------------|--------------|--------------|--------------|
+| SSD-MobileNetV3  |     cpu      |     armv7    |    60.554    |    0.254   |
+| SSD-MobileNetV3  |     gpu      |     armv7    |    38.108    |    0.254   |
+| SSD-MobileNetV3  |     cpu      |     armv8    |    44.469    |    0.254   |
+| SSD-MobileNetV3  |     gpu      |     armv8    |    30.082    |    0.254   |
