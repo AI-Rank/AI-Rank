@@ -1,5 +1,5 @@
 {
-    "Device": "Raspberry Pi 4B",
+    "device": "Raspberry Pi 4B",
     "processor_name": "",
     "integrated_cpu": "4xA72@1.5GHz",
     "integrated_gpu": "VideoCore VI",

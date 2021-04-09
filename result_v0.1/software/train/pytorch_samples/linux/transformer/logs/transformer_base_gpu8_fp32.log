@@ -1,0 +1,224 @@
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 1
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 7
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 4
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 2
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 6
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 0
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 5
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 3
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| distributed init done!
+| initialized host instance-mqcyj27y-4 as rank 0 and device id 0
+Namespace(adam_betas='(0.9, 0.997)', adam_eps=1e-09, adaptive_softmax_cutoff=None, amp=False, amp_level='O1', arch='transformer_wmt_en_de_base_t2t', attention_dropout=0.1, beam=4, bpe_codes=None, buffer_size=64, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='./data/wmt14_en_de_joined_dict', decoder_attention_heads=8, decoder_embed_dim=512, decoder_embed_path=None, decoder_ffn_embed_dim=2048, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method='env://', distributed_port=-1, distributed_rank=0, distributed_world_size=8, do_sanity_check=False, dropout=0.1, enable_parallel_backward_allred_opt=False, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=8, encoder_embed_dim=512, encoder_embed_path=None, encoder_ffn_embed_dim=2048, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fp16=False, fuse_dropout_add=False, fuse_layer_norm=True, fuse_relu_dropout=False, gen_subset='test', keep_interval_updates=-1, label_smoothing=0.1, left_pad_source=True, left_pad_target=False, lenpen=1, local_rank=0, log_interval=1000, lr=[0.0006], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=30, max_len_a=0, max_len_b=200, max_positions=(1024, 1024), max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=5120, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_save=False, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', pad_sequence=1, parallel_backward_allred_opt_threshold=0, path=None, prefix_size=0, print_alignment=False, profile=False, profiler_file=None, profiler_steps=100, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='./checkpoints.base.30.8/', save_interval=1, save_interval_updates=0, save_predictions=False, score_reference=False, seed=1, sentence_avg=False, sentencepiece=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, source_lang=None, stat_file='run_log.json', target_bleu=0.0, target_lang=None, test_cased_bleu=False, train_subset='train', unkpen=0, unnormalized=False, update_freq=[1], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=4000, weight_decay=0.0)
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+| ./data/wmt14_en_de_joined_dict train 4575637 examples
+| Sentences are being padded to multiples of: 1
+| ./data/wmt14_en_de_joined_dict valid 3000 examples
+| Sentences are being padded to multiples of: 1
+| ./data/wmt14_en_de_joined_dict test 3003 examples
+| Sentences are being padded to multiples of: 1
+| num. model params: 61364224
+| NOTICE: your device may support faster training with --amp
+| model transformer_wmt_en_de_base_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| training on 8 GPUs
+| max tokens per GPU = 5120 and max sentences per GPU = None
+Transformer | epoch 0 | step 1000 |avg loss 11.156 |avg tokens 36222.728 |tokens/s 167583.385 |walltime 238.190 |
+Transformer | epoch 0 | step 2000 |avg loss 8.237 |avg tokens 36126.562 |tokens/s 170885.116 |walltime 449.598 |
+Transformer | epoch 0 | step 3000 |avg loss 6.476 |avg tokens 36106.329 |tokens/s 166535.663 |walltime 666.406 |
+Epoch time: 839.175313949585
+Transformer | epoch 0 | step 3935 |avg loss 5.819 |avg tokens 36151.529 |tokens/s 174277.916 |walltime 860.359 |
+Validation loss on subset valid: 5.203876343965258
+Transformer | epoch 1 | step 4935 |avg loss 5.500 |avg tokens 36169.644 |tokens/s 168388.151 |walltime 1091.869 |
+Transformer | epoch 1 | step 5935 |avg loss 5.267 |avg tokens 36208.422 |tokens/s 171892.981 |walltime 1302.515 |
+Transformer | epoch 1 | step 6935 |avg loss 5.148 |avg tokens 36119.975 |tokens/s 172624.468 |walltime 1511.755 |
+Epoch time: 833.9029984474182
+Transformer | epoch 1 | step 7870 |avg loss 5.060 |avg tokens 36140.287 |tokens/s 169716.182 |walltime 1710.859 |
+Validation loss on subset valid: 4.57925305237371
+Transformer | epoch 2 | step 8870 |avg loss 4.983 |avg tokens 36196.688 |tokens/s 169665.419 |walltime 1942.158 |
+Transformer | epoch 2 | step 9870 |avg loss 4.924 |avg tokens 36159.719 |tokens/s 172895.192 |walltime 2151.300 |
+Transformer | epoch 2 | step 10870 |avg loss 4.876 |avg tokens 36119.142 |tokens/s 168217.554 |walltime 2366.017 |
+Epoch time: 835.9890096187592
+Transformer | epoch 2 | step 11805 |avg loss 4.848 |avg tokens 36172.927 |tokens/s 170096.491 |walltime 2564.855 |
+Validation loss on subset valid: 4.398537654776019
+Transformer | epoch 3 | step 12805 |avg loss 4.795 |avg tokens 36083.401 |tokens/s 169271.303 |walltime 2795.882 |
+Transformer | epoch 3 | step 13805 |avg loss 4.781 |avg tokens 36222.293 |tokens/s 173718.523 |walltime 3004.394 |
+Transformer | epoch 3 | step 14805 |avg loss 4.762 |avg tokens 36170.119 |tokens/s 172493.831 |walltime 3214.083 |
+Epoch time: 829.6975500583649
+Transformer | epoch 3 | step 15740 |avg loss 4.740 |avg tokens 36167.361 |tokens/s 170451.579 |walltime 3412.476 |
+Validation loss on subset valid: 4.3142658797023214
+Transformer | epoch 4 | step 16740 |avg loss 4.690 |avg tokens 36169.234 |tokens/s 169814.505 |walltime 3643.385 |
+Transformer | epoch 4 | step 17740 |avg loss 4.687 |avg tokens 36163.909 |tokens/s 170788.902 |walltime 3855.131 |
+Transformer | epoch 4 | step 18740 |avg loss 4.691 |avg tokens 36181.391 |tokens/s 171210.454 |walltime 4066.458 |
+Epoch time: 831.3633406162262
+Transformer | epoch 4 | step 19675 |avg loss 4.685 |avg tokens 36123.639 |tokens/s 172919.528 |walltime 4261.784 |
+Validation loss on subset valid: 4.25120731503551
+Transformer | epoch 5 | step 20675 |avg loss 4.637 |avg tokens 36206.721 |tokens/s 172316.234 |walltime 4491.528 |
+Transformer | epoch 5 | step 21675 |avg loss 4.629 |avg tokens 36259.057 |tokens/s 171754.880 |walltime 4702.637 |
+Transformer | epoch 5 | step 22675 |avg loss 4.633 |avg tokens 36060.134 |tokens/s 167943.871 |walltime 4917.353 |
+Epoch time: 833.942667722702
+Transformer | epoch 5 | step 23610 |avg loss 4.630 |avg tokens 36113.386 |tokens/s 170472.390 |walltime 5115.426 |
+Validation loss on subset valid: 4.219415906267418
+Transformer | epoch 6 | step 24610 |avg loss 4.588 |avg tokens 36164.754 |tokens/s 170375.945 |walltime 5345.345 |
+Transformer | epoch 6 | step 25610 |avg loss 4.609 |avg tokens 36148.127 |tokens/s 172171.006 |walltime 5555.299 |
+Transformer | epoch 6 | step 26610 |avg loss 4.580 |avg tokens 36188.236 |tokens/s 171879.910 |walltime 5765.843 |
+Epoch time: 830.6836383342743
+Transformer | epoch 6 | step 27545 |avg loss 4.587 |avg tokens 36139.982 |tokens/s 170684.560 |walltime 5963.816 |
+Validation loss on subset valid: 4.195716516028896
+Transformer | epoch 7 | step 28545 |avg loss 4.560 |avg tokens 36117.892 |tokens/s 165181.574 |walltime 6201.333 |
+Transformer | epoch 7 | step 29545 |avg loss 4.572 |avg tokens 36158.254 |tokens/s 172864.859 |walltime 6410.503 |
+Transformer | epoch 7 | step 30545 |avg loss 4.547 |avg tokens 36137.067 |tokens/s 168490.155 |walltime 6624.979 |
+Epoch time: 835.6643435955048
+Transformer | epoch 7 | step 31480 |avg loss 4.557 |avg tokens 36237.078 |tokens/s 175157.840 |walltime 6818.414 |
+Validation loss on subset valid: 4.16815644773495
+Transformer | epoch 8 | step 32480 |avg loss 4.526 |avg tokens 36144.423 |tokens/s 167824.551 |walltime 7051.880 |
+Transformer | epoch 8 | step 33480 |avg loss 4.538 |avg tokens 36052.559 |tokens/s 166355.516 |walltime 7268.600 |
+Transformer | epoch 8 | step 34480 |avg loss 4.533 |avg tokens 36262.567 |tokens/s 169646.369 |walltime 7482.354 |
+Epoch time: 843.7240839004517
+Transformer | epoch 8 | step 35415 |avg loss 4.538 |avg tokens 36184.640 |tokens/s 170919.598 |walltime 7680.299 |
+Validation loss on subset valid: 4.146597460615463
+Transformer | epoch 9 | step 36415 |avg loss 4.509 |avg tokens 36171.511 |tokens/s 172222.176 |walltime 7912.265 |
+Transformer | epoch 9 | step 37415 |avg loss 4.523 |avg tokens 36071.860 |tokens/s 169599.516 |walltime 8124.953 |
+Transformer | epoch 9 | step 38415 |avg loss 4.503 |avg tokens 36280.999 |tokens/s 170906.790 |walltime 8337.238 |
+Epoch time: 837.4248385429382
+Transformer | epoch 9 | step 39350 |avg loss 4.516 |avg tokens 36115.761 |tokens/s 166790.884 |walltime 8539.697 |
+Validation loss on subset valid: 4.132449117693397
+Transformer | epoch 10 | step 40350 |avg loss 4.502 |avg tokens 36195.440 |tokens/s 163955.348 |walltime 8778.711 |
+Transformer | epoch 10 | step 41350 |avg loss 4.504 |avg tokens 36031.120 |tokens/s 168331.929 |walltime 8992.759 |
+Transformer | epoch 10 | step 42350 |avg loss 4.473 |avg tokens 36210.223 |tokens/s 171073.561 |walltime 9204.424 |
+Epoch time: 846.8032772541046
+Transformer | epoch 10 | step 43285 |avg loss 4.495 |avg tokens 36207.010 |tokens/s 168878.148 |walltime 9404.885 |
+Validation loss on subset valid: 4.117740765570363
+Transformer | epoch 11 | step 44285 |avg loss 4.473 |avg tokens 36269.223 |tokens/s 168363.919 |walltime 9641.238 |
+Transformer | epoch 11 | step 45285 |avg loss 4.472 |avg tokens 36241.520 |tokens/s 171538.319 |walltime 9852.511 |
+Transformer | epoch 11 | step 46285 |avg loss 4.485 |avg tokens 36185.645 |tokens/s 171664.646 |walltime 10063.304 |
+Epoch time: 832.2287230491638
+Transformer | epoch 11 | step 47220 |avg loss 4.483 |avg tokens 35932.960 |tokens/s 172475.572 |walltime 10258.099 |
+Validation loss on subset valid: 4.11330413316337
+Transformer | epoch 12 | step 48220 |avg loss 4.449 |avg tokens 36293.975 |tokens/s 171301.413 |walltime 10488.928 |
+Transformer | epoch 12 | step 49220 |avg loss 4.454 |avg tokens 36257.156 |tokens/s 168440.276 |walltime 10704.180 |
+Transformer | epoch 12 | step 50220 |avg loss 4.482 |avg tokens 35975.105 |tokens/s 169662.300 |walltime 10916.219 |
+Epoch time: 837.0105814933777
+Transformer | epoch 12 | step 51155 |avg loss 4.470 |avg tokens 36117.479 |tokens/s 170659.552 |walltime 11114.098 |
+Validation loss on subset valid: 4.1029605616497316
+Transformer | epoch 13 | step 52155 |avg loss 4.424 |avg tokens 36235.156 |tokens/s 173220.184 |walltime 11341.848 |
+Transformer | epoch 13 | step 53155 |avg loss 4.459 |avg tokens 36127.199 |tokens/s 171499.658 |walltime 11552.503 |
+Transformer | epoch 13 | step 54155 |avg loss 4.452 |avg tokens 36201.868 |tokens/s 169585.643 |walltime 11765.976 |
+Epoch time: 834.7765939235687
+Transformer | epoch 13 | step 55090 |avg loss 4.472 |avg tokens 36069.270 |tokens/s 167335.579 |walltime 11967.515 |
+Validation loss on subset valid: 4.09277008058637
+Transformer | epoch 14 | step 56090 |avg loss 4.441 |avg tokens 35997.971 |tokens/s 168246.424 |walltime 12201.635 |
+Transformer | epoch 14 | step 57090 |avg loss 4.445 |avg tokens 36279.273 |tokens/s 169529.614 |walltime 12415.635 |
+Transformer | epoch 14 | step 58090 |avg loss 4.444 |avg tokens 36183.049 |tokens/s 173673.142 |walltime 12623.975 |
+Epoch time: 837.960896730423
+Transformer | epoch 14 | step 59025 |avg loss 4.430 |avg tokens 36187.154 |tokens/s 167712.009 |walltime 12825.720 |
+Validation loss on subset valid: 4.090193401783748
+Transformer | epoch 15 | step 60025 |avg loss 4.427 |avg tokens 36082.580 |tokens/s 167654.279 |walltime 13058.648 |
+Transformer | epoch 15 | step 61025 |avg loss 4.432 |avg tokens 36240.643 |tokens/s 169213.810 |walltime 13272.819 |
+Transformer | epoch 15 | step 62025 |avg loss 4.446 |avg tokens 36097.407 |tokens/s 173371.304 |walltime 13481.028 |
+Epoch time: 839.971860408783
+Transformer | epoch 15 | step 62960 |avg loss 4.417 |avg tokens 36224.310 |tokens/s 167296.036 |walltime 13683.482 |
+Validation loss on subset valid: 4.084201095574644
+Transformer | epoch 16 | step 63960 |avg loss 4.406 |avg tokens 36289.593 |tokens/s 172769.116 |walltime 13912.095 |
+Transformer | epoch 16 | step 64960 |avg loss 4.417 |avg tokens 36157.910 |tokens/s 172574.541 |walltime 14121.616 |
+Transformer | epoch 16 | step 65960 |avg loss 4.418 |avg tokens 36146.654 |tokens/s 172794.186 |walltime 14330.805 |
+Epoch time: 826.2350149154663
+Transformer | epoch 16 | step 66895 |avg loss 4.447 |avg tokens 36046.050 |tokens/s 170583.356 |walltime 14528.380 |
+Validation loss on subset valid: 4.077959995945119
+Transformer | epoch 17 | step 67895 |avg loss 4.426 |avg tokens 36104.028 |tokens/s 168884.691 |walltime 14761.179 |
+Transformer | epoch 17 | step 68895 |avg loss 4.405 |avg tokens 36178.956 |tokens/s 169790.468 |walltime 14974.259 |
+Transformer | epoch 17 | step 69895 |avg loss 4.411 |avg tokens 36138.597 |tokens/s 169685.836 |walltime 15187.233 |
+Epoch time: 840.23215508461
+Transformer | epoch 17 | step 70830 |avg loss 4.411 |avg tokens 36220.906 |tokens/s 168908.847 |walltime 15387.735 |
+Validation loss on subset valid: 4.065866754238797
+Transformer | epoch 18 | step 71830 |avg loss 4.407 |avg tokens 36203.375 |tokens/s 172513.511 |walltime 15616.246 |
+Transformer | epoch 18 | step 72830 |avg loss 4.405 |avg tokens 36202.353 |tokens/s 170411.635 |walltime 15828.687 |
+Transformer | epoch 18 | step 73830 |avg loss 4.411 |avg tokens 36104.982 |tokens/s 167044.550 |walltime 16044.827 |
+Epoch time: 836.4953858852386
+Transformer | epoch 18 | step 74765 |avg loss 4.401 |avg tokens 36131.755 |tokens/s 170510.773 |walltime 16242.956 |
+Validation loss on subset valid: 4.059868092542469
+Transformer | epoch 19 | step 75765 |avg loss 4.393 |avg tokens 36179.418 |tokens/s 170308.508 |walltime 16473.528 |
+Transformer | epoch 19 | step 76765 |avg loss 4.401 |avg tokens 36137.422 |tokens/s 166972.454 |walltime 16689.956 |
+Transformer | epoch 19 | step 77765 |avg loss 4.389 |avg tokens 36233.202 |tokens/s 171553.022 |walltime 16901.163 |
+Epoch time: 845.0372204780579
+Transformer | epoch 19 | step 78700 |avg loss 4.413 |avg tokens 36088.465 |tokens/s 164588.947 |walltime 17106.175 |
+Validation loss on subset valid: 4.067663071188194
+Transformer | epoch 20 | step 79700 |avg loss 4.391 |avg tokens 36143.610 |tokens/s 170121.847 |walltime 17333.129 |
+Transformer | epoch 20 | step 80700 |avg loss 4.386 |avg tokens 36233.544 |tokens/s 173493.280 |walltime 17541.976 |
+Transformer | epoch 20 | step 81700 |avg loss 4.401 |avg tokens 36173.555 |tokens/s 168323.480 |walltime 17756.881 |
+Epoch time: 833.8542943000793
+Transformer | epoch 20 | step 82635 |avg loss 4.391 |avg tokens 36090.082 |tokens/s 170637.523 |walltime 17954.634 |
+Validation loss on subset valid: 4.049736677727676
+Transformer | epoch 21 | step 83635 |avg loss 4.364 |avg tokens 36234.263 |tokens/s 170044.875 |walltime 18189.309 |
+Transformer | epoch 21 | step 84635 |avg loss 4.390 |avg tokens 36068.448 |tokens/s 169548.128 |walltime 18402.042 |
+Transformer | epoch 21 | step 85635 |avg loss 4.381 |avg tokens 36176.271 |tokens/s 175009.593 |walltime 18608.752 |
+Epoch time: 836.211038351059
+Transformer | epoch 21 | step 86570 |avg loss 4.411 |avg tokens 36160.660 |tokens/s 165946.013 |walltime 18812.494 |
+Validation loss on subset valid: 4.0594213442520415
+Transformer | epoch 22 | step 87570 |avg loss 4.356 |avg tokens 36237.199 |tokens/s 170210.317 |walltime 19041.624 |
+Transformer | epoch 22 | step 88570 |avg loss 4.381 |avg tokens 36169.148 |tokens/s 165557.952 |walltime 19260.092 |
+Transformer | epoch 22 | step 89570 |avg loss 4.389 |avg tokens 36209.146 |tokens/s 172026.825 |walltime 19470.577 |
+Epoch time: 840.3301463127136
+Transformer | epoch 22 | step 90505 |avg loss 4.401 |avg tokens 36018.419 |tokens/s 169733.240 |walltime 19668.990 |
+Validation loss on subset valid: 4.046623219841522
+Transformer | epoch 23 | step 91505 |avg loss 4.376 |avg tokens 36198.632 |tokens/s 170456.107 |walltime 19899.658 |
+Transformer | epoch 23 | step 92505 |avg loss 4.373 |avg tokens 36155.217 |tokens/s 171766.814 |walltime 20110.148 |
+Transformer | epoch 23 | step 93505 |avg loss 4.378 |avg tokens 36092.825 |tokens/s 172345.905 |walltime 20319.569 |
+Epoch time: 832.0328733921051
+Transformer | epoch 23 | step 94440 |avg loss 4.378 |avg tokens 36202.004 |tokens/s 169360.188 |walltime 20519.432 |
+Validation loss on subset valid: 4.043606695088804
+Transformer | epoch 24 | step 95440 |avg loss 4.362 |avg tokens 36137.634 |tokens/s 168343.798 |walltime 20753.803 |
+Transformer | epoch 24 | step 96440 |avg loss 4.361 |avg tokens 36151.638 |tokens/s 166640.704 |walltime 20970.747 |
+Transformer | epoch 24 | step 97440 |avg loss 4.387 |avg tokens 36144.970 |tokens/s 168506.463 |walltime 21185.249 |
+Epoch time: 843.0785553455353
+Transformer | epoch 24 | step 98375 |avg loss 4.372 |avg tokens 36212.833 |tokens/s 171850.936 |walltime 21382.274 |
+Validation loss on subset valid: 4.0443786236490125
+Transformer | epoch 25 | step 99375 |avg loss 4.351 |avg tokens 36148.899 |tokens/s 171433.140 |walltime 21607.884 |
+Transformer | epoch 25 | step 100375 |avg loss 4.357 |avg tokens 36223.547 |tokens/s 171643.633 |walltime 21818.924 |
+Transformer | epoch 25 | step 101375 |avg loss 4.367 |avg tokens 36195.570 |tokens/s 173194.882 |walltime 22027.911 |
+Epoch time: 826.883091211319
+Transformer | epoch 25 | step 102310 |avg loss 4.390 |avg tokens 36067.569 |tokens/s 172026.844 |walltime 22223.946 |
+Validation loss on subset valid: 4.036011108238122
+Transformer | epoch 26 | step 103310 |avg loss 4.355 |avg tokens 36182.425 |tokens/s 168863.643 |walltime 22456.883 |
+Transformer | epoch 26 | step 104310 |avg loss 4.355 |avg tokens 36135.060 |tokens/s 168720.270 |walltime 22671.055 |
+Transformer | epoch 26 | step 105310 |avg loss 4.372 |avg tokens 36068.315 |tokens/s 168226.347 |walltime 22885.458 |
+Epoch time: 841.528153181076
+Transformer | epoch 26 | step 106245 |avg loss 4.364 |avg tokens 36267.299 |tokens/s 170617.793 |walltime 23084.206 |
+Validation loss on subset valid: 4.036997944705143
+Transformer | epoch 27 | step 107245 |avg loss 4.351 |avg tokens 36116.011 |tokens/s 174737.402 |walltime 23306.273 |
+Transformer | epoch 27 | step 108245 |avg loss 4.348 |avg tokens 36128.837 |tokens/s 168982.226 |walltime 23520.076 |
+Transformer | epoch 27 | step 109245 |avg loss 4.360 |avg tokens 36193.009 |tokens/s 168748.434 |walltime 23734.555 |
+Epoch time: 834.8088726997375
+Transformer | epoch 27 | step 110180 |avg loss 4.374 |avg tokens 36204.840 |tokens/s 169330.944 |walltime 23934.468 |
+Validation loss on subset valid: 4.0324659353035255
+Transformer | epoch 28 | step 111180 |avg loss 4.343 |avg tokens 36106.428 |tokens/s 168181.454 |walltime 24167.447 |
+Transformer | epoch 28 | step 112180 |avg loss 4.361 |avg tokens 36156.801 |tokens/s 169985.897 |walltime 24380.152 |
+Transformer | epoch 28 | step 113180 |avg loss 4.343 |avg tokens 36198.172 |tokens/s 172743.312 |walltime 24589.701 |
+Epoch time: 834.168657541275
+Transformer | epoch 28 | step 114115 |avg loss 4.366 |avg tokens 36182.114 |tokens/s 171493.486 |walltime 24786.970 |
+Validation loss on subset valid: 4.032433773863417
+Transformer | epoch 29 | step 115115 |avg loss 4.350 |avg tokens 36220.462 |tokens/s 173679.797 |walltime 25014.091 |
+Transformer | epoch 29 | step 116115 |avg loss 4.325 |avg tokens 36185.518 |tokens/s 173660.975 |walltime 25222.459 |
+Transformer | epoch 29 | step 117115 |avg loss 4.353 |avg tokens 36087.351 |tokens/s 166691.269 |walltime 25438.951 |
+Epoch time: 837.4266064167023
+Transformer | epoch 29 | step 118050 |avg loss 4.373 |avg tokens 36152.082 |tokens/s 165654.918 |walltime 25643.003 |
+Validation loss on subset valid: 4.023211558082533
+| done training in 25642.2 seconds
+Transformer | epoch 29 | step RUN |avg loss 4.023 |walltime 25663.500 |
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
