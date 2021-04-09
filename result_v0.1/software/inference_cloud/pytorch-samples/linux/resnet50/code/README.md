@@ -1,20 +1,16 @@
-# Source
-
-https://github.com/pytorch/examples/tree/master/imagenet has been adapted for AI-RANK(we add some log related codes).
-
-## Requirements
+## 安装
 
 - Install PyTorch ([pytorch.org](http://pytorch.org))
 - `pip install -r imagenet/requirements.txt`
 - Download the ImageNet dataset from http://www.image-net.org/
     - Then, and move validation images to labeled subfolders, using [the following shell script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh)
 
-## Benchmark
+## 运行
 
 cd imagenet  
 python main.py -a resnet50 -j 8 -b 64 -e --pretrained --gpu 0 [imagenet-folder with train and val folder]
 
-## Usage
+## 详细命令
 
 ```
 usage: main.py [-h] [--arch ARCH] [-j N] [--epochs N] [--start-epoch N] [-b N]
@@ -68,7 +64,7 @@ optional arguments:
                         multi node data parallel training
   --warmup              warm up times.
 ```
-## summary_metrics
+## 评测结果
 |  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
 |--------------|--------------|--------------|
 |   Resnet50   |    364       |              |
