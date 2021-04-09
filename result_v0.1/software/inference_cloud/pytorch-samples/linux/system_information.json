@@ -1,0 +1,17 @@
+{
+    "accelerator_memory_capacity": "16GB", 
+    "accelerator_name": "NVIDIA T4", 
+    "accelerators_per_node": 1, 
+    "host_memory_capacity": "64GB", 
+    "host_processor_core_count": 96, 
+    "host_processor_name": "Intel(R) Xeon(R) Gold 6271C CPU @ 2.60GHz", 
+    "host_processors_per_node": 2, 
+    "host_storage_capacity": "4TB", 
+    "host_storage_type": "SSD", 
+    "number_of_nodes": 1, 
+    "operating_system": "Ubuntu 18.04.5", 
+    "software_stack": "CUDA 10.2, cuDNN 7.6", 
+    "submitter": "Baidu", 
+    "hardware_name": "Dell", 
+    "hardware_type": "datacenter"
+}
