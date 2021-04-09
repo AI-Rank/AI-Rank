@@ -1,6 +1,6 @@
-# Source
+# ImageNet training in PyTorch
 
-https://github.com/pytorch/examples/tree/master/imagenet has been adapted for AI-RANK(we add some log related codes).
+This implements training of popular model architectures, such as ResNet, AlexNet, and VGG on the ImageNet dataset.
 
 ## Requirements
 
@@ -9,10 +9,41 @@ https://github.com/pytorch/examples/tree/master/imagenet has been adapted for AI
 - Download the ImageNet dataset from http://www.image-net.org/
     - Then, and move validation images to labeled subfolders, using [the following shell script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh)
 
-## Benchmark
+## Training
 
-cd imagenet  
-python main.py -a resnet50 -j 8 -b 64 -e --pretrained --gpu 0 [imagenet-folder with train and val folder]
+To train a model, run `main.py` with the desired model architecture and the path to the ImageNet dataset:
+
+```bash
+python main.py -a resnet18 [imagenet-folder with train and val folders]
+```
+
+The default learning rate schedule starts at 0.1 and decays by a factor of 10 every 30 epochs. This is appropriate for ResNet and models with batch normalization, but too high for AlexNet and VGG. Use 0.01 as the initial learning rate for AlexNet or VGG:
+
+```bash
+python main.py -a alexnet --lr 0.01 [imagenet-folder with train and val folders]
+```
+
+## Multi-processing Distributed Data Parallel Training
+
+You should always use the NCCL backend for multi-processing distributed training since it currently provides the best distributed training performance.
+
+### Single node, multiple GPUs:
+
+```bash
+python main.py -a resnet50 --dist-url 'tcp://127.0.0.1:FREEPORT' --dist-backend 'nccl' --multiprocessing-distributed --world-size 1 --rank 0 [imagenet-folder with train and val folders]
+```
+
+### Multiple nodes:
+
+Node 0:
+```bash
+python main.py -a resnet50 --dist-url 'tcp://IP_OF_NODE0:FREEPORT' --dist-backend 'nccl' --multiprocessing-distributed --world-size 2 --rank 0 [imagenet-folder with train and val folders]
+```
+
+Node 1:
+```bash
+python main.py -a resnet50 --dist-url 'tcp://IP_OF_NODE0:FREEPORT' --dist-backend 'nccl' --multiprocessing-distributed --world-size 2 --rank 1 [imagenet-folder with train and val folders]
+```
 
 ## Usage
 
@@ -66,9 +97,4 @@ optional arguments:
                         processes per node, which has N GPUs. This is the
                         fastest way to use PyTorch for either single node or
                         multi node data parallel training
-  --warmup              warm up times.
 ```
-## summary_metrics
-|  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
-|--------------|--------------|--------------|
-|   Resnet50   |    364       |              |
