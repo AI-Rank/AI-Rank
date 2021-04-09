@@ -107,6 +107,7 @@ ln -s <path to coco> ~/.mxnet/datasets/coco
 
 
 对于八卡性能测试，本报告严格按Gluon-CV文档规范，对其提供的代码未做改动，严格按照Gluon-CV配置进行测试。
+本次测试使用416尺度进行测试, 由于Gluon-CV不统一，本地测试精度为34.8，稍低于Gluon-CV官方提供精度。
 
 - 创建log文件夹并执行如下测试命令
 
@@ -151,7 +152,7 @@ ln -s <path to coco> ~/.mxnet/datasets/coco
 |卡数 | Time2Train （sec） | 吞吐(images/sec) | 精度 |
 |:-----:|:-----:|:-----:| :-----:|
 |1 | - | 38.55  | - |
-|8 | - | - | - |
+|8 | 468765.45 | 110.4 | 34.8 |
 
 
 
