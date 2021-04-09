@@ -1,3 +1,5 @@
+# AI-Rank 评测说明
+
 ## 使用说明
 
 该代码修改自pytorch example。测试时请使用imagenet文件夹内的代码。
