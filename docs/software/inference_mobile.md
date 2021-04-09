@@ -77,7 +77,7 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
 - 硬件适配能力：该框架能够在给定硬件上（包括可选和必选）完成的任务数占总任务数的比例。本指标主要体现框架对业界常用硬件的适配全面性。指标根据参与者提交的任务个数确定。
 - 性能指标，均在单线程环境下运行：
     - 时延：N次推理，每次1个sample，计算每次推理的用时。时延取N次用时的90分位值。单位：ms（毫秒）
-        - 测试方法：取1000个样本，每次推理一个样本，计算该样本推理延迟时间。1000个延迟时间升序排序，取90分位值。
+        - 测试方法：将验证集作为输入样本，每次推理一个样本，计算该样本推理延迟时间。所有样本的推理延迟时间升序排序，取90分位值。
     - 离线吞吐：单位时间内，能够推理的样本数量。单位：samples/sec(样本数/秒)。
         - 测试方法：将验证数据集一次性，全部提供给推理程序，推理程序并发推理。计算其整体吞吐速率。
     - 最大并发推理量：在延迟时间不高于约束值前提下，最大支持的一个批次的BatchSize值。
@@ -125,7 +125,7 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
 
 其中，如下目录的名字需要按照实际情况修改：
 - submitter目录名为提交公司或组织的名称；
-- system 目录名为硬件名称，如QUALCOMM865、RK3399等；
+- system 目录名为硬件名称，如Qualcomm865、RK3399等；
 - modelx目录名只能为评测模型名称或模型名称+深度学习框架名称，每次提交可以只提交部分模型；
 - architecture目录名由架构（armv7或armv8）+处理器芯片（如CPU、GPU等）组成，每次至少提交一个。例如armv8_cpu、armv8_gpu等；
 
@@ -138,23 +138,18 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
 
 ### system_information.json 内容要求
 描述评测硬件和操作系统信息，如下字段必须存在
-|  字段                       | 值（举例）       |
-|-----------------------------|-----------------|
-| accelerator_memory_capacity |                 |
-| accelerator_name            |  Qualcomm Hexagon 690 Processor: Hexagon Vector Accelerator (HVX)  |
-| accelerators_per_node       |  1              |
-| host_memory_capacity        |  6 GB           |
-| host_processor_core_count   |  8              |
-| host_processor_name         |  Qualcomm Kryo485   |
-| host_processors_per_node    |  1              |
-| host_storage_capacity       |  32 GB          |
-| host_storage_type           |  UFS            |
-| number_of_nodes             |  1              |
-| operating_system            |  Android 9.0    |
-| software_stack              |  PaddleLite 2.8， NDK 17.0 |
-| submitter                   |  Baidu          |
-| hardware_name               |  某厂商机型      |
-| hardware_type               |  mobile         |
+| 字段                  | 值（举例）               |
+|-----------------------|--------------------------|
+| device                | Huawei Mate30            |
+| processor_name        | kirin990                 |
+| integrated_cpu        | 2xA76 @2.86GHz + 2xA76 @2.09GHz + 4xA55 @1.86GHz |
+| integrated_gpu        | Mali G76MP16 @600MHz     |
+| integrated_dsp        |                          |
+| integrated_npu        | 1 + 1 Da Vinci           |
+| memory_capacity       | 8GB                      |
+| operating_system      | Android 10               |
+| software_stack        | PaddleLite 2.8, NDK 17.0 |
+| submitter             | Baidu                    |
 
 ### 每个模型code目录中README.md内容要求
 - 数据说明
