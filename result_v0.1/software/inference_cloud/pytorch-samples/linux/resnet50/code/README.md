@@ -1,3 +1,7 @@
+## 使用说明
+
+该代码修改自pytorch example。测试时请使用imagenet文件夹内的代码。
+
 ## 安装
 
 - Install PyTorch ([pytorch.org](http://pytorch.org))
@@ -65,6 +69,7 @@ optional arguments:
   --warmup              warm up times.
 ```
 ## 评测结果
+
 |  模型  | 离线吞吐(samples/sec)  | 在线吞吐(samples/sec) |
 |--------------|--------------|--------------|
 |   Resnet50   |    364       |              |
