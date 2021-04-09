@@ -5,7 +5,7 @@ https://github.com/pytorch/examples/tree/master/imagenet has been adapted for AI
 ## Requirements
 
 - Install PyTorch ([pytorch.org](http://pytorch.org))
-- `pip install -r requirements.txt`
+- `pip install -r imagenet/requirements.txt`
 - Download the ImageNet dataset from http://www.image-net.org/
     - Then, and move validation images to labeled subfolders, using [the following shell script](https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/valprep.sh)
 
