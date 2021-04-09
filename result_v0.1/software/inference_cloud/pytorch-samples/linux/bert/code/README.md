@@ -2,7 +2,7 @@
 
 ## 使用说明
 
-该代码修改自huggingface-transformers。测试时请使用transformers文件夹内的代码。
+该代码修改自[huggingface-transformers(commit acc3bd9d2a73fcc7d3509767d65b2f40962d9330)](https://github.com/huggingface/transformers)。测试时请使用本目录下transformers文件夹内的代码。
 
 ## 安装
 
@@ -11,7 +11,7 @@ pip install -e .
 cd question-answering  
 pip install -r requirements.txt
 
-## 运行
+## 运行命令
 
 python run_qa.py --model_name_or_path [path to model of bert-large-uncased]  --dataset_name squad --do_eval --per_device_eval_batch_size 32  --max_seq_length 384 --output_dir ./debug_squad/ --ai_rank_logging True --warmup_times 8
 
