@@ -1,5 +1,5 @@
 {
-    "Device": "XiaoMi9",
+    "device": "XiaoMi9",
     "processor_name": "Qualcomm855",
     "integrated_cpu": "1xA76 @2.84GHz + 3xA76 @2.42 + 4xA55 @1.8GHz",
     "integrated_gpu": "Adreno 640",

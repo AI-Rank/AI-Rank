@@ -1,5 +1,5 @@
 {
-    "Device": "XiaoMi10",
+    "device": "XiaoMi10",
     "processor_name": "Qualcomm865",
     "integrated_cpu": "1xA77 @2.84GHz + 3xA77 @2.42 + 4xA55 @1.8GHz",
     "integrated_gpu": "Adreno 650",
