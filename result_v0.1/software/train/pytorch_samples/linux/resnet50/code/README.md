@@ -81,7 +81,7 @@ set -xe
 
 num_trainers=$1 # numbers of trainer
 num_gpus=$2     # numbers of gpu
-total_cards=$((num_trainers*num_gpu))   # total numbers of gpu
+total_cards=$((num_trainers*num_gpus))   # total numbers of gpu
 
 base_batch_size=$3   # base batch size of single card
 use_amp=${4:-True}   # --amp or "" 
@@ -109,7 +109,7 @@ export distribute="--nnodes ${num_trainers} --node_rank ${RANK}  --master_addr $
 echo "===========>${distribute}"
 echo "=================test PERF=======amp=${use_amp}=========lr=${lr}"
 
-python3  ./multiproc.py --nproc_per_node=${num_gpu}  ${distribute}  main.py \
+python3  ./multiproc.py --nproc_per_node=${num_gpus}  ${distribute}  main.py \
     --arch resnet50 \
      	${precision} -b ${base_batch_size} \
     --optimizer-batch-size ${optimizer_batch_size} \
