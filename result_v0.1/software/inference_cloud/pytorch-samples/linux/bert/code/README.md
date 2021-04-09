@@ -25,4 +25,4 @@ cd question-answering
 pip install -r requirements.txt
 
 ## Benchmark
-python run_qa.py --model_name_or_path [path to model of bert-base-uncased]  --dataset_name squad --do_eval --per_device_eval_batch_size 8  --max_seq_length 384 --output_dir ./debug_squad/ --ai_rank_logging True --warmup_times 8
+python run_qa.py --model_name_or_path [path to model of bert-large-uncased]  --dataset_name squad --do_eval --per_device_eval_batch_size 8  --max_seq_length 384 --output_dir ./debug_squad/ --ai_rank_logging True --warmup_times 8

@@ -481,8 +481,7 @@ def main():
             md.update(example['id'].encode("utf-8"))
             md.update(example['question'].encode("utf-8"))
             md.update(example['title'].encode("utf-8"))
-            #print(example['answers']['answer_start'], example['answers']['text'], example['context'], example['id'], example['question'], example['title'])
-        print(md.hexdigest())
+        #print(md.hexdigest())
 
         if data_args.max_val_samples is not None:
             # We will select sample from whole data
@@ -594,6 +593,8 @@ def main():
 
     # Evaluation
     if training_args.do_eval:
+        if not training_args.ai_rank_logging:
+            trainer.rank_logger.disable()
         trainer.rank_logger.info('load_data, checksum:{}'.format(md.hexdigest()))
         logger.info("*** Evaluate ***")
         metrics = trainer.evaluate()
