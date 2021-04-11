@@ -27,6 +27,7 @@
    # 本次测试是在如下版本下完成的：
    git checkout 99b1c898cead5603c945721162270c2fe077b4a2
    ```
+   为了计算time2train的时间，可以参照[PR910](https://github.com/NVIDIA/DeepLearningExamples/pull/910/files)进行修改, 达到time2train后自行退出
 
 - 制作Docker镜像
 
