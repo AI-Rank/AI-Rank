@@ -19,6 +19,7 @@
 
 我们使用Tensorflow官方提供的[Docker](https://hub.docker.com/r/tensorflow/tensorflow/)镜像，测试环境如下：
 
+
 - **镜像版本**: `tensorflow/tensorflow:1.12.0`
 - **Tensorflow版本**: `1.12.0`
 

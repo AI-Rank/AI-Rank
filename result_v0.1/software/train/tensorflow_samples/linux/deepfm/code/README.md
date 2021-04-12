@@ -2,6 +2,7 @@
 
 此处给出基于 `Tensorflow-1.12.0` 实现的 DeepFM 任务的详细复现流程，包括执行环境、Tensorflow版本、环境搭建、复现脚本、测试结果和测试日志，我们将主要测试在参数服务器模式下的性能，使用CPU集群产出模型训练的性能。
 
+
 ## 目录
 - [Tensorflow DeepFM 性能测试](#tensorflow-deepfm-性能测试)
   - [目录](#目录)
@@ -218,6 +219,7 @@ done
 - [八节点吞吐日志]()
 
 通过以上日志分析，Tensorflow ParameterServer模式， 八节点的吞吐为 **22479.28** `samples/sec`
+
 
 ## 五、性能指标
 
