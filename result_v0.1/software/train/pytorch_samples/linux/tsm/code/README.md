@@ -184,7 +184,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 |  训练卡数   | Time2train(sec)  |  吞吐(samples/sec) |准确率(%) |
 |------------|------------|------------|------------|
 |    1卡     |   -        |    -     |    -     |
-|    8卡     | 23711.15   |       |  70.121    |
+|    8卡     | 34883.65   |       |  70.121    |
 |    32卡    | 16494.37   |       |  70.116    |
 
 ## 五、日志数据
