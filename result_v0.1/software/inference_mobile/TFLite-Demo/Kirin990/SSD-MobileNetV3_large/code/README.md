@@ -144,7 +144,7 @@ adb shell /data/local/tmp/AI-RANK/tf_object_detction/run_eval \
 
 ## 7. 性能及精度评测结果
 | 模型  | 硬件 |架构(armv7/armv8) | 时延（ms） |  mAP    |  
-|------------------|--------------|--------------|--------------|
+|------------------|--------------|--------------|--------------|------------|
 | SSD-MobileNetV3  |     cpu      |     armv7    |    60.554    |    0.254   |
 | SSD-MobileNetV3  |     gpu      |     armv7    |    38.108    |    0.254   |
 | SSD-MobileNetV3  |     cpu      |     armv8    |    44.469    |    0.254   |
