@@ -72,7 +72,7 @@
 请参考[这里](https://github.com/PaddlePaddle/Perf/blob/master/utils/mpi.md)
 
 ### 3. 数据说明
-- 具体数据使用情况，请参看[DATA.md](https://github.com/wuhuachaocoding/AI-Rank/blob/tsm/result_v0.1/software/train/pytorch_samples/linux/tsm/code/DATA.md)
+- 具体数据使用情况，请参看[DATA.md](DATA.md)
 
 
 ## 三、测试步骤
