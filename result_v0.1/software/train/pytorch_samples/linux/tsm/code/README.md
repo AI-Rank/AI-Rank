@@ -84,7 +84,7 @@
    ```bash
    parser.add_argument('--amp',default=False,action="store_true",help="use amp training")
    ```
-- 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。主要将GradScaler和autocast在代码中使用起来，大致修改如下，详细描述可参考此处的[main.py](https://github.com/wuhuachaocoding/AI-Rank/blob/tsm/result_v0.1/software/train/pytorch_samples/linux/tsm/code/temporal-shift-module/main.py)。
+- 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。主要将GradScaler和autocast在代码中使用起来，大致修改如下，详细描述可参考此处的[main.py](../temporal-shift-module/main.py)。
    ```bash
       scaler = torch.cuda.amp.GradScaler(args.amp)
       
@@ -120,7 +120,7 @@
           optimizer.step()
    ```  
 #### (2)为代码添加多机支持   
-- 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码进行略微修改，主要包括使用DistributedDataParallel，Dataloader部分使用DistributedSampler，以及初始化进程通信相关环境。详细情况可参考此处的[main.py](https://github.com/wuhuachaocoding/AI-Rank/blob/tsm/result_v0.1/software/train/pytorch_samples/linux/tsm/code/temporal-shift-module/main.py)。
+- 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码进行略微修改，主要包括使用DistributedDataParallel，Dataloader部分使用DistributedSampler，以及初始化进程通信相关环境。详细情况可参考此处的[main.py](../temporal-shift-module/main.py)。
    
    
 **重要的配置参数：**
