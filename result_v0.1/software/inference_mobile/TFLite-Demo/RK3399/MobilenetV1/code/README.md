@@ -82,8 +82,8 @@ adb push imagenet1k_label_list.txt /data/local/tmp/AI-RANK/tf_lite_image_classif
 ```
 adb shell /data/local/tmp/AI-RANK/tf_lite_image_classify/run_eval \
   --model_file=/data/local/tmp/AI-RANK/tf_lite_image_classify/mobilenet_v1_1.0_224.tflite
-  --ground_truth_images_path=/data/local/tmp/AI-RANK/tf_lite_image_classify/ILSVRC2012_1000_cls.zip 
-  --ground_truth_labels=/data/local/tmp/AI-RANK/tf_lite_image_classify/ILSVRC2012_1000_cls/val_list_1k.txt 
+  --ground_truth_images_path=/data/local/tmp/AI-RANK/tf_lite_image_classify/ILSVRC2012_1000_cls.zip
+  --ground_truth_labels=/data/local/tmp/AI-RANK/tf_lite_image_classify/ILSVRC2012_1000_cls/val_list_1k.txt
   --model_output_labels=/data/local/tmp/AI-RANK/tf_lite_image_classify/imagenet1k_label_list.txt
   --delegate=xnnpack \
   --num_threads=1 \
@@ -115,10 +115,9 @@ run_eval 可执行文件参数介绍。
     更多可用的参数介绍，请见code目录下的[README](https://github.com/zhaoyang-star/tensorflow/blob/master/tensorflow/lite/tools/evaluation/tasks/imagenet_image_classification/README.md)
 
  ## 7. 性能及精度评测结果
-| 模型  | 硬件 |架构(armv7/armv8) | 时延（ms） |  Top-1（%） |  
+| 模型              |    硬件      | 架构(armv7/armv8) | 时延（ms） |  Top-1（%）|
 |------------------|--------------|--------------|--------------|------------|
 | MobilenetV1      |     cpu      |     armv7    |    166.104   |    72.8%   |
 | MobilenetV1      |     gpu      |     armv7    |    115.716   |    72.9%   |
 | MobilenetV1      |     cpu      |     armv8    |    156.784   |    72.8%   |
 | MobilenetV1      |     gpu      |     armv8    |    109.031   |    72.9%   |
-   
