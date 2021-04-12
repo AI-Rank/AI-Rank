@@ -125,7 +125,7 @@ AI-Rank针对终端推理框架设置了几个维度的不同指标来评价其�
 
 其中，如下目录的名字需要按照实际情况修改：
 - submitter目录名为提交公司或组织的名称；
-- system 目录名为硬件名称，如QUALCOMM865、RK3399等；
+- system 目录名按照具体使用的系统命名，例如 Android、IOS 等；
 - modelx目录名只能为评测模型名称或模型名称+深度学习框架名称，每次提交可以只提交部分模型；
 - architecture目录名由架构（armv7或armv8）+处理器芯片（如CPU、GPU等）组成，每次至少提交一个。例如armv8_cpu、armv8_gpu等；
 
