@@ -27,6 +27,85 @@ if is_torch_tpu_available():
     import torch_xla.debug.metrics as met
 
 import time
+import re
+import string
+import sys
+from collections import Counter
+
+def normalize_answer(s):
+    """Lower text and remove punctuation, articles and extra whitespace."""
+
+    def remove_articles(text):
+        return re.sub(r"\b(a|an|the)\b", " ", text)
+
+    def white_space_fix(text):
+        return " ".join(text.split())
+
+    def remove_punc(text):
+        exclude = set(string.punctuation)
+        return "".join(ch for ch in text if ch not in exclude)
+
+    def lower(text):
+        return text.lower()
+
+    return white_space_fix(remove_articles(remove_punc(lower(s))))
+
+def f1_score(prediction, ground_truth):
+    prediction_tokens = normalize_answer(prediction).split()
+    ground_truth_tokens = normalize_answer(ground_truth).split()
+    common = Counter(prediction_tokens) & Counter(ground_truth_tokens)
+    num_same = sum(common.values())
+
+    if num_same == 0:
+        return 0
+    precision = 1.0 * num_same / len(prediction_tokens)
+    recall = 1.0 * num_same / len(ground_truth_tokens)
+    f1 = (2 * precision * recall) / (precision + recall)
+
+    return num_same
+
+def metric_max_over_ground_truths(metric_fn, prediction, ground_truths):
+    scores_for_ground_truths = []
+    for ground_truth in ground_truths:
+        score = metric_fn(prediction, ground_truth)
+        scores_for_ground_truths.append(score)
+    return max(scores_for_ground_truths)
+
+def evaluate(dataset, predictions, rank_logger):
+    f1 = total = 0
+    for article in dataset:
+        for paragraph in article["paragraphs"]:
+            for qa in paragraph["qas"]:
+                total += 1
+                if qa["id"] not in predictions:
+                    message = "Unanswered question " + qa["id"] + " will receive score 0."
+                    print(message, file=sys.stderr)
+                    continue
+                ground_truths = list(map(lambda x: x["text"], qa["answers"]))
+                prediction = predictions[qa["id"]]
+                f1 = metric_max_over_ground_truths(f1_score, prediction, ground_truths)
+                rank_logger.info('sampleid:{}, same num={}'.format(qa["id"], f1))
+
+
+def _compute(predictions, references, rank_logger):
+    pred_dict = {prediction["id"]: prediction["prediction_text"] for prediction in predictions}
+    dataset = [
+        {
+            "paragraphs": [
+                {
+                    "qas": [
+                        {
+                            "answers": [{"text": answer_text} for answer_text in ref["answers"]["text"]],
+                            "id": ref["id"],
+                        }
+                        for ref in references
+                    ]
+                }
+            ]
+        }
+    ]
+    evaluate(dataset, pred_dict, rank_logger)
+
 
 class QuestionAnsweringTrainer(Trainer):
     def __init__(self, *args, eval_examples=None, post_process_function=None, **kwargs):
@@ -62,6 +141,8 @@ class QuestionAnsweringTrainer(Trainer):
         if self.post_process_function is not None and self.compute_metrics is not None:
             eval_preds = self.post_process_function(eval_examples, eval_dataset, output.predictions)
             metrics = self.compute_metrics(eval_preds)
+
+            #_compute(eval_preds.predictions, eval_preds.label_ids, self.rank_logger)
 
             process_end = time.time()
             self.rank_logger.info('total_accuracy:{}'.format(metrics['f1'] / 100))
