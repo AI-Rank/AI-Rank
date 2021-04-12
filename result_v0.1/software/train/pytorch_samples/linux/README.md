@@ -7,3 +7,6 @@
 - NGC PyTorch的具体信息请见 [system_information.json](./system_information.json)
 - ResNet50V1.5的测试报告及日志等请见 [ResNet50V1.5](./resnet50/code/README.md)
 - Bert的测试报告及日志等请见 [Bert](./bert/code/README.md)
+- Mask RCNN的测试报告及日志等请见 [Mask RCNN](./mask_rcnn/code/README.md)
+- YOLOv3的测试报告及日志等请见 [YOLOv3](./yolov3/code/README.md)
+

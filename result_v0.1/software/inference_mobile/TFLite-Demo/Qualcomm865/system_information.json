@@ -1,0 +1,12 @@
+{
+    "device": "XiaoMi10",
+    "processor_name": "Qualcomm865",
+    "integrated_cpu": "1xA77 @2.84GHz + 3xA77 @2.42 + 4xA55 @1.8GHz",
+    "integrated_gpu": "Adreno 650",
+    "integrated_dsp": "",
+    "integrated_npu": "",
+    "memory_capacity": "16GB",
+    "operating_system": "Android 10",
+    "software_stack": "Tensorflow 2.4.1, NDK 17.0",
+    "submitter": "Baidu"
+}

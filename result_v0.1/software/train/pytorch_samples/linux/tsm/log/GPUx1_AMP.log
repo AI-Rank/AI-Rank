@@ -37,7 +37,9 @@ Adding temporal shift...
 => Using fold div: 8
 => Using fold div: 8
 video number:234584
+
 - AI-Rank-log 1618110206.937 load_data, checksum:234584
+
 video number:19760
 group: first_conv_weight has 1 params, lr_mult: 1, decay_mult: 1
 group: first_conv_bias has 0 params, lr_mult: 2, decay_mult: 0
@@ -1097,4 +1099,3 @@ Test: [1216/1235]	Time 0.139 (0.145)	Loss 2.3120 (2.2130)	Prec@1 25.000 (48.213)
 Testing Results: Prec@1 48.188 Prec@5 75.288 Loss 2.21407
 - AI-Rank-log 1618119359.842 eval_accuracy:48.188259, total_epoch_cnt:1
 Best Prec@1: 48.188
-

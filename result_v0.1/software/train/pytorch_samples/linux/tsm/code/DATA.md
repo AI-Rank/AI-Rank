@@ -6,6 +6,7 @@
 - [数据预处理逻辑](#数据预处理逻辑)
 - [模型说明](#模型说明)
 
+
 ---
 
 
@@ -39,6 +40,7 @@ bash download.sh train_link.list
 bash download.sh val_link.list
 ```
 
+
 |类别 | 数据条数  | list文件 |
 | :------: | :----------: | :----: |
 |训练集 | 234619  |  [train.list](https://videotag.bj.bcebos.com/PaddleVideo/Data/Kinetic400/train.list)|
@@ -50,6 +52,7 @@ bash download.sh val_link.list
 - 由于部分视频原始链接失效，数据有部分缺失，全部文件大概需要135G左右的存储空间，PaddleVideo使用的也是这份数据。
 
 - 训练实用训练集数据，验证和测试均实用验证集数据，训练时数据顺序随机，测试时数据按list顺序。
+
 
 
 ## 提取frames数据
@@ -67,7 +70,6 @@ python extract_rawframes.py ./videos/ ./rawframes/ --level 2 --ext mp4
 | :------: | :----------: | :----: |
 |训练集 | 234619  |  [train_frames.list](https://videotag.bj.bcebos.com/PaddleVideo/Data/Kinetic400/train_frames.list)|
 |验证集 | 19761 |  [val_frames.list](https://videotag.bj.bcebos.com/PaddleVideo/Data/Kinetic400/val_frames.list)|
-
 
 ## 数据预处理逻辑
 ### 训练

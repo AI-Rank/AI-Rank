@@ -13,6 +13,7 @@
   - [1. 单机（单卡、8卡）环境搭建](#1-单机单卡8卡环境搭建)
   - [2. 多机（32卡）环境搭建](#2-多机32卡环境搭建)
   - [3. 数据说明](#3-数据说明)
+
 - [三、测试步骤](#三测试步骤)
   - [1. 添加AMP和多机代码](#1-添加AMP和多机代码)
   - [2. 单机（单卡、8卡）测试](#2-单机单卡8卡测试)
@@ -71,9 +72,9 @@
 - MPI配置
 请参考[这里](https://github.com/PaddlePaddle/Perf/blob/master/utils/mpi.md)
 
+
 ### 3. 数据说明
 - 具体数据使用情况，请参看[DATA.md](DATA.md)
-
 
 ## 三、测试步骤
 
@@ -84,10 +85,12 @@
    ```bash
    parser.add_argument('--amp',default=False,action="store_true",help="use amp training")
    ```
+
 - 我们在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码中，依据pytorch官网[typical-mixed-precision-training](https://pytorch.org/docs/master/notes/amp_examples.html#typical-mixed-precision-training)  提供的示例参考，在[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)中修改一些代码。主要将GradScaler和autocast在代码中使用起来，详细描述可参考此处的[main.py](temporal-shift-module/main.py)。
   
 #### (2)为代码添加多机支持   
 - 为了添加多机支持，我们将[main.py](https://github.com/mit-han-lab/temporal-shift-module/blob/master/main.py)代码进行略微修改，主要包括使用DistributedDataParallel，Dataloader部分使用DistributedSampler，以及初始化进程通信相关环境。详细情况可参考此处的[main.py](temporal-shift-module/main.py)。
+
    
    
 **重要的配置参数：**
@@ -195,3 +198,4 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 - [4机32卡、FP32 ](../log/GPUx32_FP32.log)
 - [1机8卡、FP32 ](../log/GPUx8_FP32.log)
 - [1机1卡、FP32 ](../log/GPUx1_FP32.log)
+
