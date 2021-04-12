@@ -241,16 +241,16 @@ done
 
 - [四节点吞吐日志]()
 
-通过以上日志分析，Tensorflow ParameterServer模式， 四节点时，单节点的吞吐为 **xxx.yyy** `samples/sec`， 总吞吐可计算为
+通过以上日志分析，Tensorflow ParameterServer模式， 四节点时，单节点的吞吐为 **19839.28** `samples/sec`， 总吞吐可计算为
 
 - [八节点吞吐日志]()
 
-通过以上日志分析，Tensorflow ParameterServer模式， 八节点的吞吐为 **xxx.yyy** `samples/sec`
+通过以上日志分析，Tensorflow ParameterServer模式， 八节点的吞吐为 **40707.60** `samples/sec`
 
 ## 五、性能指标
 
 |       | Time2train(sec) | 吞吐(samples/sec) | ACC(%) | 加速比 |
 | ----- | --------------- | ----------------- | ------ | ------ |
 | 1节点 | -               | -                 | -      | -      |
-| 4节点 | -               | -                 | -      | -      |
-| 8节点 | -               | -                 | -      | -      |
+| 4节点 | -               | 19839.28                 | -      | -      |
+| 8节点 | -               | 40707.60                 | -      | -      |
