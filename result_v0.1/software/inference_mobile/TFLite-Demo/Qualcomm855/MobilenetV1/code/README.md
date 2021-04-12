@@ -115,7 +115,7 @@ run_eval 可执行文件参数介绍。
     更多可用的参数介绍，请见code目录下的[README](https://github.com/zhaoyang-star/tensorflow/blob/master/tensorflow/lite/tools/evaluation/tasks/imagenet_image_classification/README.md)
 
 ## 7. 性能及精度评测结果
-| 模型              |    硬件      | 架构(armv7/armv8) | 时延（ms） |  Top-1（%）|
+| 模型  | 硬件 |架构(armv7/armv8) | 时延（ms） |  Top-1(%)    |  
 |------------------|--------------|--------------|--------------|------------|
 | MobilenetV1      |     cpu      |     armv7    |    39.390    |    72.8%   |
 | MobilenetV1      |     gpu      |     armv7    |    8.199     |    72.8%   |
