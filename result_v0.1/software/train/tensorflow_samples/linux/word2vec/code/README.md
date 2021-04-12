@@ -1,6 +1,6 @@
 # Tensorflow Word2Vec 性能测试
 
-此处给出基于 `Tensorflow-1.15.0` 实现的 Word2Vec 任务的详细复现流程，包括执行环境、Tensorflow版本、环境搭建、复现脚本、测试结果和测试日志，我们将主要测试在参数服务器模式下的性能，使用CPU集群产出模型训练的性能。
+此处给出基于 `Tensorflow-1.12.0` 实现的 Word2Vec 任务的详细复现流程，包括执行环境、Tensorflow版本、环境搭建、复现脚本、测试结果和测试日志，我们将主要测试在参数服务器模式下的性能，使用CPU集群产出模型训练的性能。
 
 ## 目录
 - [Tensorflow Word2Vec 性能测试](#tensorflow-word2vec-性能测试)
@@ -19,16 +19,16 @@
 
 我们使用Tensorflow官方提供的[Docker](https://hub.docker.com/r/tensorflow/tensorflow/)镜像，测试环境如下：
 
-- **镜像版本**: `tensorflow/tensorflow:1.15.0`
-- **Tensorflow版本**: `1.15.0`
+- **镜像版本**: `tensorflow/tensorflow:1.12.0`
+- **Tensorflow版本**: `1.12.0`
 
 我们在通用K8S集群上成功搭建了测试环境，针对任务训练节点数量及参数服务器数量的配置，集群将分别启动对应数量的pod，并配置分布式训练所需超参，完成参数服务器模式的训练。
 
 执行以下命令以下载及进入容器：
 
 ``` bash
-docker pull tensorflow/tensorflow:1.15.0
-docker run -it --net=host tensorflow/tensorflow:1.15.0 /bin/bash
+docker pull tensorflow/tensorflow:1.12.0
+docker run -it --net=host tensorflow/tensorflow:1.12.0 /bin/bash
 ```
 
 
