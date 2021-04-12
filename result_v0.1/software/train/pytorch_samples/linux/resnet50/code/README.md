@@ -27,7 +27,7 @@
    # 本次测试是在如下版本下完成的：
    git checkout 99b1c898cead5603c945721162270c2fe077b4a2
    ```
-   为了计算time2train的时间，可以对ConvNets中的training.py进行修改, 达到time2train后自行退出, 修改后的代码放在code文件夹下, 使用时替换至对应目录即可
+   为了计算time2train的时间，需要对ConvNets中的training.py进行修改, 修改后的完整代码放在code文件夹下.
 
 - 制作Docker镜像
 
