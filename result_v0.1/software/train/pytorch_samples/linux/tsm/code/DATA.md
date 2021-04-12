@@ -36,7 +36,7 @@ bash download.sh train_link.list
 
 下载验证集命令:
 ```bash
-bash download.sh train_link.list
+bash download.sh val_link.list
 ```
 
 |类别 | 数据条数  | list文件 |
@@ -44,6 +44,8 @@ bash download.sh train_link.list
 |训练集 | 234619  |  [train.list](https://videotag.bj.bcebos.com/PaddleVideo/Data/Kinetic400/train.list)|
 |验证集 | 19761 |  [val.list](https://videotag.bj.bcebos.com/PaddleVideo/Data/Kinetic400/val.list)|
 
+
+- 下载后自行解压，并将数据路径添加到相应的list文件中。
 
 - 由于部分视频原始链接失效，数据有部分缺失，全部文件大概需要135G左右的存储空间，PaddleVideo使用的也是这份数据。
 
