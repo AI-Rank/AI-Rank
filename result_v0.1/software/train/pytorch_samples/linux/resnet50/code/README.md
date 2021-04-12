@@ -10,6 +10,7 @@
   - [三、测试步骤](#三测试步骤)
     - [1.单卡Time2Train及吞吐测试](#1单卡time2train及吞吐测试)
     - [2.单卡准确率测试](#2单卡准确率测试)
+    - [3.多机Time2Train及吞吐、准确率测试](#3多机time2train及吞吐、准确率测试)
   - [四、日志数据](#四日志数据)
   - [五、性能指标](#五性能指标)
 
@@ -69,18 +70,89 @@ wget -qO- https://raw.githubusercontent.com/soumith/imagenetloader.torch/master/
     python ./multiproc.py --nproc_per_node 8 ./launch.py --model resnet50 --precision AMP --mode convergence --platform DGX1V /imagenet --workspace ${1:-./} --raport-file raport.json
 ```
 
+### 3.多机time2train及吞吐、准确率测试
+基础配置和上文所述的单机配置相同，多机这部分主要侧重于多机和单机的差异部分。
+
+为了方便测试，我们封装了一下NGC的启动脚本
+
+```
+#!/bin/bash
+set -xe
+
+num_trainers=$1 # numbers of trainer
+num_gpus=$2     # numbers of gpu
+total_cards=$((num_trainers*num_gpus))   # total numbers of gpu
+
+base_batch_size=$3   # base batch size of single card
+use_amp=${4:-True}   # --amp or "" 
+
+optimizer_batch_size=$((base_batch_size*total_cards))
+echo 'optimizer_batch_size ${optimizer_batch_size}'
+base=`echo "scale=3; ${base_batch_size}/1000" |bc`
+lr_tmp=`echo "${total_cards} * ${base}" |bc`
+lr="${lr_tmp}"
+
+export WORLD_SIZE=${total_cards}
+
+if [[ ${use_amp} == True ]];then
+    precision='--amp'
+else
+    precision=''
+fi
+
+export RANK=`python3 get_mpi_rank.py`
+
+export env_path=${HOME_WORK_DIR}/workspace/DeepLearningExamples/PyTorch/Classification/ConvNets  #Note: Please replace with your path.
+cd ${env_path}
+
+export distribute="--nnodes ${num_trainers} --node_rank ${RANK}  --master_addr ${MASTER_NODE} --master_port ${MASTER_PORT}"
+echo "===========>${distribute}"
+echo "=================test PERF=======amp=${use_amp}=========lr=${lr}"
+
+python3  ./multiproc.py --nproc_per_node=${num_gpus}  ${distribute}  main.py \
+    --arch resnet50 \
+     	${precision} -b ${base_batch_size} \
+    --optimizer-batch-size ${optimizer_batch_size} \
+    --lr ${lr} \
+    --lr-schedule "cosine" \
+    --warmup 8 \
+    --label-smoothing 0.1 \
+    --momentum 0.875 \
+    --weight-decay 3.0517578125e-05 \
+    -p 10 \
+    --static-loss-scale 128.0 \
+    --raport-file benchmark.json \
+    --epochs 90 \
+    /imagenet \
+```
+
+然后使用一个脚本测试多组实验
+
+```
+echo "begin run 256 AMP on 8 gpus"
+$mpirun bash ./run_benchmark.sh  1 8 256
+
+echo "begin run 256 AMP on 32 gpus"
+$mpirun bash ./run_benchmark.sh  4 8 256
+```
+
+其中mpi的使用参考[这里](../../../../../../../utils/mpi.md#需要把集群节点环境传给通信框架) 
+
+
 ## 四、日志数据
 - [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.log)
 - [单卡准确率测试](../log/GPUx1_accuracy.log)
+- [多机Time2Train及吞吐、准确率测试日志](./logs/GPUx32_time2train_ips.log)
 
-通过以上日志分析，PyTorch经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
-
+通过以上日志分析，
+在单卡训练的情况下，PyTorch经过137,335秒的训练完成了90个epoch的训练，训练精度（即`val.top1`)达到76.63 %，训练吞吐（即`train.compute_ips`）达到859.24img/s。
+经过250个epoch的训练，最终精度（即`val.top1`)达到77.90%。
 
 ## 五、性能指标
 
 
 |              | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
 |--------------|------------|------------|------------|-----------|
-| 1卡          |  137,335   |   859.24   |     -      |     -     |
+| 1卡          |  137,335   |   859.24   |     77.90  |     -     |
 | 8卡          |     -      |      -     |     -      |     -     |
-| 32卡         |     -      |      -     |     -      |     -     |
+| 32卡         |   5237   |  22710.21  |     75.90  |    26.43  |
