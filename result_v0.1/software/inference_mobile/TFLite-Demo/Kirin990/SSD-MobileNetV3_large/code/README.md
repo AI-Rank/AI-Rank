@@ -7,7 +7,7 @@
 * [2017 COCO label map](https://ai-rank.bj.bcebos.com/coco2017_labelmap.txt?authorization=bce-auth-v1/d0d94402f8e14d64a1695f0bd1e4926a/2021-04-06T08%3A58%3A42Z/-1/host/7ebf837b1999681d4495b391a993d3985447429047a7434cb5bb2564817fccbd)：一个 `.txt` 文件，共 91 行，含有 80 个有效 categories。
 
 ```
-wget http://images.cocodataset.org/zips/val2017.zip && unzip val2017.zip && tar xf val2017.tar val2017
+wget http://images.cocodataset.org/zips/val2017.zip && unzip val2017.zip && tar -cf val2017.tar val2017
 wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip && unzip annotations_trainval2017.zip
 wget https://ai-rank.bj.bcebos.com/coco2017_labelmap.txt?authorization=bce-auth-v1/d0d94402f8e14d64a1695f0bd1e4926a/2021-04-06T08%3A58%3A42Z/-1/host/7ebf837b1999681d4495b391a993d3985447429047a7434cb5bb2564817fccbd
 ```
@@ -67,11 +67,12 @@ Outputs 索引 | 名称 | 描述
 编译目标检测评测工具：
 ```
 cd /WORK
+# 克隆仓库，如果 clone 失败，可尝试直接在网页上下载 .zip 包
 git clone https://github.com/zhaoyang-star/tensorflow.git
 cd tensorflow
 
 # 安装 bazel
-cd "/usr/local/bin" && curl -LO https://releases.bazel.build/3.7.2/release/bazel-3.7.2-linux-x86_64 && chmod +x bazel-3.7.2-linux-x86_64 && ln -s bazel bazel-3.7.2-linux-x86_64 && cd -
+cd "/usr/local/bin" && curl -LO https://releases.bazel.build/3.7.2/release/bazel-3.7.2-linux-x86_64 && chmod +x bazel-3.7.2-linux-x86_64 && ln -s bazel-3.7.2-linux-x86_64 bazel && cd -
 
 # [option] 编译 armv7 版本的评测工具
 bazel build -c opt --config=android_arm  //tensorflow/lite/tools/evaluation/tasks/coco_object_detection:run_eval
