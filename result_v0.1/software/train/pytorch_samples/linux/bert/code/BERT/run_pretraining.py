@@ -314,18 +314,14 @@ def parse_arguments():
                         help='Disable tqdm progress bar')
     parser.add_argument('--steps_this_run', type=int, default=-1,
                         help='If provided, only run this many steps before exiting')
-    parser.add_argument(
-        '--target_mlm_accuracy',
-        type=float,
-        default=0.0,
-        help="Stop training after reaching this Masked-LM accuracy")
-    parser.add_argument(
-        '--train_mlm_accuracy_window_size',
-        type=int,
-        default=0,
-        help=
-        "Average accuracy over this amount of batches before performing a stopping criterion test"
-    )
+    parser.add_argument('--target_mlm_accuracy',
+                        type=float,
+                        default=0.712,
+                        help="Stop training after reaching this Masked-LM accuracy")
+    parser.add_argument('--train_mlm_accuracy_window_size',
+                        type=int,
+                        default=10,
+                        help="Average accuracy over this amount of batches before performing a stopping criterion test")
     parser.add_argument("--eval_batch_size",
                         default=128,
                         type=int,
@@ -335,14 +331,14 @@ def parse_arguments():
                         type=str,
                         help="The eval data dir. Should contain .hdf5 files  for the task.")
     parser.add_argument("--eval_iter_start_samples",
-                        default=3000000,
+                        default=10,
                         type=int,
                         help="Sample to begin performing eval.")
     parser.add_argument("--eval_iter_samples",
-                        default=-1,
+                        default=100,
                         type=int,
                         help="If set to -1, disable eval, \
-                        else evaluate every eval_iter_samples during training"                                                                                                                                                            )
+                        else evaluate every eval_iter_samples during training")
     parser.add_argument("--num_eval_examples",
                         default=10000,
                         type=int,
@@ -546,7 +542,6 @@ def take_optimizer_step(args, optimizer, model, overflow_buf, global_step):
             skipped_steps += 1
             if is_main_process():
                 scaler = _amp_state.loss_scalers[0]
-                dllogger.log(step="PARAMETER", data={"loss_scale": scaler.loss_scale()})
             if _amp_state.opt_properties.master_weights:
                 for param in optimizer._amp_stash.all_fp32_from_fp16_params:
                     param.grad = None
@@ -565,7 +560,8 @@ def take_optimizer_step(args, optimizer, model, overflow_buf, global_step):
 cached_batches = []
 
 
-def run_eval(model,
+def run_eval(args,
+             model,
              eval_dataloader,
              device,
              num_eval_examples,
@@ -587,6 +583,9 @@ def run_eval(model,
             input_ids, segment_ids, input_mask, masked_lm_labels, next_sentence_labels = batch
             loss, mlm_acc, num_masked = model(input_ids=input_ids, token_type_ids=segment_ids, attention_mask=input_mask,
                                   masked_lm_labels=masked_lm_labels, next_sentence_label=next_sentence_labels)
+            if args.fp16:   # incase of overflow, cast the tf16 loss and acc to tf32
+                loss = loss.type(torch.cuda.FloatTensor)
+                mlm_acc = mlm_acc.type(torch.cuda.FloatTensor)
             total_eval_loss += loss * num_masked
             total_eval_mlm_acc += mlm_acc * num_masked
             total_masked += num_masked
@@ -620,20 +619,12 @@ def main():
     worker_init = WorkerInitObj(args.seed + args.local_rank)
 
     device, args = setup_training(args)
-    dllogger.log(step="PARAMETER", data={"Config": [str(args)]})
 
     # Prepare optimizer
     model, optimizer, lr_scheduler, checkpoint, global_step, criterion = prepare_model_and_optimizer(args, device)
 
-    if is_main_process():
-        dllogger.log(step="PARAMETER", data={"SEED": args.seed})
-
     raw_train_start = None
     if args.do_train:
-        if is_main_process():
-            dllogger.log(step="PARAMETER", data={"train_start": True})
-            dllogger.log(step="PARAMETER", data={"batch_size_per_gpu": args.train_batch_size})
-            dllogger.log(step="PARAMETER", data={"learning_rate": args.learning_rate})
 
         model.train()
         most_recent_ckpts_paths = []
@@ -658,6 +649,9 @@ def main():
                                               worker_init_fn=worker_init)
 
         # Note: We loop infinitely over epochs, termination is handled via iteration count
+        start = time.time()
+        print('- AI-Rank-log ', start, ' load_data')
+        print('- AI-Rank-log ', start, ' test_begin')
         while True:
             thread = None
             restored_data_loader = None
@@ -694,7 +688,6 @@ def main():
                                               batch_size=args.train_batch_size * args.n_gpu,
                                               num_workers=4, worker_init_fn=worker_init,
                                               pin_memory=True)
-                # shared_file_list["0"] = (train_dataloader, data_file)
             else:
                 train_dataloader = restored_data_loader
                 restored_data_loader = None
@@ -715,7 +708,8 @@ def main():
 
                 dataset_future = pool.submit(create_pretraining_dataset, data_file, args.max_predictions_per_seq, shared_file_list, args, worker_init)
 
-                train_iter = tqdm(train_dataloader, desc="Iteration", disable=args.disable_progress_bar) if is_main_process() else train_dataloader
+                #train_iter = tqdm(train_dataloader, desc="Iteration", disable=args.disable_progress_bar) if is_main_process() else train_dataloader
+                train_iter = train_dataloader
 
                 if raw_train_start is None:
                     raw_train_start = time.time()
@@ -757,15 +751,23 @@ def main():
                                 eval_dataloader = eval_dataset_future.result(timeout=None)
 
                             samples_trained_prev = samples_trained
-                            eval_avg_loss, eval_avg_mlm_accuracy = run_eval(model, eval_dataloader, device, args.num_eval_examples,
+                            eval_avg_loss, eval_avg_mlm_accuracy = run_eval(args, model, eval_dataloader, device, args.num_eval_examples,
                                                                             first_eval=(eval_count == 0), use_cache=args.cache_eval_data)
                             if is_main_process():
-                                print({"global_steps": global_step, "eval_loss": eval_avg_loss, "eval_mlm_accuracy":eval_avg_mlm_accuracy})
+                                print('- AI-Rank-log ', time.time(), ' eval_accuracy:', eval_avg_mlm_accuracy,
+                                      ', global_step:', global_step)
+                            eval_count += 1
                             if args.target_mlm_accuracy:
                                 if eval_avg_mlm_accuracy >= args.target_mlm_accuracy:
                                     end_training, converged = True, True
                                     if is_main_process():
-                                        print("%f > %f, Target MLM Accuracy reached at %d"%(eval_avg_mlm_accuracy, args.target_mlm_accuracy, global_step))
+                                        end = time.time()
+                                        print('- AI-Rank-log ', end, ' test_finish')
+                                        print('- AI-Rank-log ', end, ' total_use_time:', (end - start), 'sec')
+                                        print('- AI-Rank-log ', end, ' avg_ips:',
+                                              args.train_batch_size * args.gradient_accumulation_steps * gpu_count * \
+                                              global_step / (end - start), 'samples/sec')
+                                        return args, final_loss, train_time_raw, global_step
 
                             eval_count += 1
                     # For mlm_accuracy
@@ -787,19 +789,7 @@ def main():
                             average_loss /= get_world_size()
                             torch.distributed.all_reduce(average_loss)
                         final_loss = average_loss.item()
-                        if is_main_process():
-                            dllogger.log(step=(epoch, global_step, ), data={"final_loss": final_loss})
                     elif training_steps % (args.log_freq * args.gradient_accumulation_steps) == 0:
-                        if is_main_process():
-                            if args.train_mlm_accuracy_window_size > 0:
-                                dllogger.log(step=(epoch, global_step, ), data={"average_loss": average_loss / (args.log_freq * divisor),
-                                                                            "step_loss": loss.item() * args.gradient_accumulation_steps / divisor,
-                                                                            "learning_rate": optimizer.param_groups[0]['lr'],
-                                                                            "mlm_accuracy": avg_mlm_accuracy[0].item()})
-                            else:
-                                dllogger.log(step=(epoch, global_step, ), data={"average_loss": average_loss / (args.log_freq * divisor),
-                                                                            "step_loss": loss.item() * args.gradient_accumulation_steps / divisor,
-                                                                            "learning_rate": optimizer.param_groups[0]['lr']})
                         average_loss = 0
 
 
@@ -807,7 +797,6 @@ def main():
                             args.num_steps_per_checkpoint * args.gradient_accumulation_steps) == 0 or timeout_sent:
                         if is_main_process() and not args.skip_checkpoint:
                             # Save a trained model
-                            dllogger.log(step="PARAMETER", data={"checkpoint_step": global_step})
                             model_to_save = model.module if hasattr(model,
                                                                     'module') else model  # Only save the model it-self
                             if args.resume_step < 0 or not args.phase2:
@@ -840,6 +829,25 @@ def main():
                 # NOTE: Will block until complete
                 train_dataloader, data_file = dataset_future.result(timeout=None)
 
+            del eval_dataloader
+            eval_dataloader = eval_dataset_future.result(timeout=None)
+            eval_avg_loss, eval_avg_mlm_accuracy = run_eval(args, model, eval_dataloader, device,
+                                                            args.num_eval_examples,
+                                                            first_eval=(eval_count == 0),
+                                                            use_cache=args.cache_eval_data)
+            if is_main_process():
+                print('- AI-Rank-log ', time.time(), ' eval_accuracy:', eval_avg_mlm_accuracy, ', total_epoch_cnt:', epoch + 1)
+            if args.target_mlm_accuracy:
+                if eval_avg_mlm_accuracy >= args.target_mlm_accuracy:
+                    if is_main_process():
+                        end = time.time()
+                        print('- AI-Rank-log ', end, ' test_finish')
+                        print('- AI-Rank-log ', end, ' total_use_time:', (end - start), 'sec')
+                        print('- AI-Rank-log ', end, ' avg_ips:',
+                              args.train_batch_size * args.gradient_accumulation_steps * gpu_count * global_step / (
+                                          end - start),
+                              'samples/sec')
+                        return args, final_loss, train_time_raw, global_step
             epoch += 1
 
 
@@ -853,10 +861,4 @@ if __name__ == "__main__":
         args.resume_step = 0
     if torch.distributed.is_initialized():
         gpu_count = get_world_size()
-    if is_main_process():
-        e2e_time = time.time() - now
-        training_perf = args.train_batch_size * args.gradient_accumulation_steps * gpu_count\
-                        * (global_step - args.resume_step + skipped_steps) / train_time_raw
-        dllogger.log(step=tuple(), data={"e2e_train_time": e2e_time, "training_sequences_per_second": training_perf,
-                                         "final_loss": final_loss, "raw_train_time": train_time_raw })
     dllogger.flush()

@@ -185,137 +185,54 @@
     bash scripts/run_benchmark.sh 48 1 AMP
     ```
 ### 2. 多机准确率测试
-官方给出的`run_pretraining.py`代码中只包含step_loss指标，并不包含MaskedML指标，我们修改了`DeepLearningExamples/PyTorch/LanguageModeling/BERT/`目录下的`modeling.py`与`run_pretraining.py`的代码。
-我们修改的代码放在了 [modeling.py](./modeling.py) 与 [run_pretraining.py](./run_pretraining.py)
-文件中。您可以用这两个文件替换ngc代码中`DeepLearningExamples/PyTorch/LanguageModeling/BERT/modeling.py`文件与`DeepLearningExamples/PyTorch/LanguageModeling/BERT/run_pretraining.py`文件。
-<br>
-此外官方给出的脚本为测试单机启动pytorch的脚本，为实现多机启动Bert的pre-train训练，我们基于官方给出的[scripts/run_pretraining.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/scripts/run_pretraining.sh) 脚本编写了新的脚本 `run_benchmark_multi_nodes.sh` 脚本，并放在`DeepLearningExamples/PyTorch/LanguageModeling/BERT/`目录下。
-- **run_benchmark_multi_nodes.sh脚本内容如下：**
-  ```bash
-  #!/bin/bash
-  
-  train_batch_size=${1:-8192}
-  learning_rate=${2:-"6e-3"}
-  precision=${3:-"fp16"}
-  num_gpus=${4:-8}
-  warmup_proportion=${5:-"0.2843"}
-  train_steps=${6:-7038}
-  save_checkpoint_steps=${7:-200}
-  resume_training=${8:-"false"}
-  create_logfile=${9:-"true"}
-  accumulate_gradients=${10:-"true"}
-  gradient_accumulation_steps=${11:-128}
-  num_trainers=${12:-4}
-  node_rank=${13:-0}
-  gradient_accumulation_steps_phase2=512
-  job_name="bert_lamb_pretraining"
-  CODEDIR=`pwd`
-  RESULTS_DIR=$CODEDIR/results
-  CHECKPOINTS_DIR=$RESULTS_DIR/checkpoints
-  MASTER_NODE= # input your master node's ip
-  MASTER_PORT= # input your master node's port
-  
-  mkdir -p $CHECKPOINTS_DIR
-  
-  PREC=""
-  if [ "$precision" = "fp16" ] ; then
-     PREC="--fp16"
-  elif [ "$precision" = "fp32" ] ; then
-     PREC=""
-  else
-     echo "Unknown <precision> argument"
-     exit -2
-  fi
-  ACCUMULATE_GRADIENTS="--gradient_accumulation_steps=$gradient_accumulation_steps"
-  ALL_REDUCE_POST_ACCUMULATION="--allreduce_post_accumulation"
-  ALL_REDUCE_POST_ACCUMULATION_FP16="--allreduce_post_accumulation_fp16"
-  
-  CMD=" $CODEDIR/run_pretraining.py"
-  CMD+=" --input_dir="  #add your own 'Bert wiki-only' dataset's path
-  CMD+=" --output_dir=$CHECKPOINTS_DIR"
-  CMD+=" --config_file=bert_config.json"
-  CMD+=" --bert_model=bert-large-uncased"
-  CMD+=" --train_batch_size=$train_batch_size"
-  CMD+=" --max_seq_length=128"
-  CMD+=" --max_predictions_per_seq=20"
-  CMD+=" --max_steps=$train_steps"
-  CMD+=" --warmup_proportion=$warmup_proportion"
-  CMD+=" --num_steps_per_checkpoint=$save_checkpoint_steps"
-  CMD+=" --learning_rate=$learning_rate"
-  CMD+=" --seed=12345"
-  CMD+=" $PREC"
-  CMD+=" $ACCUMULATE_GRADIENTS"
-  CMD+=" $CHECKPOINT"
-  CMD+=" $ALL_REDUCE_POST_ACCUMULATION"
-  CMD+=" $ALL_REDUCE_POST_ACCUMULATION_FP16"
-  CMD+=" --do_train"
-  CMD+=" --json-summary ${RESULTS_DIR}/dllogger.json "
-  
-  CMD="python -m torch.distributed.launch --nproc_per_node=$num_gpus --nnodes=$num_trainers --node_rank=$node_rank --master_addr=$MASTER_NODE --master_port=$MASTER_PORT $CMD"
-  
-  if [ "$create_logfile" = "true" ] ; then
-    export GBS=$(expr $train_batch_size \* $num_gpus)
-    printf -v TAG "pyt_bert_pretraining_phase1_%s_gbs%d" "$precision" $GBS
-    DATESTAMP=`date +'%y%m%d%H%M%S'`
-    LOGFILE=$RESULTS_DIR/$job_name.$TAG.$DATESTAMP.log
-    printf "Logs written to %s\n" "$LOGFILE"
-  fi
-  
-  set -x
-  if [ -z "$LOGFILE" ] ; then
-     $CMD
-  else
-     (
-       $CMD
-     ) |& tee $LOGFILE
-  fi
-  
-  set +x
-  
-  echo "finished pretraining"
-  ```
-  > 注1：脚本第21行与22行需要填写主节点ip与主节点的端口号 <br>
-  > 注2：脚本第40行的 CMD+=" --input_dir=" 需添加您存放Bert wiki-only数据集的路径
+我们将官方的[bert](https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT) 代码保存至BERT文件夹中并进行了一定的修改，添加了mlm_accuracy的计算。
+为实现多机启动Bert的pre-train训练，我们基于官方给出的[scripts/run_pretraining.sh](https://github.com/NVIDIA/DeepLearningExamples/blob/master/PyTorch/LanguageModeling/BERT/scripts/run_pretraining.sh) 脚本编写了新的脚本 `run_benchmark_multi_nodes.sh` 脚本，并放在`DeepLearningExamples/PyTorch/LanguageModeling/BERT/`目录下。
+- **run_benchmark_multi_nodes.sh脚本内容需要您做以下修改：**
+  > 1：脚本第21行与22行需要填写主节点ip与主节点的端口号 <br>
+  > 2：脚本第40行与41行需添加您存放Bert wiki-only训练（train）数据集与评估（eval）数据集的路径
 
 为方减少用户输入，我们编写了一个启动脚本`start_train.sh`脚本，并放在`DeepLearningExamples/PyTorch/LanguageModeling/BERT/`目录下。
-- **start_train.sh脚本内容如下：**
-  ```bash
-  #!/bin/bash
-  set -xe
-  export LD_LIBRARY_PATH=/usr/lib/libibverbs/:/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
-  
-  batch_size=$1     # batch size per gpu
-  num_gpus=$2       # number of gpu per node
-  precision=$3      # fp32 | fp16
-  gradient_accumulation_steps=$(expr 67584 \/ $batch_size \/ $num_gpus)
-  train_batch_size=$(expr 67584 \/ $num_gpus)   # total batch_size per gpu
-  train_steps=$4    # max train steps
-  num_trainers=$5   # number of nodes
-  node_rank=$6      # current node rank
-  
-  bash run_benchmark_multi_nodes.sh $train_batch_size 6e-3 $precision $num_gpus 0.2843 $train_steps 200 false true true $gradient_accumulation_steps $num_trainers $node_rank
-  ```
 - **多机启动脚本：**
 
-    若测试4机32卡 batch_size=96、AMP 的训练性能，在0-3号节点分别执行如下命令：
+    若测试4机32卡、AMP，7300steps的配置下训练性能，在0-3号节点分别执行如下命令：
 
-    ```bash
-    0号节点：bash start_train.sh 96 8 fp16 7038 4 0
-    1号节点：bash start_train.sh 96 8 fp16 7038 4 1
-    2号节点：bash start_train.sh 96 8 fp16 7038 4 2
-    3号节点：bash start_train.sh 96 8 fp16 7038 4 3
-    ```
+  ```bash
+  cd BERT
+  #0号节点：
+  bash start_train.sh 8 fp16 7300 4 0
+  #1号节点：
+  bash start_train.sh 8 fp16 7300 4 1
+  #2号节点：
+  bash start_train.sh 8 fp16 7300 4 2
+  #3号节点：
+  bash start_train.sh 8 fp16 7300 4 3
+  ```
   >注：最后一个参数为当前节点的逻辑rank
+
+#### 2.1 多机准确率训练规则
+##### train from scratch
+如果从头开始训练bert，则可以直接使用本repo中的代码并参考本文档开始训练。训练时间在4机32卡V100gpu的配置下约为5天。
+##### train from checkpoint
+如果希望从checkpoint开始训练，可以从该[链接]()下载我们在第9000步存储的checkpoint，放在BERT文件夹下。并在
+```run_benchmark_multi_nodes.sh```的56行后加入
+```bash
+CMD+=" --resume_from_checkpoint=True"
+CMD+=" --resume_step=9000"
+CMD+=" --init_checkpoints=./ckpt_9000"
+```
+>注：使用该checkpoint需要继续训练700个steps左右，预计需要8小时。
+><br>TODO:更新checkpoint的链接
 
 ## 四、日志数据
 
 - [单机吞吐日志](../log/bert_base_lamb_pretraining_phase1_fp16_bs96_gpu1.log)
-- [多机准确率日志]()
+- [多机准确率日志](../log/bert_large_uncased_pretraining_phase1_fp16_bs8448_gpu32.log)
 
 通过以上日志分析，PyTorch 在 Bert Pre-training 任务上的单机吞吐达到了 **543.76** `samples/sec` 。
 
 > 注：
-> 1. 由于 Bert 的训练数据集非常大，需要多机多卡进行训练。因资源有限，此处未给出单机训练的 Time2Train数据。
+> 1. 由于单机 Bert 的训练数据集非常大，需要多机多卡进行训练。因资源有限，此处未给出单机训练的 Time2Train数据。
+> 2. 因为bert一个epoch训练时间过长，在精度测试中我们每200steps输出一条eval信息。
 
 ## 五、性能数据
 
@@ -323,4 +240,4 @@
 |--------------|------------|------------|------------|-----------|
 | 1卡          |     -      |   543.76   |     -      |     -     |
 | 8卡          |     -      |      -     |     -      |     -     |
-| 32卡         |     -      |      -     |     -      |     -     |
+| 32卡         |     427159.64      |      15020.90     |     71.20      |     27.6     |
