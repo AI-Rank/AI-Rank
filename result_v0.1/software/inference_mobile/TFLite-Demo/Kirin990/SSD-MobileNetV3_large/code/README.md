@@ -9,7 +9,7 @@
 ```
 wget http://images.cocodataset.org/zips/val2017.zip && unzip val2017.zip && tar -cf val2017.tar val2017
 wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip && unzip annotations_trainval2017.zip
-wget https://ai-rank.bj.bcebos.com/coco2017_labelmap.txt?authorization=bce-auth-v1/d0d94402f8e14d64a1695f0bd1e4926a/2021-04-06T08%3A58%3A42Z/-1/host/7ebf837b1999681d4495b391a993d3985447429047a7434cb5bb2564817fccbd
+wget -O labelmap_2017.txt https://ai-rank.bj.bcebos.com/coco2017_labelmap.txt?authorization=bce-auth-v1/d0d94402f8e14d64a1695f0bd1e4926a/2021-04-06T08%3A58%3A42Z/-1/host/7ebf837b1999681d4495b391a993d3985447429047a7434cb5bb2564817fccbd
 ```
 
 ### 处理数据集
