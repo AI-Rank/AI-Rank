@@ -14,6 +14,7 @@ wget -O labelmap_2017.txt https://ai-rank.bj.bcebos.com/coco2017_labelmap.txt?au
 
 ### 处理数据集
 2017 COCO 验证集共 4K 张图片，约 1GB 存储空间，因此即使在内存受限的移动设备上评测检测效果，也不需要额外筛选图片，因此使用全集。
+在执行如下命令前，请先完成[构建开发环境](#构建开发环境)。
 
 首先，执行如下命令：
 ```
@@ -64,15 +65,36 @@ Outputs 索引 | 名称 | 描述
 准备数据、模型、模型优化及相关校验等步骤
 分别执行精度、各性能评测的推理步骤，产生评测日志
 
-编译目标检测评测工具：
+### 4.1 构建开发环境
+推荐使用 docker 构建开发环境。
+
+#### 使用 docker 构建开发环境
+```
+mkdir -p tflite-builder && cd tflite-builder
+
+# 下载 google 官方 Docker file
+# 该 Docker file 中已经含有了 bazel-3.7.2、NDK-r19c、gcc-7.5.0、python-3.6.9
+wget https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/tools/dockerfiles/tflite-android.Dockerfile
+# 由于 bazel-3.7.2 支持的 NDK 版本最高到 18，因此需要降低 Docker file 中 NDK 的版本至 17
+sed -i 's/r19c/r17c/' tflite-android.Dockerfile
+
+# 构建 docker image
+docker build . -t tflite-builder -f tflite-android.Dockerfile
+
+# 启动 docker 容器
+docker run -it -v $HOME:/WORK tflite-builder bash
+```
+
+### 4.2 编译目标检测评测工具
 ```
 cd /WORK
 # 克隆仓库，如果 clone 失败，可尝试直接在网页上下载 .zip 包
 git clone https://github.com/zhaoyang-star/tensorflow.git
 cd tensorflow
 
-# 安装 bazel
-cd "/usr/local/bin" && curl -LO https://releases.bazel.build/3.7.2/release/bazel-3.7.2-linux-x86_64 && chmod +x bazel-3.7.2-linux-x86_64 && ln -s bazel-3.7.2-linux-x86_64 bazel && cd -
+# 配置 WORKSPACE 和 .bazelrc
+# 会进行交互式问答，所有提示的问题，均直接输入回车即可；执行完毕后，会在当前目录下生成文件 `.tf_configure.bazelrc`
+./configure
 
 # [option] 编译 armv7 版本的评测工具
 bazel build -c opt --config=android_arm  //tensorflow/lite/tools/evaluation/tasks/coco_object_detection:run_eval
