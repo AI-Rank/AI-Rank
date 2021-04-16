@@ -120,7 +120,7 @@ adb shell chmod +x /data/local/tmp/AI-RANK/tf_object_detction/run_eval
 # 上传模型文件
 adb push ssd_mobilenet_v3_large_coco_2020_01_14/model.tflite /data/local/tmp/AI-RANK/tf_object_detction
 # 上传验证集
-tar xf val2017.tar val2017
+tar cf val2017.tar val2017
 adb push val2017.tar /data/local/tmp/AI-RANK/tf_object_detction
 # 上传真值
 adb push 2017_COCO_Minival/ground_truth.pb /data/local/tmp/AI-RANK/tf_object_detction
@@ -162,7 +162,7 @@ adb shell /data/local/tmp/AI-RANK/tf_object_detction/run_eval \
     预测的线程数
 
     *   `delegate`: `string` (default='cpu')\
-    推理预测的硬件设备选择，默认是`CPU`，可选值有：`GPU`、`xnnpack`、`hexagon`、`nnapi`等
+    推理预测的硬件设备选择，可选值有：`cpu`、`xnnpack`、`gpu`、`hexagon`、`nnapi`等，测试 cpu 时请设置为 `xnnpack`，测试 gpu 时请设置为 `gpu`。
     更多可用的参数介绍，请见code目录下的[README](https://github.com/zhaoyang-star/tensorflow/blob/master/tensorflow/lite/tools/evaluation/tasks/imagenet_image_classification/README.md)
 
 ## 7. 性能及精度评测结果
