@@ -108,7 +108,7 @@ python -m torch.distributed.launch --nproc_per_node 8 /workspace/translation/tra
 
 ## 四、日志数据
 
-- [单机八卡吞吐日志](../log/transformer_big_gpu8_fp32.log)
+- [单机八卡吞吐日志](../logs/transformer_big_gpu8_fp32.log)
 
 通过以上日志分析，PyTorch 在 Transformer 任务上的单机吞吐达到了 **54752.958** `tokens/sec` 。
 
