@@ -108,13 +108,31 @@ python -m torch.distributed.launch --nproc_per_node 8 /workspace/translation/tra
 
 ## 四、日志数据
 
-- [单机八卡吞吐日志](../logs/transformer_big_gpu8_fp32.log)
+- [fp32 单机单卡吞吐日志](../logs/transformer_big_gpu1_fp32.log)
+- [fp32 单机八卡吞吐日志](../logs/transformer_big_gpu8_fp32.log)
+- [fp16 单机单卡吞吐日志](../logs/transformer_big_gpu1_amp.log)
+- [fp16 单机八卡吞吐日志](../logs/transformer_big_gpu8_amp.log)
 
-通过以上日志分析，PyTorch 在 Transformer 任务上的单机吞吐达到了 **54752.958** `tokens/sec` 。
+通过以上日志分析，PyTorch 在 Transformer 任务上，fp32 精度下：
+- 单机单卡吞吐达到了 **8392.091** `tokens/sec` 
+- 单机八卡吞吐达到了 **54752.958** `tokens/sec` 
+
+在 fp16 精度下：
+- 单机单卡吞吐达到了 **35168.156** `tokens/sec` 
+- 单机八卡吞吐达到了 **205122.587** `tokens/sec` 
 
 ## 五、性能数据
+
+### fp32 测试结果
 
 |               | Time2train(sec) | 吞吐(tokens/sec) | BLEU | 加速比 |
 |---------------|-----------------|-----------------|------|-------|
 | 1卡           |        -        |     8392.091    |   -  |   -   |
 | 8卡           |    77678.071    |    54752.958    |   -  |   -   |
+
+### fp16 测试结果
+
+|               | Time2train(sec) | 吞吐(tokens/sec) | BLEU | 加速比 |
+|---------------|-----------------|-----------------|------|-------|
+| 1卡           |        -        |    35168.156    |   -  |   -   |
+| 8卡           |    22739.089    |    205122.587   |   -  |   -   |
