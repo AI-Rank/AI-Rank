@@ -81,7 +81,7 @@ optimizer_config = dict(type='Fp16OptimizerHook', loss_scale=512.)
 # fp16 placeholder
 fp16 = dict()
 ```
-训练流程与单卡和单机多卡一直，需要对配置文件做出相应的更改。
+训练流程与单卡和单机多卡一样，只需对配置文件做出相应的更改。
 
 ## 四、日志数据
 - [单卡吞吐测试日志](../log/GPUx1_time2train_ips.log)
