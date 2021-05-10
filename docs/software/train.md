@@ -34,7 +34,7 @@ AI-Rank从深度学习应用最广泛的几大领域中分别选取了若干有�
 | 图像分割 | HRNet | [CityScapes](https://www.cityscapes-dataset.com/) | mIoU: 78.0% |
 | 语义表示 | BERT | [Wikipedia 2020/01/01](https://dumps.wikimedia.org/enwiki/) | 0.712 Mask-LM accuracy |
 | 机器翻译 | Transformer | [WMT](http://data.statmt.org/) | 25.00 BLEU |
-| 视频分类 | TSM | kinetics 400 | top1: 0.711 |
+| 视频分类 | TSM | kinetics 400 | top1: 0.710 |
 | 智能推荐 | DeepFM | [Criteo](https://www.kaggle.com/c/criteo-display-ad-challenge/) | AUC: 0.788 |
 | 智能推荐 | Wide&Deep | [Criteo](https://www.kaggle.com/c/criteo-display-ad-challenge/) | AUC：0.795 |
 | 语义表示 | Word2Vec |  [One billion](http://www.statmt.org/lm-benchmark) | ACC：0.600 |
