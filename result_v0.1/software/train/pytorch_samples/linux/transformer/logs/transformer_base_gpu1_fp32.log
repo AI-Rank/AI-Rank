@@ -1,0 +1,50 @@
+Namespace(adam_betas='(0.9, 0.997)', adam_eps=1e-09, adaptive_softmax_cutoff=None, amp=False, amp_level='O1', arch='transformer_wmt_en_de_base_t2t', attention_dropout=0.1, beam=4, bpe_codes=None, buffer_size=64, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='./data/wmt14_en_de_joined_dict', decoder_attention_heads=8, decoder_embed_dim=512, decoder_embed_path=None, decoder_ffn_embed_dim=2048, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method=None, distributed_port=-1, distributed_rank=0, distributed_world_size=1, do_sanity_check=False, dropout=0.1, enable_parallel_backward_allred_opt=False, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=8, encoder_embed_dim=512, encoder_embed_path=None, encoder_ffn_embed_dim=2048, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fp16=False, fuse_dropout_add=False, fuse_layer_norm=True, fuse_relu_dropout=False, gen_subset='test', keep_interval_updates=-1, label_smoothing=0.1, left_pad_source=True, left_pad_target=False, lenpen=1, local_rank=0, log_interval=1000, lr=[0.0006], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=1, max_len_a=0, max_len_b=200, max_positions=(1024, 1024), max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=5120, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_save=False, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', pad_sequence=1, parallel_backward_allred_opt_threshold=0, path=None, prefix_size=0, print_alignment=False, profile=False, profiler_file=None, profiler_steps=100, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='./checkpoints.base.1.1/', save_interval=1, save_interval_updates=0, save_predictions=False, score_reference=False, seed=1, sentence_avg=False, sentencepiece=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, source_lang=None, stat_file='run_log.json', target_bleu=0.0, target_lang=None, test_cased_bleu=False, train_subset='train', unkpen=0, unnormalized=False, update_freq=[8], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=4000, weight_decay=0.0)
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+| ./data/wmt14_en_de_joined_dict train 4575637 examples
+| Sentences are being padded to multiples of: 1
+| ./data/wmt14_en_de_joined_dict valid 3000 examples
+| Sentences are being padded to multiples of: 1
+| ./data/wmt14_en_de_joined_dict test 3003 examples
+| Sentences are being padded to multiples of: 1
+| num. model params: 61364224
+| NOTICE: your device may support faster training with --amp
+| model transformer_wmt_en_de_base_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| training on 1 GPUs
+| max tokens per GPU = 5120 and max sentences per GPU = None
+Transformer | epoch 0 | step 125 |avg loss 14.133 |avg tokens 36387.384 |tokens/s 23612.870 |walltime 192.625 |
+Transformer | epoch 0 | step 250 |avg loss 12.293 |avg tokens 35784.168 |tokens/s 25437.517 |walltime 368.468 |
+Transformer | epoch 0 | step 375 |avg loss 11.434 |avg tokens 36566.848 |tokens/s 25266.423 |walltime 549.375 |
+Transformer | epoch 0 | step 500 |avg loss 11.147 |avg tokens 35885.824 |tokens/s 25493.379 |walltime 725.331 |
+Transformer | epoch 0 | step 625 |avg loss 10.733 |avg tokens 36389.816 |tokens/s 25505.255 |walltime 903.676 |
+Transformer | epoch 0 | step 750 |avg loss 10.245 |avg tokens 36314.360 |tokens/s 25570.684 |walltime 1081.195 |
+Transformer | epoch 0 | step 875 |avg loss 9.801 |avg tokens 36154.544 |tokens/s 25421.244 |walltime 1258.973 |
+Transformer | epoch 0 | step 1000 |avg loss 9.462 |avg tokens 36298.880 |tokens/s 25523.334 |walltime 1436.746 |
+Transformer | epoch 0 | step 1125 |avg loss 9.196 |avg tokens 36279.136 |tokens/s 25451.494 |walltime 1614.923 |
+Transformer | epoch 0 | step 1250 |avg loss 8.894 |avg tokens 36206.944 |tokens/s 25423.121 |walltime 1792.945 |
+Transformer | epoch 0 | step 1375 |avg loss 8.627 |avg tokens 36041.632 |tokens/s 25426.462 |walltime 1970.131 |
+Transformer | epoch 0 | step 1500 |avg loss 8.384 |avg tokens 36101.248 |tokens/s 25128.919 |walltime 2149.711 |
+Transformer | epoch 0 | step 1625 |avg loss 8.091 |avg tokens 35984.048 |tokens/s 25383.702 |walltime 2326.912 |
+Transformer | epoch 0 | step 1750 |avg loss 7.799 |avg tokens 36021.528 |tokens/s 24647.048 |walltime 2509.598 |
+Transformer | epoch 0 | step 1875 |avg loss 7.578 |avg tokens 36152.552 |tokens/s 25295.251 |walltime 2688.251 |
+Transformer | epoch 0 | step 2000 |avg loss 7.321 |avg tokens 36225.408 |tokens/s 25614.229 |walltime 2865.035 |
+Transformer | epoch 0 | step 2125 |avg loss 7.023 |avg tokens 36335.096 |tokens/s 25595.973 |walltime 3042.480 |
+Transformer | epoch 0 | step 2250 |avg loss 6.799 |avg tokens 35841.072 |tokens/s 24873.404 |walltime 3222.598 |
+Transformer | epoch 0 | step 2375 |avg loss 6.611 |avg tokens 36231.720 |tokens/s 24896.739 |walltime 3404.508 |
+Transformer | epoch 0 | step 2500 |avg loss 6.480 |avg tokens 36170.304 |tokens/s 25021.439 |walltime 3585.204 |
+Transformer | epoch 0 | step 2625 |avg loss 6.378 |avg tokens 36115.632 |tokens/s 25259.931 |walltime 3763.924 |
+Transformer | epoch 0 | step 2750 |avg loss 6.279 |avg tokens 36076.352 |tokens/s 25484.723 |walltime 3940.875 |
+Transformer | epoch 0 | step 2875 |avg loss 6.174 |avg tokens 36143.536 |tokens/s 25460.345 |walltime 4118.325 |
+Transformer | epoch 0 | step 3000 |avg loss 6.058 |avg tokens 35936.920 |tokens/s 25370.106 |walltime 4295.389 |
+Transformer | epoch 0 | step 3125 |avg loss 5.956 |avg tokens 36269.896 |tokens/s 25474.901 |walltime 4473.357 |
+Transformer | epoch 0 | step 3250 |avg loss 5.922 |avg tokens 35952.632 |tokens/s 25343.602 |walltime 4650.683 |
+Transformer | epoch 0 | step 3375 |avg loss 5.864 |avg tokens 36041.032 |tokens/s 25330.168 |walltime 4828.540 |
+Transformer | epoch 0 | step 3500 |avg loss 5.804 |avg tokens 36426.536 |tokens/s 25543.196 |walltime 5006.799 |
+Transformer | epoch 0 | step 3625 |avg loss 5.848 |avg tokens 35884.120 |tokens/s 25260.144 |walltime 5184.372 |
+Transformer | epoch 0 | step 3750 |avg loss 5.758 |avg tokens 36283.616 |tokens/s 25439.515 |walltime 5362.656 |
+Transformer | epoch 0 | step 3875 |avg loss 5.695 |avg tokens 36152.896 |tokens/s 25399.429 |walltime 5540.577 |
+Epoch time: 5613.972125053406
+Transformer | epoch 0 | step 3935 |avg loss 5.571 |avg tokens 36255.650 |tokens/s 24689.434 |walltime 5628.686 |
+Validation loss on subset valid: 5.206337230340093
+| done training in 5636.1 seconds
+Transformer | epoch 0 | step RUN |avg loss 5.206 |walltime 5650.988 |

@@ -1,0 +1,297 @@
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 0
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 4
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 5
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 6
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 7
+| distributed init done!
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 1
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 3
+| distributed init done!
+| distributed init (rank 0): env://
+| distributed env init. MASTER_ADDR: 127.0.0.1, MASTER_PORT: 29500, WORLD_SIZE: 8, RANK: 2
+| distributed init done!
+| distributed init done!
+| initialized host instance-mqcyj27y-4 as rank 0 and device id 0
+Namespace(adam_betas='(0.9, 0.997)', adam_eps=1e-09, adaptive_softmax_cutoff=None, amp=True, amp_level='O2', arch='transformer_wmt_en_de_big_t2t', attention_dropout=0.1, beam=4, bpe_codes=None, buffer_size=64, clip_norm=0.0, cpu=False, criterion='label_smoothed_cross_entropy', data='./data/wmt14_en_de_joined_dict', decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_layers=6, decoder_learned_pos=False, decoder_normalize_before=True, device_id=0, distributed_backend='nccl', distributed_init_method='env://', distributed_port=-1, distributed_rank=0, distributed_world_size=8, do_sanity_check=False, dropout=0.1, enable_parallel_backward_allred_opt=False, enable_parallel_backward_allred_opt_correctness_check=False, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layers=6, encoder_learned_pos=False, encoder_normalize_before=True, fp16=False, fuse_dropout_add=False, fuse_layer_norm=True, fuse_relu_dropout=False, gen_subset='test', keep_interval_updates=-1, label_smoothing=0.1, left_pad_source=True, left_pad_target=False, lenpen=1, local_rank=0, log_interval=1000, lr=[0.0006], lr_scheduler='inverse_sqrt', lr_shrink=0.1, max_epoch=30, max_len_a=0, max_len_b=200, max_positions=(1024, 1024), max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=5120, max_update=0, min_len=1, min_loss_scale=0.0001, min_lr=0.0, model_overrides='{}', momentum=0.99, nbest=1, no_beamable_mm=False, no_early_stop=False, no_epoch_checkpoints=False, no_save=False, no_token_positional_embeddings=False, num_shards=1, online_eval=False, optimizer='adam', pad_sequence=1, parallel_backward_allred_opt_threshold=0, path=None, prefix_size=0, print_alignment=False, profile=False, profiler_file=None, profiler_steps=100, quiet=False, raw_text=False, relu_dropout=0.1, remove_bpe=None, replace_unk=None, restore_file='checkpoint_last.pt', sampling=False, sampling_temperature=1, sampling_topk=-1, save_dir='./checkpoints.big.30.8.amp/', save_interval=1, save_interval_updates=0, save_predictions=False, score_reference=False, seed=1, sentence_avg=False, sentencepiece=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, source_lang=None, stat_file='run_log.json', target_bleu=0.0, target_lang=None, test_cased_bleu=False, train_subset='train', unkpen=0, unnormalized=False, update_freq=[1], valid_subset='valid', validate_interval=1, warmup_init_lr=0.0, warmup_updates=4000, weight_decay=0.0)
+| [en] dictionary: 33712 types
+| [de] dictionary: 33712 types
+| ./data/wmt14_en_de_joined_dict train 4575637 examples
+| Sentences are being padded to multiples of: 1
+| ./data/wmt14_en_de_joined_dict valid 3000 examples
+| Sentences are being padded to multiples of: 1
+| ./data/wmt14_en_de_joined_dict test 3003 examples
+| Sentences are being padded to multiples of: 1
+| num. model params: 210808832
+Selected optimization level O2:  FP16 training with FP32 batchnorm and FP32 master weights.
+
+Defaults for this optimization level are:
+enabled                : True
+opt_level              : O2
+cast_model_type        : torch.float16
+patch_torch_functions  : False
+keep_batchnorm_fp32    : True
+master_weights         : True
+loss_scale             : dynamic
+Processing user overrides (additional kwargs that are not None)...
+After processing overrides, optimization options are:
+enabled                : True
+opt_level              : O2
+cast_model_type        : torch.float16
+patch_torch_functions  : False
+keep_batchnorm_fp32    : True
+master_weights         : True
+loss_scale             : dynamic
+| model transformer_wmt_en_de_big_t2t, criterion LabelSmoothedCrossEntropyCriterion
+| training on 8 GPUs
+| max tokens per GPU = 5120 and max sentences per GPU = None
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8192.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4096.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 2048.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 1024.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 512.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 256.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 128.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 64.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Transformer | epoch 0 | step 1000 |avg loss 10.457 |avg tokens 36222.728 |tokens/s 204644.452 |walltime 199.212 |
+Transformer | epoch 0 | step 2000 |avg loss 7.111 |avg tokens 36126.562 |tokens/s 203743.549 |walltime 376.526 |
+Transformer | epoch 0 | step 3000 |avg loss 5.783 |avg tokens 36106.329 |tokens/s 208831.923 |walltime 549.423 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Epoch time: 689.9072592258453
+Transformer | epoch 0 | step 3935 |avg loss 5.378 |avg tokens 36151.529 |tokens/s 208049.885 |walltime 711.892 |
+Validation loss on subset valid: 4.842918059096153
+Transformer | epoch 1 | step 4935 |avg loss 5.248 |avg tokens 36169.644 |tokens/s 200165.123 |walltime 962.150 |
+Transformer | epoch 1 | step 5935 |avg loss 4.975 |avg tokens 36208.422 |tokens/s 207966.523 |walltime 1136.257 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.0
+Transformer | epoch 1 | step 6935 |avg loss 4.851 |avg tokens 36119.975 |tokens/s 210237.533 |walltime 1308.062 |
+Epoch time: 692.0417761802673
+Transformer | epoch 1 | step 7870 |avg loss 4.761 |avg tokens 36140.287 |tokens/s 204205.959 |walltime 1473.538 |
+Validation loss on subset valid: 4.3213149885088
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 4.0
+Transformer | epoch 2 | step 8870 |avg loss 4.701 |avg tokens 36196.688 |tokens/s 209788.360 |walltime 1721.245 |
+Transformer | epoch 2 | step 9870 |avg loss 4.629 |avg tokens 36159.719 |tokens/s 208793.627 |walltime 1894.429 |
+Transformer | epoch 2 | step 10870 |avg loss 4.582 |avg tokens 36119.142 |tokens/s 204465.249 |walltime 2071.081 |
+Epoch time: 686.6633424758911
+Transformer | epoch 2 | step 11805 |avg loss 4.551 |avg tokens 36172.927 |tokens/s 205822.135 |walltime 2235.406 |
+Validation loss on subset valid: 4.158853966029454
+Transformer | epoch 3 | step 12805 |avg loss 4.494 |avg tokens 36083.401 |tokens/s 212780.770 |walltime 2479.260 |
+Transformer | epoch 3 | step 13805 |avg loss 4.475 |avg tokens 36222.293 |tokens/s 215535.092 |walltime 2647.317 |
+Transformer | epoch 3 | step 14805 |avg loss 4.456 |avg tokens 36170.119 |tokens/s 208056.561 |walltime 2821.165 |
+Epoch time: 675.2327103614807
+Transformer | epoch 3 | step 15740 |avg loss 4.435 |avg tokens 36167.361 |tokens/s 206503.802 |walltime 2984.922 |
+Validation loss on subset valid: 4.072610629901895
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 4 | step 16740 |avg loss 4.371 |avg tokens 36169.234 |tokens/s 205389.318 |walltime 3235.998 |
+Transformer | epoch 4 | step 17740 |avg loss 4.369 |avg tokens 36163.909 |tokens/s 210612.745 |walltime 3407.706 |
+Transformer | epoch 4 | step 18740 |avg loss 4.373 |avg tokens 36181.391 |tokens/s 205124.476 |walltime 3584.094 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Epoch time: 682.7474434375763
+Transformer | epoch 4 | step 19675 |avg loss 4.369 |avg tokens 36123.639 |tokens/s 212987.800 |walltime 3742.674 |
+Validation loss on subset valid: 4.021534672339713
+Transformer | epoch 5 | step 20675 |avg loss 4.304 |avg tokens 36206.721 |tokens/s 211895.990 |walltime 3989.761 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 5 | step 21675 |avg loss 4.299 |avg tokens 36259.057 |tokens/s 207790.389 |walltime 4164.260 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 5 | step 22675 |avg loss 4.305 |avg tokens 36060.134 |tokens/s 206252.419 |walltime 4339.095 |
+Epoch time: 682.3725707530975
+Transformer | epoch 5 | step 23610 |avg loss 4.306 |avg tokens 36113.386 |tokens/s 208170.135 |walltime 4501.299 |
+Validation loss on subset valid: 4.004289846978711
+Transformer | epoch 6 | step 24610 |avg loss 4.247 |avg tokens 36164.754 |tokens/s 211058.772 |walltime 4747.971 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 6 | step 25610 |avg loss 4.270 |avg tokens 36148.127 |tokens/s 213202.526 |walltime 4917.519 |
+Transformer | epoch 6 | step 26610 |avg loss 4.246 |avg tokens 36188.236 |tokens/s 207546.149 |walltime 5091.882 |
+Epoch time: 681.6915166378021
+Transformer | epoch 6 | step 27545 |avg loss 4.255 |avg tokens 36139.982 |tokens/s 203026.441 |walltime 5258.317 |
+Validation loss on subset valid: 3.9682893228331473
+Transformer | epoch 7 | step 28545 |avg loss 4.210 |avg tokens 36117.892 |tokens/s 206970.438 |walltime 5511.704 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 7 | step 29545 |avg loss 4.225 |avg tokens 36158.254 |tokens/s 211083.898 |walltime 5683.002 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 7 | step 30545 |avg loss 4.205 |avg tokens 36137.067 |tokens/s 213718.826 |walltime 5852.089 |
+Epoch time: 677.5863530635834
+Transformer | epoch 7 | step 31480 |avg loss 4.217 |avg tokens 36237.078 |tokens/s 208229.848 |walltime 6014.802 |
+Validation loss on subset valid: 3.9622852344996224
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 8 | step 32480 |avg loss 4.168 |avg tokens 36144.423 |tokens/s 203845.650 |walltime 6273.353 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Transformer | epoch 8 | step 33480 |avg loss 4.184 |avg tokens 36052.559 |tokens/s 203735.845 |walltime 6450.310 |
+Transformer | epoch 8 | step 34480 |avg loss 4.183 |avg tokens 36262.567 |tokens/s 207787.395 |walltime 6624.828 |
+Epoch time: 692.3972053527832
+Transformer | epoch 8 | step 35415 |avg loss 4.191 |avg tokens 36184.640 |tokens/s 206749.617 |walltime 6788.469 |
+Validation loss on subset valid: 3.9448769274447444
+Transformer | epoch 9 | step 36415 |avg loss 4.144 |avg tokens 36171.511 |tokens/s 210302.755 |walltime 7037.443 |
+Transformer | epoch 9 | step 37415 |avg loss 4.161 |avg tokens 36071.860 |tokens/s 210334.554 |walltime 7208.940 |
+Transformer | epoch 9 | step 38415 |avg loss 4.147 |avg tokens 36280.999 |tokens/s 209491.430 |walltime 7382.126 |
+Epoch time: 679.2665219306946
+Transformer | epoch 9 | step 39350 |avg loss 4.163 |avg tokens 36115.761 |tokens/s 207686.882 |walltime 7544.718 |
+Validation loss on subset valid: 3.934033730984216
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 10 | step 40350 |avg loss 4.129 |avg tokens 36195.440 |tokens/s 214492.578 |walltime 7785.364 |
+Transformer | epoch 10 | step 41350 |avg loss 4.136 |avg tokens 36031.120 |tokens/s 200620.268 |walltime 7964.962 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 10 | step 42350 |avg loss 4.114 |avg tokens 36210.223 |tokens/s 208108.755 |walltime 8138.959 |
+Epoch time: 682.8778190612793
+Transformer | epoch 10 | step 43285 |avg loss 4.137 |avg tokens 36207.010 |tokens/s 210836.314 |walltime 8299.527 |
+Validation loss on subset valid: 3.9228710266737123
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 11 | step 44285 |avg loss 4.097 |avg tokens 36269.223 |tokens/s 205283.428 |walltime 8552.005 |
+Transformer | epoch 11 | step 45285 |avg loss 4.101 |avg tokens 36241.520 |tokens/s 210236.795 |walltime 8724.390 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 11 | step 46285 |avg loss 4.117 |avg tokens 36185.645 |tokens/s 213922.264 |walltime 8893.543 |
+Epoch time: 683.278167963028
+Transformer | epoch 11 | step 47220 |avg loss 4.120 |avg tokens 35932.960 |tokens/s 203616.275 |walltime 9058.546 |
+Validation loss on subset valid: 3.914721608226641
+Transformer | epoch 12 | step 48220 |avg loss 4.069 |avg tokens 36293.975 |tokens/s 209286.519 |walltime 9314.764 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 12 | step 49220 |avg loss 4.078 |avg tokens 36257.156 |tokens/s 213836.888 |walltime 9484.319 |
+Transformer | epoch 12 | step 50220 |avg loss 4.108 |avg tokens 35975.105 |tokens/s 207909.117 |walltime 9657.352 |
+Epoch time: 682.9893145561218
+Transformer | epoch 12 | step 51155 |avg loss 4.100 |avg tokens 36117.479 |tokens/s 202266.757 |walltime 9824.309 |
+Validation loss on subset valid: 3.9124645259961923
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 13 | step 52155 |avg loss 4.040 |avg tokens 36235.156 |tokens/s 205564.209 |walltime 10072.950 |
+Transformer | epoch 13 | step 53155 |avg loss 4.076 |avg tokens 36127.199 |tokens/s 210245.376 |walltime 10244.783 |
+Transformer | epoch 13 | step 54155 |avg loss 4.075 |avg tokens 36201.868 |tokens/s 201679.311 |walltime 10424.286 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Epoch time: 697.5096499919891
+Transformer | epoch 13 | step 55090 |avg loss 4.098 |avg tokens 36069.270 |tokens/s 198446.862 |walltime 10594.229 |
+Validation loss on subset valid: 3.9115972268133348
+Transformer | epoch 14 | step 56090 |avg loss 4.050 |avg tokens 35997.971 |tokens/s 203800.400 |walltime 10843.761 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 14 | step 57090 |avg loss 4.060 |avg tokens 36279.273 |tokens/s 208529.851 |walltime 11017.738 |
+Transformer | epoch 14 | step 58090 |avg loss 4.063 |avg tokens 36183.049 |tokens/s 213341.643 |walltime 11187.339 |
+Epoch time: 680.886833190918
+Transformer | epoch 14 | step 59025 |avg loss 4.054 |avg tokens 36187.154 |tokens/s 210508.889 |walltime 11348.069 |
+Validation loss on subset valid: 3.9022196945316256
+Transformer | epoch 15 | step 60025 |avg loss 4.034 |avg tokens 36082.580 |tokens/s 207151.345 |walltime 11595.583 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 15 | step 61025 |avg loss 4.043 |avg tokens 36240.643 |tokens/s 210338.067 |walltime 11767.880 |
+Transformer | epoch 15 | step 62025 |avg loss 4.059 |avg tokens 36097.407 |tokens/s 206659.523 |walltime 11942.551 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Epoch time: 679.1505625247955
+Transformer | epoch 15 | step 62960 |avg loss 4.038 |avg tokens 36224.310 |tokens/s 214336.790 |walltime 12100.572 |
+Validation loss on subset valid: 3.9009954903239055
+Transformer | epoch 16 | step 63960 |avg loss 4.009 |avg tokens 36289.593 |tokens/s 208373.487 |walltime 12348.986 |
+Transformer | epoch 16 | step 64960 |avg loss 4.024 |avg tokens 36157.910 |tokens/s 207055.340 |walltime 12523.615 |
+Transformer | epoch 16 | step 65960 |avg loss 4.029 |avg tokens 36146.654 |tokens/s 207414.259 |walltime 12697.888 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Epoch time: 686.8107783794403
+Transformer | epoch 16 | step 66895 |avg loss 4.059 |avg tokens 36046.050 |tokens/s 205734.443 |walltime 12861.706 |
+Validation loss on subset valid: 3.8975060825536105
+Transformer | epoch 17 | step 67895 |avg loss 4.023 |avg tokens 36104.028 |tokens/s 205622.836 |walltime 13115.057 |
+Transformer | epoch 17 | step 68895 |avg loss 4.009 |avg tokens 36178.956 |tokens/s 210202.926 |walltime 13287.171 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 17 | step 69895 |avg loss 4.019 |avg tokens 36138.597 |tokens/s 210269.313 |walltime 13459.039 |
+Epoch time: 681.0702214241028
+Transformer | epoch 17 | step 70830 |avg loss 4.021 |avg tokens 36220.906 |tokens/s 209631.448 |walltime 13620.592 |
+Validation loss on subset valid: 3.8891853247036052
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 18 | step 71830 |avg loss 4.002 |avg tokens 36203.375 |tokens/s 213701.640 |walltime 13869.058 |
+Transformer | epoch 18 | step 72830 |avg loss 4.005 |avg tokens 36202.353 |tokens/s 207808.450 |walltime 14043.268 |
+Transformer | epoch 18 | step 73830 |avg loss 4.015 |avg tokens 36104.982 |tokens/s 210703.334 |walltime 14214.623 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Epoch time: 674.9957497119904
+Transformer | epoch 18 | step 74765 |avg loss 4.009 |avg tokens 36131.755 |tokens/s 211062.882 |walltime 14374.685 |
+Validation loss on subset valid: 3.8877879232547463
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Transformer | epoch 19 | step 75765 |avg loss 3.985 |avg tokens 36179.418 |tokens/s 205763.843 |walltime 14632.850 |
+Transformer | epoch 19 | step 76765 |avg loss 3.996 |avg tokens 36137.422 |tokens/s 211402.663 |walltime 14803.791 |
+Transformer | epoch 19 | step 77765 |avg loss 3.991 |avg tokens 36233.202 |tokens/s 204362.548 |walltime 14981.090 |
+Epoch time: 687.555730342865
+Transformer | epoch 19 | step 78700 |avg loss 4.015 |avg tokens 36088.465 |tokens/s 206354.872 |walltime 15144.608 |
+Validation loss on subset valid: 3.8918783697566544
+Transformer | epoch 20 | step 79700 |avg loss 3.980 |avg tokens 36143.610 |tokens/s 208759.998 |walltime 15379.637 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 20 | step 80700 |avg loss 3.980 |avg tokens 36233.544 |tokens/s 211841.553 |walltime 15550.678 |
+Transformer | epoch 20 | step 81700 |avg loss 3.998 |avg tokens 36173.555 |tokens/s 207351.426 |walltime 15725.133 |
+Epoch time: 683.6795897483826
+Transformer | epoch 20 | step 82635 |avg loss 3.992 |avg tokens 36090.082 |tokens/s 204379.487 |walltime 15890.239 |
+Validation loss on subset valid: 3.889141148813891
+Transformer | epoch 21 | step 83635 |avg loss 3.952 |avg tokens 36234.263 |tokens/s 205468.127 |walltime 16127.176 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 21 | step 84635 |avg loss 3.979 |avg tokens 36068.448 |tokens/s 203867.786 |walltime 16304.097 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 21 | step 85635 |avg loss 3.976 |avg tokens 36176.271 |tokens/s 208755.374 |walltime 16477.392 |
+Epoch time: 685.0098395347595
+Transformer | epoch 21 | step 86570 |avg loss 4.007 |avg tokens 36160.660 |tokens/s 213364.291 |walltime 16635.854 |
+Validation loss on subset valid: 3.899332028430324
+Transformer | epoch 22 | step 87570 |avg loss 3.942 |avg tokens 36237.199 |tokens/s 205603.550 |walltime 16877.950 |
+Transformer | epoch 22 | step 88570 |avg loss 3.969 |avg tokens 36169.148 |tokens/s 207410.214 |walltime 17052.335 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 22 | step 89570 |avg loss 3.980 |avg tokens 36209.146 |tokens/s 209019.322 |walltime 17225.568 |
+Epoch time: 689.0118968486786
+Transformer | epoch 22 | step 90505 |avg loss 3.994 |avg tokens 36018.419 |tokens/s 203896.386 |walltime 17390.736 |
+Validation loss on subset valid: 3.8914619943519138
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 23 | step 91505 |avg loss 3.955 |avg tokens 36198.632 |tokens/s 205895.202 |walltime 17631.393 |
+Transformer | epoch 23 | step 92505 |avg loss 3.958 |avg tokens 36155.217 |tokens/s 212902.307 |walltime 17801.214 |
+Transformer | epoch 23 | step 93505 |avg loss 3.967 |avg tokens 36092.825 |tokens/s 207404.593 |walltime 17975.235 |
+Epoch time: 680.2820901870728
+Transformer | epoch 23 | step 94440 |avg loss 3.971 |avg tokens 36202.004 |tokens/s 210739.857 |walltime 18135.855 |
+Validation loss on subset valid: 3.8933047593876693
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 24 | step 95440 |avg loss 3.939 |avg tokens 36137.634 |tokens/s 206657.264 |walltime 18380.821 |
+Transformer | epoch 24 | step 96440 |avg loss 3.945 |avg tokens 36151.638 |tokens/s 215678.088 |walltime 18548.439 |
+Transformer | epoch 24 | step 97440 |avg loss 3.971 |avg tokens 36144.970 |tokens/s 205012.453 |walltime 18724.745 |
+Epoch time: 682.2199988365173
+Transformer | epoch 24 | step 98375 |avg loss 3.962 |avg tokens 36212.833 |tokens/s 207200.569 |walltime 18888.157 |
+Validation loss on subset valid: 3.8921594513710907
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 25 | step 99375 |avg loss 3.928 |avg tokens 36148.899 |tokens/s 210874.674 |walltime 19126.635 |
+Transformer | epoch 25 | step 100375 |avg loss 3.937 |avg tokens 36223.547 |tokens/s 204404.698 |walltime 19303.850 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 8.0
+Transformer | epoch 25 | step 101375 |avg loss 3.951 |avg tokens 36195.570 |tokens/s 207921.225 |walltime 19477.933 |
+Epoch time: 682.7190301418304
+Transformer | epoch 25 | step 102310 |avg loss 3.974 |avg tokens 36067.569 |tokens/s 210818.449 |walltime 19637.897 |
+Validation loss on subset valid: 3.8885747972452367
+Transformer | epoch 26 | step 103310 |avg loss 3.929 |avg tokens 36182.425 |tokens/s 207268.846 |walltime 19883.563 |
+Transformer | epoch 26 | step 104310 |avg loss 3.933 |avg tokens 36135.060 |tokens/s 208211.316 |walltime 20057.113 |
+Transformer | epoch 26 | step 105310 |avg loss 3.953 |avg tokens 36068.315 |tokens/s 207223.269 |walltime 20231.168 |
+Epoch time: 684.3508498668671
+Transformer | epoch 26 | step 106245 |avg loss 3.948 |avg tokens 36267.299 |tokens/s 209135.581 |walltime 20393.311 |
+Validation loss on subset valid: 3.8901601337044096
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Transformer | epoch 27 | step 107245 |avg loss 3.922 |avg tokens 36116.011 |tokens/s 207414.397 |walltime 20638.022 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 27 | step 108245 |avg loss 3.924 |avg tokens 36128.837 |tokens/s 209178.812 |walltime 20810.739 |
+Transformer | epoch 27 | step 109245 |avg loss 3.938 |avg tokens 36193.009 |tokens/s 211310.246 |walltime 20982.018 |
+Epoch time: 682.6667513847351
+Transformer | epoch 27 | step 110180 |avg loss 3.954 |avg tokens 36204.840 |tokens/s 205845.579 |walltime 21146.469 |
+Validation loss on subset valid: 3.88515085423605
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 28 | step 111180 |avg loss 3.912 |avg tokens 36106.428 |tokens/s 207069.214 |walltime 21410.055 |
+Transformer | epoch 28 | step 112180 |avg loss 3.932 |avg tokens 36156.801 |tokens/s 206653.268 |walltime 21585.018 |
+Transformer | epoch 28 | step 113180 |avg loss 3.922 |avg tokens 36198.172 |tokens/s 208875.851 |walltime 21758.318 |
+Epoch time: 686.7616591453552
+Transformer | epoch 28 | step 114115 |avg loss 3.945 |avg tokens 36182.114 |tokens/s 206165.561 |walltime 21922.411 |
+Validation loss on subset valid: 3.888321968201879
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 32.0
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Transformer | epoch 29 | step 115115 |avg loss 3.915 |avg tokens 36220.462 |tokens/s 207950.953 |walltime 22164.908 |
+Transformer | epoch 29 | step 116115 |avg loss 3.899 |avg tokens 36185.518 |tokens/s 209215.350 |walltime 22337.866 |
+Transformer | epoch 29 | step 117115 |avg loss 3.927 |avg tokens 36087.351 |tokens/s 212524.422 |walltime 22507.669 |
+Gradient overflow.  Skipping step, loss scaler 0 reducing loss scale to 16.0
+Epoch time: 681.7231004238129
+Transformer | epoch 29 | step 118050 |avg loss 3.949 |avg tokens 36152.082 |tokens/s 205122.587 |walltime 22672.460 |
+Validation loss on subset valid: 3.888212105887957
+| done training in 22717.0 seconds
+Transformer | epoch 29 | step RUN |avg loss 3.888 |walltime 22739.089 |
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
