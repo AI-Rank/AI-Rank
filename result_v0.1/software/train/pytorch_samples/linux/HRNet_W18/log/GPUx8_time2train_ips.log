@@ -1657,7 +1657,6 @@ unexpected key in source state_dict: incre_modules.0.0.conv1.weight, incre_modul
 )
 2021-04-03 11:59:58,725 - mmseg - INFO - Loaded 2975 images
 2021-04-03 11:59:59,397 - mmseg - INFO - Loaded 500 images
-2021-04-03 11:59:59,397 - mmseg - INFO - Start running, host: chenguowei01@instance-84y15sfo, work_dir: /ssd1/home/chenguowei01/github/mmsegmentation/work_dirs/fcn_hr18_512x1024_80k_cityscapes
 2021-04-03 11:59:59,397 - mmseg - INFO - workflow: [('train', 1)], max: 80000 iters
 AI-Rank-log 2021-04-03 12:00:42,482 - mmseg - INFO - Iter [50/80000]	lr: 9.995e-03, eta: 17:49:18, time: 0.802, data_time: 0.017, memory: 9646, decode.loss_seg: 1.3021, decode.acc_seg: 60.3172, loss: 1.3021
 AI-Rank-log 2021-04-03 12:01:19,819 - mmseg - INFO - Iter [100/80000]	lr: 9.989e-03, eta: 17:11:27, time: 0.747, data_time: 0.012, memory: 9646, decode.loss_seg: 0.6424, decode.acc_seg: 76.0078, loss: 0.6424

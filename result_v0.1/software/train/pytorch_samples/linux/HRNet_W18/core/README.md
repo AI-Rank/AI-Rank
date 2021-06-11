@@ -2,10 +2,6 @@
 
 测试基于[mmsegmentation](https://github.com/open-mmlab/mmsegmentation)公开的文档及代码。
 
-tag: v0.11.0
-
-commit id: 0448dec5e4690ced25f8ee63e1a6b0f83f84cac8
-
 ## 目录
 - [一、环境安装](#一、环境安装)
 - [二、数据准备](#二、数据准备)
@@ -28,6 +24,7 @@ pip install torch==1.7.1 torchvision==0.8.2
 ```
 pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.1/index.html
 ```
+**note:** 根据实际情况选择相应的[版本](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/get_started.md#installation)
 
 3. mmsegmentation安装
 ```
@@ -73,14 +70,50 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 
 ```
 
+- fp16训练
+
+在目录`configs/fp16`下新建配置文件`fcn_hr18_512x1024_80k_fp16_cityscapes.py`
+并输入如下内容：
+```python
+_base_ = '../hrnet/fcn_hr18_512x1024_80k_cityscapes.py'
+# fp16 settings
+optimizer_config = dict(type='Fp16OptimizerHook', loss_scale=512.)
+# fp16 placeholder
+fp16 = dict()
+```
+训练流程与单卡和单机多卡一样，只需对配置文件做出相应的更改。
+
 ## 四、日志数据
 - [单卡吞吐测试日志](../log/GPUx1_time2train_ips.log)
-- [多卡准确率测试](../log/GPUx8_time2train_ips.log)
+- [多卡准确率测试日志](../log/GPUx8_time2train_ips.log)
+- [单卡吞吐测试日志-fp16](../log/fp16_GPUx1_time2train_ips.log)
+- [多卡准确率测试日志-fp16](../log/fp16_GPUx8_time2train_ips.log)
 
 ## 五、性能指标
+
+### fp32测试结果
 
 | GPU卡数       | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
 |------------- |------------------|------------------|----------|-------|
 | 1卡          |       -          |      7.00        |     -      |   -  |
 | 8卡          |      57574.09    |      20.88       |     78.11  |  2.98 |
 
+**note:** 
+
+mmsegmentation 版本：
+
+tag: v0.11.0
+
+commit id: 0448dec5e4690ced25f8ee63e1a6b0f83f84cac8
+
+### fp16测试结果
+| GPU卡数       | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
+|------------- |------------------|------------------|----------|-------|
+| 1卡          |       -          |      5.20        |     -      |   -  |
+| 8卡          |      70489.24    |      17.82       |     78.46  |  3.43 |
+
+**note:** 
+
+mmsegmentation 版本：
+
+commit id: 4b9c9a3ad3ee811b763db8672c0c18fd97b2513a
