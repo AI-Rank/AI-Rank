@@ -173,7 +173,7 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 	```
 
 ## 四、测试结果
-(由于单卡运行时间周期过长，此处只给出单卡训练2个epoch的日志数据)
+(由于单卡运行时间周期过长，此处只给出单卡训练的部分日志数据)
 - AMP结果
 
 |  训练卡数   | Time2train(sec)  |吞吐(samples/sec)  |  准确率(%) |
