@@ -40,8 +40,8 @@
 
 - **镜像版本**: `registry.baidu.com/paddlecloud/base-images:paddlecloud-ubuntu18.04-gcc8.2-cuda11.0-cudnn8`
 - **PyTorch 版本**: `1.7.0`
-- **CUDA 版本**: `10.1`
-- **cuDnn 版本**: `7.6.5`
+- **CUDA 版本**: `11.0`
+- **cuDnn 版本**: `8.0.4`
 
 ## 二、环境搭建
 
