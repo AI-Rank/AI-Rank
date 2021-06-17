@@ -36,7 +36,7 @@
 本次测试所以用的docker镜像相关信息如下所示：
 
 - **镜像版本**: `registry.baidu.com/paddlecloud/base-images:paddlecloud-ubuntu18.04-gcc8.2-cuda11.0-cudnn8`
-- **PyTorch 版本**: `1.7.0`
+- **paddle 版本**: `develop`
 - **CUDA 版本**: `11.0`
 - **cuDnn 版本**: `8.0.4`
 
