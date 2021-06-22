@@ -54,6 +54,17 @@ mkdir val && mv ILSVRC2012_img_val.tar val/ && cd val && tar -xvf ILSVRC2012_img
 
 ### 1.单卡Time2Train及吞吐测试
 
+在开始测试前，需要修改测试代码中的线程数量配置，以使得性能达到最好，修改`/workspace/rn50v15_tf/runtime/runner.py`文件249行：
+修改前代码：
+  ```
+  config.inter_op_parallelism_threads = max(2, (multiprocessing.cpu_count() // max(hvd.size(), 8) - 2))
+  ```
+修改后代码：
+  ```
+  config.inter_op_parallelism_threads = 4
+  ```
+
+
 NGC公布的数据为AMP下90个epoch精度可达76.99%，但实际测试90个epoch后精度为75.97%。在120个epoch后精度可以达到AI-Rank要求的76.10%，我们使用如下脚本测试：
 
 ```
@@ -84,8 +95,8 @@ NGC公布的数据为AMP下90个epoch精度可达76.99%，但实际测试90个ep
 - [单卡Time2Train及吞吐测试日志](../log/GPUx1_time2train_ips.tar.gz)
 - [单卡准确率测试](../log/GPUx1_accuracy.tar.gz)
 
-通过以上日志分析，TensorFlow经过158,914秒的训练完成了120个epoch的训练，精度（即`top1_accuracy`)达到76.94%，训练吞吐（即`train_throughput`）达到984.168img/s。
-经过250个epoch的训练，最终精度（即`top1_accuracy`)达到77.04%。
+通过以上日志分析，TensorFlow经过148,720秒的训练完成了120个epoch的训练，精度（即`top1_accuracy`)达到76.97%，训练吞吐（即`train_throughput`）达到1149.207img/s。
+经过250个epoch的训练，最终精度（即`top1_accuracy`)达到76.81%。
 
 
 ## 五、性能指标
@@ -94,6 +105,6 @@ NGC公布的数据为AMP下90个epoch精度可达76.99%，但实际测试90个ep
 
 |              | Time2train(sec)  | 吞吐(images/sec) | 准确率(%) | 加速比 |
 |--------------|------------|------------|------------|-----------|
-| 1卡          |  158,914   |   984.168  |   77.04    |     -     |
+| 1卡          |  148,720   |  1149.207  |   76.81    |     -     |
 | 8卡          |     -      |      -     |     -      |     -     |
 | 32卡         |     -      |      -     |     -      |     -     |
