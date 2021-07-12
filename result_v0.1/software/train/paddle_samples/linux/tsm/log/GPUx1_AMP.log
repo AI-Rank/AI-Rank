@@ -1,0 +1,11 @@
+- AI-Rank-log 1622806851.937296 load_data, checksum:234619
+- AI-Rank-log 1622806852.0192742 test_begin
+[06/04 19:40:56] [35mepoch:[  1/50 ][0m [95mtrain step:0   [0m [92mloss: 5.99049 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 4.277 reader: 1.295[0ms ips: 3.74100 instance/sec.
+Found inf or nan, current scale is: 16384.0, decrease to: 16384.0*0.5
+[06/04 19:41:00] epoch:[  1/50 ] [95mtrain step:20  [0m [92mloss: 7.06936 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.195 reader: 0.000[0ms ips: 81.94931 instance/sec.
+[06/04 19:41:04] epoch:[  1/50 ] [95mtrain step:40  [0m [92mloss: 6.13325 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.200 reader: 0.006[0ms ips: 79.88637 instance/sec.
+[06/04 19:41:08] epoch:[  1/50 ] [95mtrain step:60  [0m [92mloss: 6.05894 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.200 reader: 0.006[0ms ips: 79.93852 instance/sec.
+[06/04 19:41:12] epoch:[  1/50 ] [95mtrain step:80  [0m [92mloss: 5.84098 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.201 reader: 0.006[0ms ips: 79.57283 instance/sec.
+[06/04 19:41:16] epoch:[  1/50 ] [95mtrain step:100 [0m [92mloss: 6.03977 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.200 reader: 0.006[0ms ips: 80.09986 instance/sec.
+[06/04 19:41:20] epoch:[  1/50 ] [95mtrain step:120 [0m [92mloss: 6.19373 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.202 reader: 0.006[0ms ips: 79.17142 instance/sec.
+Loading res4c.conv1._batch_norm.weight: [A[06/04 19:41:24] epoch:[  1/50 ] [95mtrain step:140 [0m [92mloss: 6.06372 lr: 0.080000 top1: 0.00000 top5: 0.00000 elapse: 0.200 reader: 0.006[0ms ips: 79.89940 instance/sec.

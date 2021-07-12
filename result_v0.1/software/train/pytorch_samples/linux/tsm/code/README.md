@@ -29,7 +29,7 @@
 
 我们使用了同一个物理机环境，对 [TSM PyTorch](https://github.com/mit-han-lab/temporal-shift-module) 模型进行了测试,具体参数如下：
   - 系统：CentOS release 6.3 (Final)
-  - GPU：Tesla V100-SXM2-16GB * 8
+  - GPU：Tesla V100-SXM2-32GB * 8
   - CPU：Intel(R) Xeon(R) Gold 6271C CPU @ 2.60GHz * 48
   - Driver Version: 450.80.02
   - 内存：502 GB
@@ -38,10 +38,10 @@
 
 本次测试所以用的docker镜像相关信息如下所示：
 
-- **镜像版本**: `registry.baidu.com/paddlepaddle-public/paddle_ubuntu1604:mlperf_cuda10.1_cudnn7.6.5_nccl2.4.7_dali0.24.0_py37`
+- **镜像版本**: `registry.baidu.com/paddlecloud/base-images:paddlecloud-ubuntu18.04-gcc8.2-cuda11.0-cudnn8`
 - **PyTorch 版本**: `1.7.0`
-- **CUDA 版本**: `10.1`
-- **cuDnn 版本**: `7.6.5`
+- **CUDA 版本**: `11.0`
+- **cuDnn 版本**: `8.0.4`
 
 ## 二、环境搭建
 
@@ -49,7 +49,7 @@
 
 单机环境搭建主要过程如下:
 - 新建docker container:
-使用`registry.baidu.com/paddlepaddle-public/paddle_ubuntu1604:mlperf_cuda10.1_cudnn7.6.5_nccl2.4.7_dali0.24.0_py37`docker镜像创建docker容器  
+使用`registry.baidu.com/paddlecloud/base-images:paddlecloud-ubuntu18.04-gcc8.2-cuda11.0-cudnn8`docker镜像创建docker容器  
 
 - 参考[TSM pytorch实现](https://github.com/mit-han-lab/temporal-shift-module#prerequisites) 安装依赖
     ```bash
@@ -173,29 +173,19 @@ python3 -m torch.distributed.launch --nproc_per_node ${num_cards}  main.py kinet
 	```
 
 ## 四、测试结果
-(由于单卡运行时间周期过长，此处只给出单卡训练2个epoch的日志数据)
+(由于单卡运行时间周期过长，此处只给出单卡训练的部分日志数据)
 - AMP结果
 
 |  训练卡数   | Time2train(sec)  |吞吐(samples/sec)  |  准确率(%) |
 |------------|------------|------------|------------|
-|    1卡     |     -      |    -     |    -     |
-|    8卡     | 23711.15   |   296.802      |     70.121     |
-|    32卡    | 10950.16   |   664.109      |    70.132     |
+|    1卡     |     -      |    55.365     |    -     |
+|    8卡     | 29802.62   |   383.72      |     71.118     |
+|    32卡    | 8130.06   |   1487.488      |    71.071     |
   
-- FP32结果
-
-|  训练卡数   | Time2train(sec)  |  吞吐(samples/sec) |准确率(%) |
-|------------|------------|------------|------------|
-|    1卡     |   -        |    -     |    -     |
-|    8卡     | 34883.65   |   188.293    |  70.121    |
-|    32卡    | 16494.37   |   483.550    |  70.116    |
 
 ## 五、日志数据
 ### 1.日志
-- [4机32卡、AMP ](../log/GPUx32_AMP.log)
-- [1机8卡、AMP ](../log/GPUx8_AMP.log)
-- [1机1卡、AMP ](../log/GPUx1_AMP.log)
-- [4机32卡、FP32 ](../log/GPUx32_FP32.log)
-- [1机8卡、FP32 ](../log/GPUx8_FP32.log)
-- [1机1卡、FP32 ](../log/GPUx1_FP32.log)
+- [4机32卡、AMP ](../log/gPUx32_AMP.log)
+- [1机8卡、AMP ](../log/gPUx8_AMP.log)
+- [1机1卡、AMP ](../log/gPUx1_AMP.log)
 
